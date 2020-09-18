@@ -1,6 +1,7 @@
 html(lang="en")
     // BEGIN: Head
     head
+        base(href="/")
         meta(http-equiv='Content-Type' content='text/html; charset=UTF-8')
         meta(http-equiv='X-UA-Compatible' content='IE=edge')
         meta(name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui')
@@ -33,9 +34,8 @@ html(lang="en")
         // BEGIN: Custom CSS
         link(rel='stylesheet' type='text/css' href='/assets/css/style.css')
         // END: Custom CSS
-
-    // END: Head
-    body
+        // END: Head
+    body.vertical-layout.vertical-menu-modern.semi-dark-layout.2-columns.navbar-floating.footer-static(data-open='click' data-menu='vertical-menu-modern' data-col='2-columns' data-layout='semi-dark-layout')
         // BEGIN: Body
         include ./adminPanelParts/_header
 

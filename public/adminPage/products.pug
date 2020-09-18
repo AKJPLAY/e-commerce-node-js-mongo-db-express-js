@@ -1,0 +1,381 @@
+doctype html
+// BEGIN: Head
+head
+    meta(http-equiv='Content-Type' content='text/html; charset=UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui')
+    meta(name='description' content='Vuexy admin is super flexible, powerful, clean & modern responsive bootstrap 4 admin template with unlimited possibilities.')
+    meta(name='keywords' content='admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app')
+    meta(name='author' content='PIXINVENT')
+    title Products
+    link(rel='apple-touch-icon' href='../../../app-assets/images/ico/apple-icon-120.png')
+    link(rel='shortcut icon' type='image/x-icon' href='../../../app-assets/images/ico/favicon.ico')
+    link(href='https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600' rel='stylesheet')
+    // BEGIN: Vendor CSS
+    link(rel='stylesheet' type='text/css' href='../../../app-assets/vendors/css/vendors.min.css')
+    link(rel='stylesheet' type='text/css' href='../../../app-assets/vendors/css/tables/datatable/datatables.min.css')
+    link(rel='stylesheet' type='text/css' href='../../../app-assets/vendors/css/file-uploaders/dropzone.min.css')
+    link(rel='stylesheet' type='text/css' href='../../../app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css')
+    // END: Vendor CSS
+    // BEGIN: Theme CSS
+    link(rel='stylesheet' type='text/css' href='../../../app-assets/css/bootstrap.css')
+    link(rel='stylesheet' type='text/css' href='../../../app-assets/css/bootstrap-extended.css')
+    link(rel='stylesheet' type='text/css' href='../../../app-assets/css/colors.css')
+    link(rel='stylesheet' type='text/css' href='../../../app-assets/css/components.css')
+    link(rel='stylesheet' type='text/css' href='../../../app-assets/css/themes/dark-layout.css')
+    link(rel='stylesheet' type='text/css' href='../../../app-assets/css/themes/semi-dark-layout.css')
+    // BEGIN: Page CSS
+    link(rel='stylesheet' type='text/css' href='../../../app-assets/css/core/menu/menu-types/vertical-menu.css')
+    link(rel='stylesheet' type='text/css' href='../../../app-assets/css/core/colors/palette-gradient.css')
+    link(rel='stylesheet' type='text/css' href='../../../app-assets/css/plugins/file-uploaders/dropzone.css')
+    link(rel='stylesheet' type='text/css' href='../../../app-assets/css/pages/data-list-view.css')
+    // END: Page CSS
+    // BEGIN: Custom CSS
+    link(rel='stylesheet' type='text/css' href='../../../assets/css/style.css')
+    // END: Custom CSS
+    // END: Head
+    // BEGIN: Body
+    // BEGIN: Header
+    nav.header-navbar.navbar-expand-lg.navbar.navbar-with-menu.floating-nav.navbar-light.navbar-shadow
+        .navbar-wrapper
+            .navbar-container.content
+                #navbar-mobile.navbar-collapse
+                    .mr-auto.float-left.bookmark-wrapper.d-flex.align-items-center
+                        ul.nav.navbar-nav
+                            li.nav-item.mobile-menu.d-xl-none.mr-auto
+                                a.nav-link.nav-menu-main.menu-toggle.hidden-xs(href='#')
+                                    i.ficon.feather.icon-menu
+                        ul.nav.navbar-nav.bookmark-icons
+                            // li.nav-item.mobile-menu.d-xl-none.mr-auto
+                            // a.nav-link.nav-menu-main.menu-toggle.hidden-xs(href='#')
+                            // i.ficon.feather.icon-menu
+                            li.nav-item.d-none.d-lg-block
+                                a.nav-link(href='app-todo.html' data-toggle='tooltip' data-placement='top' title='Todo')
+                                    i.ficon.feather.icon-check-square
+                            li.nav-item.d-none.d-lg-block
+                                a.nav-link(href='app-chat.html' data-toggle='tooltip' data-placement='top' title='Chat')
+                                    i.ficon.feather.icon-message-square
+                            li.nav-item.d-none.d-lg-block
+                                a.nav-link(href='app-email.html' data-toggle='tooltip' data-placement='top' title='Email')
+                                    i.ficon.feather.icon-mail
+                            li.nav-item.d-none.d-lg-block
+                                a.nav-link(href='app-calender.html' data-toggle='tooltip' data-placement='top' title='Calendar')
+                                    i.ficon.feather.icon-calendar
+                        ul.nav.navbar-nav
+                            li.nav-item.d-none.d-lg-block
+                                a.nav-link.bookmark-star
+                                    i.ficon.feather.icon-star.warning
+                                .bookmark-input.search-input
+                                    .bookmark-input-icon
+                                        i.feather.icon-search.primary
+                                    input.form-control.input(type='text' placeholder='Explore Vuexy...' tabindex='0' data-search='template-list')
+                                    ul.search-list.search-list-bookmark
+                                // select.bookmark-select
+                                // option Chat
+                                // option email
+                                // option todo
+                                // option Calendar
+                    ul.nav.navbar-nav.float-right
+                        li.dropdown.dropdown-user.nav-item
+                            a.dropdown-toggle.nav-link.dropdown-user-link(href='#' data-toggle='dropdown')
+                                .user-nav.d-sm-flex.d-none
+                                    span.user-name.text-bold-600 John Doe
+                                    span.user-status Available
+                                span
+                                    img.round(src='../../../app-assets/images/portrait/small/avatar-s-11.jpg' alt='avatar' height='40' width='40')
+                            .dropdown-menu.dropdown-menu-right
+                                a.dropdown-item(href='page-user-profile.html')
+                                    i.feather.icon-user
+                                    |  Edit Profile
+                                .dropdown-divider
+                                a.dropdown-item(href='auth-login.html')
+                                    i.feather.icon-power
+                                    |  Logout
+    ul.main-search-list-defaultlist.d-none
+        li.d-flex.align-items-center
+            a.pb-25(href='#')
+                h6.text-primary.mb-0 Files
+        li.auto-suggestion.d-flex.align-items-center.cursor-pointer
+            a.d-flex.align-items-center.justify-content-between.w-100(href='#')
+                .d-flex
+                    .mr-50
+                        img(src='../../../app-assets/images/icons/xls.png' alt='png' height='32')
+                    .search-data
+                        p.search-data-title.mb-0 Two new item submitted
+                        small.text-muted Marketing Manager
+                small.search-data-size.mr-50.text-muted &apos;17kb
+        li.auto-suggestion.d-flex.align-items-center.cursor-pointer
+            a.d-flex.align-items-center.justify-content-between.w-100(href='#')
+                .d-flex
+                    .mr-50
+                        img(src='../../../app-assets/images/icons/jpg.png' alt='png' height='32')
+                    .search-data
+                        p.search-data-title.mb-0 52 JPG file Generated
+                        small.text-muted FontEnd Developer
+                small.search-data-size.mr-50.text-muted &apos;11kb
+        li.auto-suggestion.d-flex.align-items-center.cursor-pointer
+            a.d-flex.align-items-center.justify-content-between.w-100(href='#')
+                .d-flex
+                    .mr-50
+                        img(src='../../../app-assets/images/icons/pdf.png' alt='png' height='32')
+                    .search-data
+                        p.search-data-title.mb-0 25 PDF File Uploaded
+                        small.text-muted Digital Marketing Manager
+                small.search-data-size.mr-50.text-muted &apos;150kb
+        li.auto-suggestion.d-flex.align-items-center.cursor-pointer
+            a.d-flex.align-items-center.justify-content-between.w-100(href='#')
+                .d-flex
+                    .mr-50
+                        img(src='../../../app-assets/images/icons/doc.png' alt='png' height='32')
+                    .search-data
+                        p.search-data-title.mb-0 Anna_Strong.doc
+                        small.text-muted Web Designer
+                small.search-data-size.mr-50.text-muted &apos;256kb
+        li.d-flex.align-items-center
+            a.pb-25(href='#')
+                h6.text-primary.mb-0 Members
+        li.auto-suggestion.d-flex.align-items-center.cursor-pointer
+            a.d-flex.align-items-center.justify-content-between.py-50.w-100(href='#')
+                .d-flex.align-items-center
+                    .avatar.mr-50
+                        img(src='../../../app-assets/images/portrait/small/avatar-s-8.jpg' alt='png' height='32')
+                    .search-data
+                        p.search-data-title.mb-0 John Doe
+                        small.text-muted UI designer
+        li.auto-suggestion.d-flex.align-items-center.cursor-pointer
+            a.d-flex.align-items-center.justify-content-between.py-50.w-100(href='#')
+                .d-flex.align-items-center
+                    .avatar.mr-50
+                        img(src='../../../app-assets/images/portrait/small/avatar-s-1.jpg' alt='png' height='32')
+                    .search-data
+                        p.search-data-title.mb-0 Michal Clark
+                        small.text-muted FontEnd Developer
+        li.auto-suggestion.d-flex.align-items-center.cursor-pointer
+            a.d-flex.align-items-center.justify-content-between.py-50.w-100(href='#')
+                .d-flex.align-items-center
+                    .avatar.mr-50
+                        img(src='../../../app-assets/images/portrait/small/avatar-s-14.jpg' alt='png' height='32')
+                    .search-data
+                        p.search-data-title.mb-0 Milena Gibson
+                        small.text-muted Digital Marketing Manager
+        li.auto-suggestion.d-flex.align-items-center.cursor-pointer
+            a.d-flex.align-items-center.justify-content-between.py-50.w-100(href='#')
+                .d-flex.align-items-center
+                    .avatar.mr-50
+                        img(src='../../../app-assets/images/portrait/small/avatar-s-6.jpg' alt='png' height='32')
+                    .search-data
+                        p.search-data-title.mb-0 Anna Strong
+                        small.text-muted Web Designer
+    ul.main-search-list-defaultlist-other-list.d-none
+        li.auto-suggestion.d-flex.align-items-center.justify-content-between.cursor-pointer
+            a.d-flex.align-items-center.justify-content-between.w-100.py-50
+                .d-flex.justify-content-start
+                    span.mr-75.feather.icon-alert-circle
+                    span No results found.
+    // END: Header
+    // BEGIN: Main Menu
+    .main-menu.menu-fixed.menu-dark.menu-accordion.menu-shadow(data-scroll-to-active='true')
+        .navbar-header
+            ul.nav.navbar-nav.flex-row
+                li.nav-item.mr-auto
+                    a.navbar-brand(href='../../../html/ltr/vertical-menu-template-semi-dark/index.html')
+                        .brand-logo
+                        h2.brand-text.mb-0 Admin Area
+                li.nav-item.nav-toggle
+                    a.nav-link.modern-nav-toggle.pr-0(data-toggle='collapse')
+                        i.feather.icon-x.d-block.d-xl-none.font-medium-4.primary.toggle-icon
+                        i.toggle-icon.feather.icon-disc.font-medium-4.d-none.d-xl-block.collapse-toggle-icon.primary(data-ticon='icon-disc')
+        .shadow-bottom
+        .main-menu-content
+            ul#main-menu-navigation.navigation.navigation-main(data-menu='menu-navigation')
+                li.nav-item
+                    a(href='index.html')
+                        i.feather.icon-home
+                        span.menu-title(data-i18n='Dashboard') Dashboard
+                        span.badge.badge.badge-warning.badge-pill.float-right.mr-2 2
+                    ul.menu-content
+                        li
+                            a(href='dashboard-analytics.html')
+                                i.feather.icon-circle
+                                span.menu-item(data-i18n='Analytics') Analytics
+                        li
+                            a(href='dashboard-ecommerce.html')
+                                i.feather.icon-circle
+                                span.menu-item(data-i18n='eCommerce') eCommerce
+                li.navigation-header
+                    span Apps
+                li.nav-item
+                    a(href='app-email.html')
+                        i.feather.icon-mail
+                        span.menu-title(data-i18n='Email') Email
+                li.nav-item
+                    a(href='app-chat.html')
+                        i.feather.icon-message-square
+                        span.menu-title(data-i18n='Chat') Chat
+                li.nav-item
+                    a(href='app-todo.html')
+                        i.feather.icon-check-square
+                        span.menu-title(data-i18n='Todo') Todo
+                li.nav-item
+                    a(href='app-calender.html')
+                        i.feather.icon-calendar
+                        span.menu-title(data-i18n='Calender') Calender
+    // END: Main Menu
+    // BEGIN: Content
+    .app-content.content
+        .content-overlay
+        .header-navbar-shadow
+        .content-wrapper
+            .content-header.row
+                .content-header-left.col-md-9.col-12.mb-2
+                    .row.breadcrumbs-top
+                        .col-12
+                            h2.content-header-title.float-left.mb-0 Products
+                            .breadcrumb-wrapper.col-12
+                                ol.breadcrumb
+                                    li.breadcrumb-item
+                                        a(href='index.html') Home
+                                    li.breadcrumb-item.active
+                                        a(href='#') Products
+                                    li.breadcrumb-item.active
+                                        | Product View
+                .content-header-right.text-md-right.col-md-3.col-12.d-md-block.d-none
+                    .form-group.breadcrum-right
+                        .dropdown
+                            button.btn-icon.btn.btn-primary.btn-round.btn-sm.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                                i.feather.icon-settings
+                            .dropdown-menu.dropdown-menu-right
+                                a.dropdown-item(href='#') Chat
+                                a.dropdown-item(href='#') Email
+                                a.dropdown-item(href='#') Calendar
+            .content-body
+                // Data list view starts
+                section#data-list-view.data-list-view-header
+                    .action-btns.d-none
+                        .btn-dropdown.mr-1.mb-1
+                            .btn-group.dropdown.actions-dropodown
+                                button.btn.btn-white.px-1.py-1.dropdown-toggle.waves-effect.waves-light(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                                    | Actions
+                                .dropdown-menu
+                                    a.dropdown-item(href='#')
+                                        i.feather.icon-trash
+                                        | Delete
+                                    a.dropdown-item(href='#')
+                                        i.feather.icon-archive
+                                        | Archive
+                                    a.dropdown-item(href='#')
+                                        i.feather.icon-file
+                                        | Print
+                                    a.dropdown-item(href='#')
+                                        i.feather.icon-save
+                                        | Another Action
+                    // DataTable starts
+                    .table-responsive
+                        table.table.data-list-view
+                            thead
+                                tr
+                                    th
+                                    th NAME
+                                    th CATEGORY
+                                    th POPULARITY
+                                    th ORDER STATUS
+                                    th PRICE
+                                    th ACTION
+                            tbody
+                                tr
+                                    td
+                                    td.product-name Apple Watch series 4 GPS
+                                    td.product-category Computers
+                                    td
+                                        .progress.progress-bar-success
+                                            .progress-bar(role='progressbar' aria-valuenow='40' aria-valuemin='40' aria-valuemax='100' style='width:97%')
+                                    td
+                                        .chip.chip-warning
+                                            .chip-body
+                                                .chip-text on hold
+                                    td.product-price $69.99
+                                    td.product-action
+                                        span.action-edit
+                                            i.feather.icon-edit
+                                        span.action-delete
+                                            i.feather.icon-trash
+                    // DataTable ends
+                    // add new sidebar starts
+                    .add-new-data-sidebar
+                        .overlay-bg
+                        .add-new-data
+                            .div.mt-2.px-2.d-flex.new-data-title.justify-content-between
+                                div
+                                    h4.text-uppercase List View Data
+                                .hide-data-sidebar
+                                    i.feather.icon-x
+                            .data-items.pb-3
+                                .data-fields.px-2.mt-3
+                                    .row
+                                        .col-sm-12.data-field-col
+                                            label(for='data-name') Name
+                                            input#data-name.form-control(type='text')
+                                        .col-sm-12.data-field-col
+                                            label(for='data-category')  Category 
+                                            select#data-category.form-control
+                                                option Audio
+                                                option Computers
+                                                option Fitness
+                                                option Appliance
+                                        .col-sm-12.data-field-col
+                                            label(for='data-status') Order Status
+                                            select#data-status.form-control
+                                                option Pending
+                                                option Canceled
+                                                option Delivered
+                                                option On Hold
+                                        .col-sm-12.data-field-col
+                                            label(for='data-price') Price
+                                            input#data-price.form-control(type='text')
+                                        .col-sm-12.data-field-col.data-list-upload
+                                            form#dataListUpload.dropzone.dropzone-area(action='#')
+                                                .dz-message Upload Image
+                            .add-data-footer.d-flex.justify-content-around.px-3.mt-2
+                                .add-data-btn
+                                    button.btn.btn-primary Add Data
+                                .cancel-data-btn
+                                    button.btn.btn-outline-danger Cancel
+                    // add new sidebar ends
+                    // Data list view end
+    // END: Content
+    .sidenav-overlay
+    .drag-target
+    // BEGIN: Footer
+    footer.footer.footer-static.footer-light
+        p.clearfix.blue-grey.lighten-2.mb-0
+            span.float-md-left.d-block.d-md-inline-block.mt-25
+                | COPYRIGHT &copy; 2020
+                a.text-bold-800.grey.darken-2(href='https://1.envato.market/pixinvent_portfolio' target='_blank') Pixinvent,
+                | All rights Reserved
+            span.float-md-right.d-none.d-md-block
+                | Hand-crafted &amp; Made with
+                i.feather.icon-heart.pink
+            button.btn.btn-primary.btn-icon.scroll-top(type='button')
+                i.feather.icon-arrow-up
+    // END: Footer
+    // BEGIN: Vendor JS
+    script(src='../../../app-assets/vendors/js/vendors.min.js')
+    // BEGIN Vendor JS
+    // BEGIN: Page Vendor JS
+    script(src='../../../app-assets/vendors/js/extensions/dropzone.min.js')
+    script(src='../../../app-assets/vendors/js/tables/datatable/datatables.min.js')
+    script(src='../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js')
+    script(src='../../../app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js')
+    script(src='../../../app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js')
+    script(src='../../../app-assets/vendors/js/tables/datatable/dataTables.select.min.js')
+    script(src='../../../app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js')
+    // END: Page Vendor JS
+    // BEGIN: Theme JS
+    script(src='../../../app-assets/js/core/app-menu.js')
+    script(src='../../../app-assets/js/core/app.js')
+    script(src='../../../app-assets/js/scripts/components.js')
+    // END: Theme JS
+    // BEGIN: Page JS
+    script(src='../../../app-assets/js/scripts/ui/data-list-view.js')
+    // END: Page JS
+    // END: Body
