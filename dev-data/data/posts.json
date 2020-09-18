@@ -1,0 +1,30 @@
+[
+  { 
+    "featurePost" : true, 
+    "status" : true, 
+    "onhome" : true, 
+    "name" : "The Best Street Style From London Fashion Week", 
+    "description" : "Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat.", 
+    "imageCover" : "latest-1.jpg",
+    "comment": 5
+  },
+  { 
+    "featurePost" : true, 
+    "status" : true, 
+    "onhome" : true, 
+    "name" : "Vogue's Ultimate Guide To Autumn/Winter 2019 Shoes", 
+    "description" : "Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat.", 
+    "imageCover" : "latest-2.jpg",
+    "comment": 8
+  },
+  { 
+    "featurePost" : true, 
+    "status" : true, 
+    "onhome" : true, 
+    "name" : "How To Brighten Your Wardrobe With A Dash Of Lime", 
+    "description" : "Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat.", 
+    "imageCover" : "latest-3.jpg",
+    "comment": 25
+  }
+  
+]

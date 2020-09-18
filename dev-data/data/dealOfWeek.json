@@ -1,0 +1,17 @@
+[
+    {
+        "heading": "Deal Of The Week",
+        "itemName": "HanBag",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ipsum dolor sit amet, consectetur adipisicing elit",
+        "price": 35.00,
+        "imageCover": "time-bg.jpg",
+        "time": [
+            {
+                "Day": 29,
+                "Hrs": 35,
+                "Mins": 25
+            }
+        ]
+     
+    }
+]

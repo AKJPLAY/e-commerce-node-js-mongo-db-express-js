@@ -1,0 +1,20 @@
+[
+    {
+        "heading": "Black friday",
+        "subHeading": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore",
+        "category": "Bag,kids",
+        "offSale": "50%",
+        "btnText": "Shop Now",
+        "image": "hero-1.jpg",
+        "status": true
+    },
+    {
+        "heading": "Amazing Sunday",
+        "subHeading": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore",
+        "category": "Bag,kids",
+        "offSale": "50%",
+        "btnText": "Find Now",
+        "image": "hero-2.jpg",
+        "status": true
+    }
+]
