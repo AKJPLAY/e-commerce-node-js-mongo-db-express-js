@@ -1,0 +1,123 @@
+extends base.pug
+
+block content   
+    // Breadcrumb Section Begin
+    .breacrumb-section
+        .container
+            .row
+                .col-lg-12
+                    .breadcrumb-text.product-more
+                        a(href='./index.html')
+                            i.fa.fa-home
+                            |  Home
+                        a(href='./shop.html') Shop
+                        span Check Out
+    // Breadcrumb Section Begin
+    // Shopping Cart Section Begin
+    section.checkout-section.spad
+        .container
+            form.checkout-form(action='#')
+                .row(style="display: flex; justify-content:center;")
+                    if !user
+                        .col-lg-6
+                            h4 Biiling Details
+                            .row
+                                .col-lg-6
+                                    label(for='fir')
+                                        | First Name
+                                        span *
+                                    input#fir(type='text')
+                                .col-lg-6
+                                    label(for='last')
+                                        | Last Name
+                                        span *
+                                    input#last(type='text')
+                                .col-lg-12
+                                    label(for='cun-name') Company Name
+                                    input#cun-name(type='text')
+                                .col-lg-12
+                                    label(for='cun')
+                                        | Country
+                                        span *
+                                    input#cun(type='text')
+                                .col-lg-12
+                                    label(for='street')
+                                        | Street Address
+                                        span *
+                                    input#street.street-first(type='text')
+                                    input(type='text')
+                                .col-lg-12
+                                    label(for='zip') Postcode / ZIP (optional)
+                                    input#zip(type='text')
+                                .col-lg-12
+                                    label(for='town')
+                                        | Town / City
+                                        span *
+                                    input#town(type='text')
+                                .col-lg-6
+                                    label(for='email')
+                                        | Email Address
+                                        span *
+                                    input#email(type='text')
+                                .col-lg-6
+                                    label(for='phone')
+                                        | Phone
+                                        span *
+                                    input#phone(type='text')
+                                .col-lg-12
+                                    .create-item
+                                        label(for='acc-create')
+                                            | Create an account?
+                                            input#acc-create(type='checkbox')
+                                            span.checkmark
+                    .col-lg-6
+                        .place-order
+                            h4 Your Order
+                            .order-total
+                                ul.order-table
+                                    li
+                                        | Product 
+                                        span Total
+                                    if products
+                                        for product in products
+                                            li.fw-normal
+                                                =`${product.name} (${product.qty} x $${product.price})`
+                                                span=`$${parseFloat(product.price * product.qty).toFixed(2)}`
+
+                                    li.total-price
+                                        | Total 
+                                        span=`$${parseFloat(totalPrice).toFixed(2)}`
+                                .payment-check
+                                    .pc-item
+                                        label(for='pc-check')
+                                            | COD
+                                            input#pc-check(type='checkbox' name="COD")
+                                            span.checkmark
+                                    .pc-item
+                                        label(for='pc-paypal')
+                                            | Stripe
+                                            input#pc-paypal(type='checkbox' name="stripe")
+                                            span.checkmark
+                                .order-btn
+                                    button.site-btn.place-btn(type='submit') Place Order
+    // Shopping Cart Section End
+    // Partner Logo Section Begin
+    .partner-logo
+        .container
+            .logo-carousel.owl-carousel
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-1.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-2.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-3.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-4.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-5.png' alt='')
+    // Partner Logo Section End

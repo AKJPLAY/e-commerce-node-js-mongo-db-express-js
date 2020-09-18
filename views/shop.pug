@@ -1,0 +1,70 @@
+extends base.pug
+
+block content   
+    // Breadcrumb Section Begin
+    .breacrumb-section
+        .container
+            .row
+                .col-lg-12
+                    .breadcrumb-text
+                        a(href='#')
+                            i.fa.fa-home
+                            |  Home
+                        span Shop
+    // Breadcrumb Section Begin
+    // Product Shop Section Begin
+    section.product-shop.spad
+        .container
+            .row
+                .col-lg-3.col-md-6.col-sm-8.order-2.order-lg-1.produts-sidebar-filter
+                    .filter-widget
+                        h4.fw-title Categories
+                        ul.filter-catagories(style='max-height: 200px; overflow-y: scroll; overflow: hidden;')
+                            // ---Come Form JavaScript----
+                            | &gt;
+                    .filter-widget
+                        h4.fw-title Price
+                        .filter-range-wrap
+                            .range-slider
+                                .price-input
+                                    input#minamount(type='text')
+                                    input#maxamount(type='text')
+                            .price-range.ui-slider.ui-corner-all.ui-slider-horizontal.ui-widget.ui-widget-content(data-min='5' data-max='500')
+                                .ui-slider-range.ui-corner-all.ui-widget-header
+                                span.ui-slider-handle.ui-corner-all.ui-state-default(tabindex='0')
+                                span.ui-slider-handle.ui-corner-all.ui-state-default(tabindex='0')
+                        input.filter-btn(type='button' value='Filter' style='border: none;')
+                .col-lg-9.order-1.order-lg-2
+                    .product-show-option
+                        .row
+                            .col-lg-6.col-md-6
+                                .select-option
+                                    select.sorting
+                                        option(value='') Default Sorting
+                                        option(value='') Desending Sorting
+                                        option(value='') Lowest Price
+                                        option(value='') Heigest Price
+                            .col-lg-6.col-md-6
+                                input#myInput(type='text' placeholder='Search..' style='display: inline-block; float: right; padding: 6px; border: 1px solid #ccc;')
+                    .product-list
+    // Product Shop Section End
+    // Partner Logo Section Begin
+    .partner-logo
+        .container
+            .logo-carousel.owl-carousel
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-1.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-2.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-3.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-4.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-5.png' alt='')
+    // Partner Logo Section End

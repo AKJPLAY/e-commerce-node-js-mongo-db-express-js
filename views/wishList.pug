@@ -1,0 +1,44 @@
+extends base.pug
+
+block content   
+    // Breadcrumb Section Begin
+    .breacrumb-section
+        .container
+            .row
+                .col-lg-12
+                    .breadcrumb-text
+                        a(href='#')
+                            i.fa.fa-home
+                            |  Home
+                        span WishList
+    // Breadcrumb Section Begin
+    // Product Shop Section Begin
+    section
+        .container
+            .row(style="justify-content: center;")
+                .col-lg-9.order-1.order-lg-2
+                    .product-show-option
+                        .row
+                            .col-lg-12.col-md-12
+                    .product-wishlist
+    // Product Shop Section End
+    // Partner Logo Section Begin
+    .partner-logo
+        .container
+            .logo-carousel.owl-carousel
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-1.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-2.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-3.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-4.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-5.png' alt='')
+    // Partner Logo Section End

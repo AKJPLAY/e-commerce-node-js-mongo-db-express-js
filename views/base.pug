@@ -1,0 +1,305 @@
+html(lang="en")
+    head
+        meta(charset='UTF-8')
+        meta(name='description' content='Fashi Template')
+        meta(name='keywords' content='Fashi, unica, creative, html')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        meta(http-equiv='X-UA-Compatible' content='ie=edge')
+        title YourShop | #{title}
+        // Google Font
+        link(href='https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap' rel='stylesheet')
+        // Css Styles
+        base(href="/")
+        link(rel='stylesheet' href='./css/bootstrap.min.css' type='text/css')
+        link(rel='stylesheet' href='./css/font-awesome.min.css' type='text/css')
+        link(rel='stylesheet' href='./css/themify-icons.css' type='text/css')
+        link(rel='stylesheet' href='./css/elegant-icons.css' type='text/css')
+        link(rel='stylesheet' href='./css/owl.carousel.min.css' type='text/css')
+        link(rel='stylesheet' href='./css/nice-select.css' type='text/css')
+        link(rel='stylesheet' href='./css/jquery-ui.min.css' type='text/css')
+        link(rel='stylesheet' href='./css/slicknav.min.css' type='text/css')
+        link(rel='stylesheet' href='./css/style.css' type='text/css')
+        link(rel='stylesheet' href='./css/load-more-button.css' type='text/css')
+    body
+        include ./shopParts/_header
+        // Page Preloder
+        #preloder
+        .loader
+        
+        block content
+            for cnfg in config
+                if cnfg.name === 'hero-section' && cnfg.enable
+                    //Hero Section Begin
+                    section.hero-section
+                        .hero-items.owl-carousel
+                            for heroSectionOption in heroSection
+                                .single-hero-items.set-bg(data-setbg=`/img/${heroSectionOption.image}` style=`background-image: url('./img/${heroSectionOption}');`)
+                                    .container
+                                        .row
+                                            .col-lg-5
+                                                span 
+                                                    =heroSectionOption.category
+                                                h1  
+                                                    =heroSectionOption.heading
+                                                p   
+                                                    =heroSectionOption.subHeading
+                                                a.primary-btn(href="#") 
+                                                    =heroSectionOption.btnText
+                                            .off-card
+                                                h2 Sale 
+                                                    span
+                                                        =heroSectionOption.offSale
+            for cnfg in config
+                if cnfg.name === 'category-section' && cnfg.enable
+                    // Banner Section Begin
+                    .banner-section.spad
+                        .container-fluid
+                            .row
+                                for category in categories
+                                    .col-lg-4
+                                        .single-banner
+                                            img(src=`./img/${category.imageCover}`)
+                                            .inner-text
+                                                h4 
+                                                    =category.name
+            for cnfg in config
+                if cnfg.name === 'blog-section' && cnfg.enable
+                    //Latest Blog Section Begin
+                    section.latest-blog.spad.blog-section
+                            .container
+                                .row
+                                    .col-lg-12
+                                        .section-title
+                                            h2 From The Blog
+                                .row
+                                    for post in posts
+                                            .col-lg-4.col-md-6
+                                                .single-latest-blog
+                                                    img(src=`./img/${post.imageCover}`)
+                                                    .latest-text
+                                                        .tag-list
+                                                            .tag-item
+                                                                i.fa.fa-calendar-o
+                                                                =post.createdAt
+                                                            .tag-item
+                                                                i.fa.fa-comment-o
+                                                                =post.comment
+                                                        a(href="")
+                                                            h4
+                                                                =post.name
+                                                            p
+                                                                =post.description
+            for cnfg in config
+                if cnfg.name === 'deal-of-week' && cnfg.enable
+                    // Deal Of The Week Section Begin
+                    section.deal-of-week.set-bg.spad(data-setbg=`img/${dealOfWeek[0].imageCover}`)
+                        .container
+                            .col-lg-6.text-center
+                                .section-title
+                                    h2 
+                                        =dealOfWeek[0].heading
+                                    p 
+                                        =dealOfWeek[0].description
+                                    .product-price
+                                        |$
+                                        =dealOfWeek[0].price
+                                        |.00
+                                        span 
+                                        |/  
+                                        =dealOfWeek[0].itemName
+                                #countdown.countdown-timer
+                                    .cd-item
+                                    span 
+                                        =dealOfWeek[0].time.Day
+                                    p Days
+                                    .cd-item
+                                    span 
+                                        =dealOfWeek[0].time.Hrs
+                                    p Hrs
+                                    .cd-item
+                                    span 
+                                        =dealOfWeek[0].time.Mins
+                                    p Mins
+                                    .cd-item
+                                    span 52
+                                    p Secs
+                                a.primary-btn(href='#') Shop Now
+                    // Deal Of The Week Section End
+
+            // Women Banner Section Begin
+            section.women-banner.spad
+                .container-fluid
+                    .row
+                        .col-lg-3
+                            .product-large.set-bg(data-setbg='img/products/women-large.jpg')
+                                h2 Women&rsquo;s
+                                a(href='#') Discover More
+                        .col-lg-8.offset-lg-1
+                            .filter-control
+                                ul
+                                    li.active Clothings
+                                    li HandBag
+                                    li Shoes
+                                    li Accessories
+                            .product-slider.owl-carousel
+                                .product-item
+                                    .pi-pic
+                                        img(src='img/products/women-1.jpg' alt='')
+                                        .sale Sale
+                                        .icon
+                                            i.icon_heart_alt
+                                        ul
+                                            li.w-icon.active
+                                                a(href='#')
+                                                    i.icon_bag_alt
+                                            li.quick-view
+                                                a(href='#') + Quick View
+                                            li.w-icon
+                                                a(href='#')
+                                                    i.fa.fa-random
+                                    .pi-text
+                                        .catagory-name Coat
+                                        a(href='#')
+                                            h5 Pure Pineapple
+                                        .product-price $14.00
+                                            span $35.00
+                                .product-item
+                                    .pi-pic
+                                        img(src='img/products/women-2.jpg' alt='')
+                                        .icon
+                                            i.icon_heart_alt
+                                        ul
+                                            li.w-icon.active
+                                                a(href='#')
+                                                    i.icon_bag_alt
+                                            li.quick-view
+                                                a(href='#') + Quick View
+                                            li.w-icon
+                                                a(href='#')
+                                                    i.fa.fa-random
+                                    .pi-text
+                                        .catagory-name Shoes
+                                        a(href='#')
+                                            h5 Guangzhou sweater
+                                        .product-price $13.00
+                                .product-item
+                                    .pi-pic
+                                        img(src='img/products/women-3.jpg' alt='')
+                                        .icon
+                                            i.icon_heart_alt
+                                        ul
+                                            li.w-icon.active
+                                                a(href='#')
+                                                    i.icon_bag_alt
+                                            li.quick-view
+                                                a(href='#') + Quick View
+                                            li.w-icon
+                                                a(href='#')
+                                                    i.fa.fa-random
+                                    .pi-text
+                                        .catagory-name Towel
+                                        a(href='#')
+                                            h5 Pure Pineapple
+                                        .product-price $34.00
+                                .product-item
+                                    .pi-pic
+                                        img(src='img/products/women-4.jpg' alt='')
+                                        .icon
+                                            i.icon_heart_alt
+                                        ul
+                                            li.w-icon.active
+                                                a(href='#')
+                                                    i.icon_bag_alt
+                                            li.quick-view
+                                                a(href='#') + Quick View
+                                            li.w-icon
+                                                a(href='#')
+                                                    i.fa.fa-random
+                                    .pi-text
+                                        .catagory-name Towel
+                                        a(href='#')
+                                            h5 Converse Shoes
+                                        .product-price $34.00
+            // Women Banner Section End
+
+            
+            // Instagram Section Begin
+            .instagram-photo
+                .insta-item.set-bg(data-setbg='./img/insta-1.jpg')
+                    .inside-text
+                        i.ti-instagram
+                        h5
+                            a(href='#') colorlib_Collection
+                .insta-item.set-bg(data-setbg='./img/insta-2.jpg')
+                    .inside-text
+                        i.ti-instagram
+                        h5
+                            a(href='#') colorlib_Collection
+                .insta-item.set-bg(data-setbg='./img/insta-3.jpg')
+                    .inside-text
+                        i.ti-instagram
+                        h5
+                            a(href='#') colorlib_Collection
+                .insta-item.set-bg(data-setbg='./img/insta-4.jpg')
+                    .inside-text
+                        i.ti-instagram
+                        h5
+                            a(href='#') colorlib_Collection
+                .insta-item.set-bg(data-setbg='./img/insta-5.jpg')
+                    .inside-text
+                        i.ti-instagram
+                        h5
+                            a(href='#') colorlib_Collection
+                .insta-item.set-bg(data-setbg='./img/insta-6.jpg')
+                    .inside-text
+                        i.ti-instagram
+                        h5
+                            a(href='#') colorlib_Collection
+                // Instagram Section End
+            .benefit-items
+                .row
+                    .col-lg-4
+                        .single-benefit
+                            .sb-icon
+                                img(src='./img/icon-1.png' alt='')
+                            .sb-text
+                                h6 Free Shipping
+                                p For all order over 99$
+                    .col-lg-4
+                        .single-benefit
+                            .sb-icon
+                                img(src='./img/icon-2.png' alt='')
+                            .sb-text
+                                h6 Delivery On Time
+                                p If good have prolems
+                    .col-lg-4
+                        .single-benefit
+                            .sb-icon
+                                img(src='./img/icon-1.png' alt='')
+                            .sb-text
+                                h6 Secure Payment
+                                p 100% secure payment
+            // Partner Logo Section Begin
+            .partner-logo
+                .container
+                    .logo-carousel.owl-carousel
+                        .logo-item
+                            .tablecell-inner
+                            img(src='./img/logo-carousel/logo-1.png' alt='')
+                        .logo-item
+                            .tablecell-inner
+                            img(src='./img/logo-carousel/logo-2.png' alt='')
+                        .logo-item
+                            .tablecell-inner
+                            img(src='./img/logo-carousel/logo-3.png' alt='')
+                        .logo-item
+                            .tablecell-inner
+                            img(src='./img/logo-carousel/logo-4.png' alt='')
+                        .logo-item
+                            .tablecell-inner
+                            img(src='./img/logo-carousel/logo-5.png' alt='')
+                // Partner Logo Section End
+
+        include ./shopParts/_footer
+ 
+        

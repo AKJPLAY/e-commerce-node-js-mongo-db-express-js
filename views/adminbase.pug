@@ -1,0 +1,132 @@
+html(lang="en")
+    // BEGIN: Head
+    head
+        meta(http-equiv='Content-Type' content='text/html; charset=UTF-8')
+        meta(http-equiv='X-UA-Compatible' content='IE=edge')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui')
+        meta(name='description' content='Vuexy admin is super flexible, powerful, clean & modern responsive bootstrap 4 admin template with unlimited possibilities.')
+        meta(name='keywords' content='admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app')
+        meta(name='author' content='PIXINVENT')
+        title Products
+        link(rel='apple-touch-icon' href='/app-assets/images/ico/apple-icon-120.png')
+        link(rel='shortcut icon' type='image/x-icon' href='/app-assets/images/ico/favicon.ico')
+        link(href='https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600' rel='stylesheet')
+        // BEGIN: Vendor CSS
+        link(rel='stylesheet' type='text/css' href='/app-assets/vendors/css/vendors.min.css')
+        link(rel='stylesheet' type='text/css' href='/app-assets/vendors/css/tables/datatable/datatables.min.css')
+        link(rel='stylesheet' type='text/css' href='/app-assets/vendors/css/file-uploaders/dropzone.min.css')
+        link(rel='stylesheet' type='text/css' href='/app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css')
+        // END: Vendor CSS
+        // BEGIN: Theme CSS
+        link(rel='stylesheet' type='text/css' href='/app-assets/css/bootstrap.css')
+        link(rel='stylesheet' type='text/css' href='/app-assets/css/bootstrap-extended.css')
+        link(rel='stylesheet' type='text/css' href='/app-assets/css/colors.css')
+        link(rel='stylesheet' type='text/css' href='/app-assets/css/components.css')
+        link(rel='stylesheet' type='text/css' href='/app-assets/css/themes/dark-layout.css')
+        link(rel='stylesheet' type='text/css' href='/app-assets/css/themes/semi-dark-layout.css')
+        // BEGIN: Page CSS
+        link(rel='stylesheet' type='text/css' href='/app-assets/css/core/menu/menu-types/vertical-menu.css')
+        link(rel='stylesheet' type='text/css' href='/app-assets/css/core/colors/palette-gradient.css')
+        link(rel='stylesheet' type='text/css' href='/app-assets/css/plugins/file-uploaders/dropzone.css')
+        link(rel='stylesheet' type='text/css' href='/app-assets/css/pages/data-list-view.css')
+        // END: Page CSS
+        // BEGIN: Custom CSS
+        link(rel='stylesheet' type='text/css' href='/assets/css/style.css')
+        // END: Custom CSS
+
+    // END: Head
+    body
+        // BEGIN: Body
+        include ./adminPanelParts/_header
+
+        block content
+            // BEGIN: Content
+            .app-content.content
+                .content-overlay
+                .header-navbar-shadow
+                .content-wrapper
+                    .content-header.row
+                    .content-body
+                        // Dashboard Ecommerce Starts
+                        section#dashboard-ecommerce
+                            .row
+                                .col-lg-3.col-sm-6.col-12
+                                    .card
+                                        .card-header.d-flex.flex-column.align-items-start.pb-0
+                                            .avatar.bg-rgba-primary.p-50.m-0
+                                                .avatar-content
+                                                    i.feather.icon-users.text-primary.font-medium-5
+                                            h2.text-bold-700.mt-1 92.6k
+                                            p.mb-0 Subscribers Gained
+                                        .card-content
+                                            #line-area-chart-1
+                                .col-lg-3.col-sm-6.col-12
+                                    .card
+                                        .card-header.d-flex.flex-column.align-items-start.pb-0
+                                            .avatar.bg-rgba-success.p-50.m-0
+                                                .avatar-content
+                                                    i.feather.icon-credit-card.text-success.font-medium-5
+                                            h2.text-bold-700.mt-1 97.5k
+                                            p.mb-0 Revenue Generated
+                                        .card-content
+                                            #line-area-chart-2
+                                .col-lg-3.col-sm-6.col-12
+                                    .card
+                                        .card-header.d-flex.flex-column.align-items-start.pb-0
+                                            .avatar.bg-rgba-danger.p-50.m-0
+                                                .avatar-content
+                                                    i.feather.icon-shopping-cart.text-danger.font-medium-5
+                                            h2.text-bold-700.mt-1 36%
+                                            p.mb-0 Quarterly Sales
+                                        .card-content
+                                            #line-area-chart-3
+                                .col-lg-3.col-sm-6.col-12
+                                    .card
+                                        .card-header.d-flex.flex-column.align-items-start.pb-0
+                                            .avatar.bg-rgba-warning.p-50.m-0
+                                                .avatar-content
+                                                    i.feather.icon-package.text-warning.font-medium-5
+                                            h2.text-bold-700.mt-1 97.5K
+                                            p.mb-0 Orders Received
+                                        .card-content
+                                            #line-area-chart-4
+                            .row
+                                .col-lg-8.col-md-6.col-12
+                                    .card
+                                        .card-header.d-flex.justify-content-between.align-items-end
+                                            h4.card-title Revenue
+                                            p.font-medium-5.mb-0
+                                                i.feather.icon-settings.text-muted.cursor-pointer
+                                        .card-content
+                                            .card-body.pb-0
+                                                .d-flex.justify-content-start
+                                                    .mr-2
+                                                        p.mb-50.text-bold-600 This Month
+                                                        h2.text-bold-400
+                                                            sup.font-medium-1 $
+                                                            span.text-success 86,589
+                                                    div
+                                                        p.mb-50.text-bold-600 Last Month
+                                                        h2.text-bold-400
+                                                            sup.font-medium-1 $
+                                                            span 73,683
+                                                #revenue-chart
+                                .col-lg-4.col-md-6.col-12
+                                    .card
+                                        .card-header.d-flex.justify-content-between.align-items-end
+                                            h4.mb-0 Goal Overview
+                                            p.font-medium-5.mb-0
+                                                i.feather.icon-help-circle.text-muted.cursor-pointer
+                                        .card-content
+                                            .card-body.px-0.pb-0
+                                                #goal-overview-chart.mt-75
+                                                .row.text-center.mx-0
+                                                    .col-6.border-top.border-right.d-flex.align-items-between.flex-column.py-1
+                                                        p.mb-50 Completed
+                                                        p.font-large-1.text-bold-700 786,617
+                                                    .col-6.border-top.d-flex.align-items-between.flex-column.py-1
+                                                        p.mb-50 In Progress
+                                                        p.font-large-1.text-bold-700 13,561
+                        // Dashboard Ecommerce ends
+                        // END: Content
+        include ./adminPanelParts/_footer

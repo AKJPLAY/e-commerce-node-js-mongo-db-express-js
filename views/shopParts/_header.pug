@@ -1,0 +1,110 @@
+// Header Section Begin
+header.header-section
+  .header-top
+    .container
+      .ht-left
+        .mail-service
+          i.fa.fa-envelope
+          | yourshop@gmail.com
+        .phone-service
+          i.fa.fa-phone
+          | +65 11.188.888
+      .ht-right
+        if user 
+          a#logoutBtn.login-panel(href="javascript:void(0)")
+            i.fa.fa-sign-out 
+            | logout
+          a.login-panel(href="#" style="margin-right: 30px;")
+            img.user-profile-image(src=`../dist/img/${user.photo}` alt="")
+            =user.name
+        else
+          a.login-panel(href='/register')
+            i.fa.fa-user-plus
+            | Register
+          a.login-panel(href='/login' style='margin-right: 30px;')
+            i.fa.fa-user
+            | Login
+
+        .top-social
+          a(href='#')
+            i.ti-facebook
+          a(href='#')
+            i.ti-twitter-alt
+          a(href='#')
+            i.ti-linkedin
+          a(href='#')
+            i.ti-pinterest
+  .container
+    .inner-header
+      .row
+        .col-lg-9.col-md-9
+          .logo
+            a(href='./index.html')
+              img(src='img/logo.png' alt='')
+        .col-lg-3.text-right.col-md-3
+          ul.nav-right
+            li.heart-icon
+              a(href='/wishList')
+                i.icon_heart_alt
+                span=wishTotalQty ? wishTotalQty: 0
+            li.cart-icon
+              a(href='/cart')
+                i.icon_bag_alt
+                span(id="CartQty")=totalQty ? totalQty : 0
+              .cart-hover
+                .select-items
+                  table
+                    tbody(id="cartTableBody")
+                      if cartProducts
+                        for cartProduct in cartProducts
+                          tr(id=`cartPContainer${cartProduct.id}`)
+                            td.si-pic(style="width: 30%;")
+                              img(src=`img/products/${cartProduct.imageCover}` alt='' style="max-width: 50%;")
+                            td.si-text
+                              .cartProduct-selected
+                                p(id=`DrawerCartQtyPrice${cartProduct.id}`)=`$${parseFloat(cartProduct.price).toFixed(2)} x ${cartProduct.qty}`
+                                h6(style="font-size: 10px;")=cartProduct.name
+                            td(prodID=`${cartProduct.id}`).si-close
+                              i(id=`cartPClose${cartProduct.id}`).ti-close
+                if totalQty
+                  .select-total
+                    span total:
+                    h5(id="InsideCartPrice")=`$${totalPrice ? parseFloat(totalPrice).toFixed(2) : `0.00`}`
+                  .select-button
+                    a.primary-btn.view-card(href='/cart') VIEW CARD
+                    a.primary-btn.checkout-btn(href='/checkout') CHECK OUT
+                else
+                  .select-button
+                    a.primary-btn.view-card(href='/shop') YOUR CART IS EMPTY
+                    a.primary-btn.checkout-btn(href='/shop') SHOP NOW
+            li.cart-price(id="CartPrice")=`$${totalPrice ? parseFloat(totalPrice).toFixed(2) : `0.00`}`
+  .nav-item
+    .container
+      .nav-depart
+        .depart-btn
+          i.ti-menu
+          span All categories
+          ul.depart-hover
+      nav.nav-menu.mobile-menu
+        ul.nav-menu-link
+          li.active
+            a(href='./') Home
+          li
+            a(href='./shop') Shop
+          li
+            a(href='./blog') Blog
+          li
+            a(href='./contact') Contact
+          li
+            a(href='/faq') FAQ
+          li
+            a(href='/wishList') Wishlist
+            ul.dropdown
+              li
+                a(href='#') Men&apos;s
+              li
+                a(href='#') Women&apos;s
+              li
+                a(href='#') Kid&apos;s
+      #mobile-menu-wrap
+// Header End

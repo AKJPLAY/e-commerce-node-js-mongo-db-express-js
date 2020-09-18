@@ -1,0 +1,235 @@
+extends base.pug
+
+block content   
+    // Breadcrumb Section Begin
+    .breacrumb-section
+        .container
+            .row
+                .col-lg-12
+                    .breadcrumb-text.product-more
+                        a(href='./home.html')
+                            i.fa.fa-home
+                            |  Home
+                        a(href='./shop.html') Shop
+                        span=product.name
+    // Breadcrumb Section Begin
+    // Product Shop Section Begin
+    section.product-shop.spad.page-details
+        .container
+            .row
+                .col-lg-12
+                    .row(style='justify-content: center;')
+                        .col-lg-6(style='max-width: 35%;')
+                            .product-pic-zoom
+                                img.product-big-img(src=`img/products/${product.imageCover}` alt='')
+                                .zoom-icon
+                                    i.fa.fa-search-plus
+                            .product-thumbs
+                                .product-thumbs-track.ps-slider.owl-carousel
+                                    each imgs in product.images
+                                        .pt.active(data-imgbigurl=`img/product-single/${imgs}`)
+                                            img(src=`img/product-single/${imgs}` alt='')
+                        .col-lg-6
+                            .product-details
+                                .pd-title
+                                    span=product.name
+                                    h3=product.name
+                                    a.heart-icon(href='#')
+                                        i.icon_heart_alt
+                                .pd-rating
+                                    i.fa.fa-star
+                                    i.fa.fa-star
+                                    i.fa.fa-star
+                                    i.fa.fa-star
+                                    i.fa.fa-star-o
+                                    span (5)
+                                .pd-desc
+                                    p=product.description.substr(0, 100) + '...'
+                                    h4=`$${parseFloat(product.price).toFixed(2)}`
+                                        span=`$${parseFloat(product.mrp).toFixed(2)}`
+                                .quantity
+                                    .pro-qty.procart-qty
+                                        input(type='text' value='1')
+                                    a.primary-btn.pd-cart(href=`/add-to-cart/${product._id}/shopProduct`) Add To Cart
+                                .product-tab
+                                    .tab-item
+                                        ul.nav(role='tablist')
+                                            li
+                                                a.active(data-toggle='tab' href='#tab-1' role='tab') DESCRIPTION
+                                            li
+                                                a(data-toggle='tab' href='#tab-2' role='tab') Customer Reviews (02)
+                                    .tab-item-content
+                                        .tab-content
+                                            #tab-1.tab-pane.fade-in.active(role='tabpanel')
+                                                .product-content
+                                                    .row
+                                                        .col-lg-12
+                                                            p 
+                                                                =product.description
+                                            #tab-2.tab-pane.fade(role='tabpanel')
+                                                .customer-review-option
+                                                    h4 2 Comments
+                                                    .comment-option
+                                                        .co-item
+                                                            .avatar-pic
+                                                                img(src='img/product-single/avatar-1.png' alt='')
+                                                            .avatar-text
+                                                                .at-rating
+                                                                    i.fa.fa-star
+                                                                    i.fa.fa-star
+                                                                    i.fa.fa-star
+                                                                    i.fa.fa-star
+                                                                    i.fa.fa-star-o
+                                                                h5
+                                                                    | Brandon Kelley 
+                                                                    span 27 Aug 2019
+                                                                .at-reply Nice !
+                                                        .co-item
+                                                            .avatar-pic
+                                                                img(src='img/product-single/avatar-2.png' alt='')
+                                                            .avatar-text
+                                                                .at-rating
+                                                                    i.fa.fa-star
+                                                                    i.fa.fa-star
+                                                                    i.fa.fa-star
+                                                                    i.fa.fa-star
+                                                                    i.fa.fa-star-o
+                                                                h5
+                                                                    | Roy Banks 
+                                                                    span 27 Aug 2019
+                                                                .at-reply Nice !
+                                                    .personal-rating
+                                                        h6 Your Ratind
+                                                        .rating
+                                                            i.fa.fa-star
+                                                            i.fa.fa-star
+                                                            i.fa.fa-star
+                                                            i.fa.fa-star
+                                                            i.fa.fa-star-o
+                                                    .leave-comment
+                                                        h4 Leave A Comment
+                                                        form.comment-form(action='#')
+                                                            .row
+                                                                .col-lg-6
+                                                                    input(type='text' placeholder='Name')
+                                                                .col-lg-6
+                                                                    input(type='text' placeholder='Email')
+                                                                .col-lg-12
+                                                                    textarea(placeholder='Messages')
+                                                                    button.site-btn(type='submit') Send message
+    // Product Shop Section End
+    // Related Products Section End
+    .related-products.spad
+        .container
+            .row
+                .col-lg-12
+                    .section-title
+                        h2 Related Products
+            .row
+                .col-lg-3.col-sm-6
+                    .product-item
+                        .pi-pic
+                            img(src='img/products/women-1.jpg' alt='')
+                            .sale Sale
+                            .icon
+                                i.icon_heart_alt
+                            ul
+                                li.w-icon.active
+                                    a(href='#')
+                                        i.icon_bag_alt
+                                li.quick-view
+                                    a(href='#') + Quick View
+                                li.w-icon
+                                    a(href='#')
+                                        i.fa.fa-random
+                        .pi-text
+                            .catagory-name Coat
+                            a(href='#')
+                                h5 Pure Pineapple
+                            .product-price
+                                | $14.00
+                                span $35.00
+                .col-lg-3.col-sm-6
+                    .product-item
+                        .pi-pic
+                            img(src='img/products/women-2.jpg' alt='')
+                            .icon
+                                i.icon_heart_alt
+                            ul
+                                li.w-icon.active
+                                    a(href='#')
+                                        i.icon_bag_alt
+                                li.quick-view
+                                    a(href='#') + Quick View
+                                li.w-icon
+                                    a(href='#')
+                                        i.fa.fa-random
+                        .pi-text
+                            .catagory-name Shoes
+                            a(href='#')
+                                h5 Guangzhou sweater
+                            .product-price
+                                | $13.00
+                .col-lg-3.col-sm-6
+                    .product-item
+                        .pi-pic
+                            img(src='img/products/women-3.jpg' alt='')
+                            .icon
+                                i.icon_heart_alt
+                            ul
+                                li.w-icon.active
+                                    a(href='#')
+                                        i.icon_bag_alt
+                                li.quick-view
+                                    a(href='#') + Quick View
+                                li.w-icon
+                                    a(href='#')
+                                        i.fa.fa-random
+                        .pi-text
+                            .catagory-name Towel
+                            a(href='#')
+                                h5 Pure Pineapple
+                            .product-price
+                                | $34.00
+                .col-lg-3.col-sm-6
+                    .product-item
+                        .pi-pic
+                            img(src='img/products/women-4.jpg' alt='')
+                            .icon
+                                i.icon_heart_alt
+                            ul
+                                li.w-icon.active
+                                    a(href='#')
+                                        i.icon_bag_alt
+                                li.quick-view
+                                    a(href='#') + Quick View
+                                li.w-icon
+                                    a(href='#')
+                                        i.fa.fa-random
+                        .pi-text
+                            .catagory-name Towel
+                            a(href='#')
+                                h5 Converse Shoes
+                            .product-price
+                                | $34.00
+    // Related Products Section End
+    // Partner Logo Section Begin
+    .partner-logo
+        .container
+            .logo-carousel.owl-carousel
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-1.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-2.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-3.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-4.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-5.png' alt='')
+    // Partner Logo Section End

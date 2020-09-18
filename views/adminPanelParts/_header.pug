@@ -1,0 +1,347 @@
+// BEGIN: Header
+nav.header-navbar.navbar-expand-lg.navbar.navbar-with-menu.floating-nav.navbar-light.navbar-shadow
+    .navbar-wrapper
+        .navbar-container.content
+            #navbar-mobile.navbar-collapse
+                .mr-auto.float-left.bookmark-wrapper.d-flex.align-items-center
+                    ul.nav.navbar-nav
+                        li.nav-item.mobile-menu.d-xl-none.mr-auto
+                            a.nav-link.nav-menu-main.menu-toggle.hidden-xs(href='#')
+                                i.ficon.feather.icon-menu
+                    ul.nav.navbar-nav.bookmark-icons
+                        // li.nav-item.mobile-menu.d-xl-none.mr-auto
+                        // a.nav-link.nav-menu-main.menu-toggle.hidden-xs(href='#')
+                        // i.ficon.feather.icon-menu
+                        li.nav-item.d-none.d-lg-block
+                            a.nav-link(href='app-todo.html' data-toggle='tooltip' data-placement='top' title='Todo')
+                                i.ficon.feather.icon-check-square
+                        li.nav-item.d-none.d-lg-block
+                            a.nav-link(href='app-chat.html' data-toggle='tooltip' data-placement='top' title='Chat')
+                                i.ficon.feather.icon-message-square
+                        li.nav-item.d-none.d-lg-block
+                            a.nav-link(href='app-email.html' data-toggle='tooltip' data-placement='top' title='Email')
+                                i.ficon.feather.icon-mail
+                        li.nav-item.d-none.d-lg-block
+                            a.nav-link(href='app-calender.html' data-toggle='tooltip' data-placement='top' title='Calendar')
+                                i.ficon.feather.icon-calendar
+                    ul.nav.navbar-nav
+                        li.nav-item.d-none.d-lg-block
+                            a.nav-link.bookmark-star
+                                i.ficon.feather.icon-star.warning
+                            .bookmark-input.search-input
+                                .bookmark-input-icon
+                                    i.feather.icon-search.primary
+                                input.form-control.input(type='text' placeholder='Explore Vuexy...' tabindex='0' data-search='template-list')
+                                ul.search-list.search-list-bookmark
+                            // select.bookmark-select
+                            // option Chat
+                            // option email
+                            // option todo
+                            // option Calendar
+                ul.nav.navbar-nav.float-right
+                    li.dropdown.dropdown-language.nav-item
+                        a#dropdown-flag.dropdown-toggle.nav-link(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                            i.flag-icon.flag-icon-us
+                            span.selected-language English
+                        .dropdown-menu(aria-labelledby='dropdown-flag')
+                            a.dropdown-item(href='#' data-language='en')
+                                i.flag-icon.flag-icon-us
+                                |  English
+                            a.dropdown-item(href='#' data-language='fr')
+                                i.flag-icon.flag-icon-fr
+                                |  French
+                            a.dropdown-item(href='#' data-language='de')
+                                i.flag-icon.flag-icon-de
+                                |  German
+                            a.dropdown-item(href='#' data-language='pt')
+                                i.flag-icon.flag-icon-pt
+                                |  Portuguese
+                    li.nav-item.d-none.d-lg-block
+                        a.nav-link.nav-link-expand
+                            i.ficon.feather.icon-maximize
+                    li.nav-item.nav-search
+                        a.nav-link.nav-link-search
+                            i.ficon.feather.icon-search
+                        .search-input
+                            .search-input-icon
+                                i.feather.icon-search.primary
+                            input.input(type='text' placeholder='Explore Vuexy...' tabindex='-1' data-search='template-list')
+                            .search-input-close
+                                i.feather.icon-x
+                            ul.search-list.search-list-main
+                    li.dropdown.dropdown-notification.nav-item
+                        a.nav-link.nav-link-label(href='#' data-toggle='dropdown')
+                            i.ficon.feather.icon-shopping-cart
+                            span.badge.badge-pill.badge-primary.badge-up.cart-item-count 6
+                        ul.dropdown-menu.dropdown-menu-media.dropdown-cart.dropdown-menu-right
+                            li.dropdown-menu-header
+                                .dropdown-header.m-0.p-2
+                                    h3.white
+                                        span.cart-item-count 6
+                                        span.mx-50 Items
+                                    span.notification-title In Your Cart
+                            li.scrollable-container.media-list
+                                a.cart-item(href='app-ecommerce-details.html')
+                                    .media
+                                        .media-left.d-flex.justify-content-center.align-items-center
+                                            img(src='../../../app-assets/images/pages/eCommerce/4.png' width='75' alt='Cart Item')
+                                        .media-body
+                                            span.item-title.text-truncate.text-bold-500.d-block.mb-50
+                                                | Apple - Apple Watch Series 1 42mm Space Gray Aluminum Case Black Sport Band - Space Gray Aluminum
+                                            span.item-desc.font-small-2.text-truncate.d-block
+                                                | Durable, lightweight aluminum cases in silver, space gray,gold, and rose gold. Sport Band in a variety of colors. All the features of the original Apple Watch, plus a new dual-core processor for faster performance. All models run watchOS 3. Requires an iPhone 5 or later to run this device.
+                                            .d-flex.justify-content-between.align-items-center.mt-1
+                                                span.align-middle.d-block 1 x $299
+                                                i.remove-cart-item.feather.icon-x.danger.font-medium-1
+                                a.cart-item(href='app-ecommerce-details.html')
+                                    .media
+                                        .media-left.d-flex.justify-content-center.align-items-center
+                                            img.mt-1.pl-50(src='../../../app-assets/images/pages/eCommerce/dell-inspirion.jpg' width='100' alt='Cart Item')
+                                        .media-body
+                                            span.item-title.text-truncate.text-bold-500.d-block.mb-50
+                                                | Apple - Macbook&reg; (Latest Model) - 12&quot; Display - Intel Core M5 - 8GB Memory - 512GB Flash Storage - Space Gray
+                                            span.item-desc.font-small-2.text-truncate.d-block
+                                                | MacBook delivers a full-size experience in the lightest and most compact Mac notebook ever. With a full-size keyboard, force-sensing trackpad, 12-inch Retina display,1 sixth-generation Intel Core M processor, multifunctional USB-C port, and now up to 10 hours of battery life,2 MacBook features big thinking in an impossibly compact form.
+                                            .d-flex.justify-content-between.align-items-center.mt-1
+                                                span.align-middle.d-block 1 x $1599.99
+                                                i.remove-cart-item.feather.icon-x.danger.font-medium-1
+                                a.cart-item(href='app-ecommerce-details.html')
+                                    .media
+                                        .media-left.d-flex.justify-content-center.align-items-center
+                                            img(src='../../../app-assets/images/pages/eCommerce/7.png' width='88' alt='Cart Item')
+                                        .media-body
+                                            span.item-title.text-truncate.text-bold-500.d-block.mb-50 Sony - PlayStation 4 Pro Console
+                                            span.item-desc.font-small-2.text-truncate.d-block
+                                                | PS4 Pro Dynamic 4K Gaming &amp; 4K Entertainment* PS4 Pro gets you closer to your game. Heighten your experiences. Enrich your adventures. Let the super-charged PS4 Pro lead the way.** GREATNESS AWAITS
+                                            .d-flex.justify-content-between.align-items-center.mt-1
+                                                span.align-middle.d-block 1 x $399.99
+                                                i.remove-cart-item.feather.icon-x.danger.font-medium-1
+                                a.cart-item(href='app-ecommerce-details.html')
+                                    .media
+                                        .media-left.d-flex.justify-content-center.align-items-center
+                                            img(src='../../../app-assets/images/pages/eCommerce/10.png' width='75' alt='Cart Item')
+                                        .media-body
+                                            span.item-title.text-truncate.text-bold-500.d-block.mb-50
+                                                | Beats by Dr. Dre - Geek Squad Certified Refurbished Beats Studio Wireless On-Ear Headphones - Red
+                                            span.item-desc.font-small-2.text-truncate.d-block
+                                                | Rock out to your favorite songs with these Beats by Dr. Dre Beats Studio Wireless GS-MH8K2AM/A headphones that feature a Beats Acoustic Engine and DSP software for enhanced clarity. ANC (Adaptive Noise Cancellation) allows you to focus on your tunes.
+                                            .d-flex.justify-content-between.align-items-center.mt-1
+                                                span.align-middle.d-block 1 x $379.99
+                                                i.remove-cart-item.feather.icon-x.danger.font-medium-1
+                                a.cart-item(href='app-ecommerce-details.html')
+                                    .media
+                                        .media-left.d-flex.justify-content-center.align-items-center
+                                            img.mt-1.pl-50(src='../../../app-assets/images/pages/eCommerce/sony-75class-tv.jpg' width='100' alt='Cart Item')
+                                        .media-body
+                                            span.item-title.text-truncate.text-bold-500.d-block.mb-50
+                                                | Sony - 75&quot; Class (74.5&quot; diag) - LED - 2160p - Smart - 3D - 4K Ultra HD TV with High Dynamic Range - Black
+                                            span.item-desc.font-small-2.text-truncate.d-block
+                                                | This Sony 4K HDR TV boasts 4K technology for vibrant hues. Its X940D series features a bold 75-inch screen and slim design. Wires remain hidden, and the unit is easily wall mounted. This television has a 4K Processor X1 and 4K X-Reality PRO for crisp video. This Sony 4K HDR TV is easy to control via voice commands.
+                                            .d-flex.justify-content-between.align-items-center.mt-1
+                                                span.align-middle.d-block 1 x $4499.99
+                                                i.remove-cart-item.feather.icon-x.danger.font-medium-1
+                                a.cart-item(href='app-ecommerce-details.html')
+                                    .media
+                                        .media-left.d-flex.justify-content-center.align-items-center
+                                            img.mt-1.pl-50(src='../../../app-assets/images/pages/eCommerce/canon-camera.jpg' width='70' alt='Cart Item')
+                                        .media-body
+                                            span.item-title.text-truncate.text-bold-500.d-block.mb-50 Nikon - D810 DSLR Camera with AF-S NIKKOR 24-120mm f/4G ED VR Zoom Lens - Black
+                                            span.item-desc.font-small-2.text-truncate.d-block
+                                                | Shoot arresting photos and 1080p high-definition videos with this Nikon D810 DSLR camera, which features a 36.3-megapixel CMOS sensor and a powerful EXPEED 4 processor for clear, detailed images. The AF-S NIKKOR 24-120mm lens offers shooting versatility. Memory card sold separately.
+                                            .d-flex.justify-content-between.align-items-center.mt-1
+                                                span.align-middle.d-block 1 x $4099.99
+                                                i.remove-cart-item.feather.icon-x.danger.font-medium-1
+                            li.dropdown-menu-footer
+                                a.dropdown-item.p-1.text-center.text-primary(href='app-ecommerce-checkout.html')
+                                    i.feather.icon-shopping-cart.align-middle
+                                    span.align-middle.text-bold-600 Checkout
+                            li.empty-cart.d-none.p-2 Your Cart Is Empty.
+                    li.dropdown.dropdown-notification.nav-item
+                        a.nav-link.nav-link-label(href='#' data-toggle='dropdown')
+                            i.ficon.feather.icon-bell
+                            span.badge.badge-pill.badge-primary.badge-up 5
+                        ul.dropdown-menu.dropdown-menu-media.dropdown-menu-right
+                            li.dropdown-menu-header
+                                .dropdown-header.m-0.p-2
+                                    h3.white 5 New
+                                    span.notification-title App Notifications
+                            li.scrollable-container.media-list
+                                a.d-flex.justify-content-between(href='javascript:void(0)')
+                                    .media.d-flex.align-items-start
+                                        .media-left
+                                            i.feather.icon-plus-square.font-medium-5.primary
+                                        .media-body
+                                            h6.primary.media-heading You have new order!
+                                            small.notification-text  Are your going to meet me tonight?
+                                        small
+                                            time.media-meta(datetime='2015-06-11T18:29:20+08:00') 9 hours ago
+                                a.d-flex.justify-content-between(href='javascript:void(0)')
+                                    .media.d-flex.align-items-start
+                                        .media-left
+                                            i.feather.icon-download-cloud.font-medium-5.success
+                                        .media-body
+                                            h6.success.media-heading.red.darken-1 99% Server load
+                                            small.notification-text You got new order of goods.
+                                        small
+                                            time.media-meta(datetime='2015-06-11T18:29:20+08:00') 5 hour ago
+                                a.d-flex.justify-content-between(href='javascript:void(0)')
+                                    .media.d-flex.align-items-start
+                                        .media-left
+                                            i.feather.icon-alert-triangle.font-medium-5.danger
+                                        .media-body
+                                            h6.danger.media-heading.yellow.darken-3 Warning notifixation
+                                            small.notification-text Server have 99% CPU usage.
+                                        small
+                                            time.media-meta(datetime='2015-06-11T18:29:20+08:00') Today
+                                a.d-flex.justify-content-between(href='javascript:void(0)')
+                                    .media.d-flex.align-items-start
+                                        .media-left
+                                            i.feather.icon-check-circle.font-medium-5.info
+                                        .media-body
+                                            h6.info.media-heading Complete the task
+                                            small.notification-text Cake sesame snaps cupcake
+                                        small
+                                            time.media-meta(datetime='2015-06-11T18:29:20+08:00') Last week
+                                a.d-flex.justify-content-between(href='javascript:void(0)')
+                                    .media.d-flex.align-items-start
+                                        .media-left
+                                            i.feather.icon-file.font-medium-5.warning
+                                        .media-body
+                                            h6.warning.media-heading Generate monthly report
+                                            small.notification-text Chocolate cake oat cake tiramisu marzipan
+                                        small
+                                            time.media-meta(datetime='2015-06-11T18:29:20+08:00') Last month
+                            li.dropdown-menu-footer
+                                a.dropdown-item.p-1.text-center(href='javascript:void(0)') View all notifications
+                    li.dropdown.dropdown-user.nav-item
+                        a.dropdown-toggle.nav-link.dropdown-user-link(href='#' data-toggle='dropdown')
+                            .user-nav.d-sm-flex.d-none
+                                span.user-name.text-bold-600 John Doe
+                                span.user-status Available
+                            span
+                                img.round(src='../../../app-assets/images/portrait/small/avatar-s-11.jpg' alt='avatar' height='40' width='40')
+                        .dropdown-menu.dropdown-menu-right
+                            a.dropdown-item(href='page-user-profile.html')
+                                i.feather.icon-user
+                                |  Edit Profile
+                            a.dropdown-item(href='app-email.html')
+                                i.feather.icon-mail
+                                |  My Inbox
+                            a.dropdown-item(href='app-todo.html')
+                                i.feather.icon-check-square
+                                |  Task
+                            a.dropdown-item(href='app-chat.html')
+                                i.feather.icon-message-square
+                                |  Chats
+                            .dropdown-divider
+                            a.dropdown-item(href='auth-login.html')
+                                i.feather.icon-power
+                                |  Logout
+ul.main-search-list-defaultlist.d-none
+    li.d-flex.align-items-center
+        a.pb-25(href='#')
+            h6.text-primary.mb-0 Files
+    li.auto-suggestion.d-flex.align-items-center.cursor-pointer
+        a.d-flex.align-items-center.justify-content-between.w-100(href='#')
+            .d-flex
+                .mr-50
+                    img(src='../../../app-assets/images/icons/xls.png' alt='png' height='32')
+                .search-data
+                    p.search-data-title.mb-0 Two new item submitted
+                    small.text-muted Marketing Manager
+            small.search-data-size.mr-50.text-muted &apos;17kb
+    li.auto-suggestion.d-flex.align-items-center.cursor-pointer
+        a.d-flex.align-items-center.justify-content-between.w-100(href='#')
+            .d-flex
+                .mr-50
+                    img(src='../../../app-assets/images/icons/jpg.png' alt='png' height='32')
+                .search-data
+                    p.search-data-title.mb-0 52 JPG file Generated
+                    small.text-muted FontEnd Developer
+            small.search-data-size.mr-50.text-muted &apos;11kb
+    li.auto-suggestion.d-flex.align-items-center.cursor-pointer
+        a.d-flex.align-items-center.justify-content-between.w-100(href='#')
+            .d-flex
+                .mr-50
+                    img(src='../../../app-assets/images/icons/pdf.png' alt='png' height='32')
+                .search-data
+                    p.search-data-title.mb-0 25 PDF File Uploaded
+                    small.text-muted Digital Marketing Manager
+            small.search-data-size.mr-50.text-muted &apos;150kb
+    li.auto-suggestion.d-flex.align-items-center.cursor-pointer
+        a.d-flex.align-items-center.justify-content-between.w-100(href='#')
+            .d-flex
+                .mr-50
+                    img(src='../../../app-assets/images/icons/doc.png' alt='png' height='32')
+                .search-data
+                    p.search-data-title.mb-0 Anna_Strong.doc
+                    small.text-muted Web Designer
+            small.search-data-size.mr-50.text-muted &apos;256kb
+    li.d-flex.align-items-center
+        a.pb-25(href='#')
+            h6.text-primary.mb-0 Members
+    li.auto-suggestion.d-flex.align-items-center.cursor-pointer
+        a.d-flex.align-items-center.justify-content-between.py-50.w-100(href='#')
+            .d-flex.align-items-center
+                .avatar.mr-50
+                    img(src='../../../app-assets/images/portrait/small/avatar-s-8.jpg' alt='png' height='32')
+                .search-data
+                    p.search-data-title.mb-0 John Doe
+                    small.text-muted UI designer
+    li.auto-suggestion.d-flex.align-items-center.cursor-pointer
+        a.d-flex.align-items-center.justify-content-between.py-50.w-100(href='#')
+            .d-flex.align-items-center
+                .avatar.mr-50
+                    img(src='../../../app-assets/images/portrait/small/avatar-s-1.jpg' alt='png' height='32')
+                .search-data
+                    p.search-data-title.mb-0 Michal Clark
+                    small.text-muted FontEnd Developer
+    li.auto-suggestion.d-flex.align-items-center.cursor-pointer
+        a.d-flex.align-items-center.justify-content-between.py-50.w-100(href='#')
+            .d-flex.align-items-center
+                .avatar.mr-50
+                    img(src='../../../app-assets/images/portrait/small/avatar-s-14.jpg' alt='png' height='32')
+                .search-data
+                    p.search-data-title.mb-0 Milena Gibson
+                    small.text-muted Digital Marketing Manager
+    li.auto-suggestion.d-flex.align-items-center.cursor-pointer
+        a.d-flex.align-items-center.justify-content-between.py-50.w-100(href='#')
+            .d-flex.align-items-center
+                .avatar.mr-50
+                    img(src='../../../app-assets/images/portrait/small/avatar-s-6.jpg' alt='png' height='32')
+                .search-data
+                    p.search-data-title.mb-0 Anna Strong
+                    small.text-muted Web Designer
+ul.main-search-list-defaultlist-other-list.d-none
+    li.auto-suggestion.d-flex.align-items-center.justify-content-between.cursor-pointer
+        a.d-flex.align-items-center.justify-content-between.w-100.py-50
+            .d-flex.justify-content-start
+                span.mr-75.feather.icon-alert-circle
+                span No results found.
+// END: Header
+// BEGIN: Main Menu
+.main-menu.menu-fixed.menu-dark.menu-accordion.menu-shadow(data-scroll-to-active='true')
+    .navbar-header
+        ul.nav.navbar-nav.flex-row
+            li.nav-item.mr-auto
+                a.navbar-brand(href='../../../html/ltr/vertical-menu-template-semi-dark/index.html')
+                    .brand-logo
+                    h2.brand-text.mb-0 Admin Area
+            li.nav-item.nav-toggle
+                a.nav-link.modern-nav-toggle.pr-0(data-toggle='collapse')
+                    i.feather.icon-x.d-block.d-xl-none.font-medium-4.primary.toggle-icon
+                    i.toggle-icon.feather.icon-disc.font-medium-4.d-none.d-xl-block.collapse-toggle-icon.primary(data-ticon='icon-disc')
+    .shadow-bottom
+    .main-menu-content
+        ul#main-menu-navigation.navigation.navigation-main(data-menu='menu-navigation')
+            li.nav-item
+                a(href='index.html')
+                    i.feather.icon-home
+                    span.menu-title(data-i18n='Dashboard') Dashboard
+                    span.badge.badge.badge-warning.badge-pill.float-right.mr-2 2
+                ul.menu-content
+                    li.active
+                        a(href='dashboard-ecommerce.html')
+                            i.feather.icon-circle
+                            span.menu-item(data-i18n='eCommerce') eCommerce
+// END: Main Menu

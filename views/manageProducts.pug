@@ -1,0 +1,110 @@
+extends adminbase.pug
+
+block content
+    // BEGIN: Content
+    .app-content.content
+        .content-overlay
+        .header-navbar-shadow
+        .content-wrapper
+            .content-header.row
+                .content-header-left.col-md-9.col-12.mb-2
+                    .row.breadcrumbs-top
+                        .col-12
+                            h2.content-header-title.float-left.mb-0 Products
+                            .breadcrumb-wrapper.col-12
+                                ol.breadcrumb
+                                    li.breadcrumb-item
+                                        a(href='index.html') Home
+                                    li.breadcrumb-item.active
+                                        a(href='#') Products
+                                    li.breadcrumb-item.active
+                                        | Product View
+                .content-header-right.text-md-right.col-md-3.col-12.d-md-block.d-none
+                    .form-group.breadcrum-right
+                        .dropdown
+                            button.btn-icon.btn.btn-primary.btn-round.btn-sm.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                                i.feather.icon-settings
+                            .dropdown-menu.dropdown-menu-right
+                                a.dropdown-item(href='#') Chat
+                                a.dropdown-item(href='#') Email
+                                a.dropdown-item(href='#') Calendar
+            .content-body
+                // Data list view starts
+                section#data-list-view.data-list-view-header
+                    .action-btns.d-none
+                        .btn-dropdown.mr-1.mb-1
+                            .btn-group.dropdown.actions-dropodown
+                                button.btn.btn-white.px-1.py-1.dropdown-toggle.waves-effect.waves-light(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                                    | Actions
+                                .dropdown-menu
+                                    a.dropdown-item(href='#')
+                                        i.feather.icon-trash
+                                        | Delete
+                                    a.dropdown-item(href='#')
+                                        i.feather.icon-archive
+                                        | Archive
+                                    a.dropdown-item(href='#')
+                                        i.feather.icon-file
+                                        | Print
+                                    a.dropdown-item(href='#')
+                                        i.feather.icon-save
+                                        | Another Action
+                    // DataTable starts
+                    .table-responsive
+                        table.table.data-list-view
+                            thead
+                                tr
+                                    th
+                                    th NAME
+                                    th CATEGORY
+                                    th ONSALE
+                                    th STATUS
+                                    th PRICE
+                                    th ACTION
+                            tbody(id="product_List_Container")
+                    // DataTable ends
+                    // add new sidebar starts
+                    .add-new-data-sidebar
+                        .overlay-bg
+                        .add-new-data
+                            .div.mt-2.px-2.d-flex.new-data-title.justify-content-between
+                                div
+                                    h4.text-uppercase Update Product
+                                .hide-data-sidebar
+                                    i.feather.icon-x
+                            .data-items.pb-3
+                                .data-fields.px-2.mt-3
+                                    .row
+                                        .col-sm-12.data-field-col
+                                            label(for='data-name') Name
+                                            input#data-name.form-control(type='text')
+                                        .col-sm-12.data-field-col
+                                            label(for='data-category')  Category 
+                                            select#data-category.form-control
+                                                if categories
+                                                    for category in categories
+                                                        option(id=`${category.id}`)=category.name
+                                        .col-sm-12.data-field-col
+                                            label(for='data-price') Price
+                                            input#data-price.form-control(type='text')
+                                        .col-sm-12.data-field-col.data-list-upload
+                                            form#dataListUpload.dropzone.dropzone-area(action='#')
+                                                .dz-message Upload Image
+                                    .row 
+                                        .col-sm-6.data-field-col
+                                            .chip.chip-success
+                                                .chip-body
+                                                    .chip-text Active
+                                        .col-sm-6.data-field-col
+                                            .chip.chip-success
+                                                .chip-body
+                                                    .chip-text Active
+                            .add-data-footer.d-flex.justify-content-around.px-3.mt-2
+                                .add-data-btn
+                                    button.btn.btn-primary Add Data
+                                .cancel-data-btn
+                                    button.btn.btn-outline-danger Cancel
+                    // add new sidebar ends
+                    // Data list view end
+        // END: Content
+    

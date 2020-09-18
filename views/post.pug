@@ -1,0 +1,126 @@
+extends base.pug
+
+block content   
+    // Blog Details Section Begin
+    section.blog-details.spad
+        .container
+            .row
+                .col-lg-12
+                    .blog-details-inner
+                        .blog-detail-title
+                            h2 The Personality Trait That Makes People Happier
+                            p
+                                | travel 
+                                span - May 19, 2019
+                        .blog-large-pic
+                            img(src='img/blog/blog-detail.jpg' alt='')
+                        .blog-detail-desc
+                            p
+                                | psum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                                | labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                | laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure Lorem ipsum dolor sit
+                                | amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                | magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                | aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.
+                        .blog-quote
+                            p
+                                | &ldquo; Technology is nothing. What&apos;s important is that you have a faith in people, that
+                                | they&apos;re basically good and smart, and if you give them tools, they&apos;ll do wonderful
+                                | things with them.&rdquo; 
+                                span - Steven Jobs
+                        .blog-more
+                            .row
+                                .col-sm-4
+                                    img(src='img/blog/blog-detail-1.jpg' alt='')
+                                .col-sm-4
+                                    img(src='img/blog/blog-detail-2.jpg' alt='')
+                                .col-sm-4
+                                    img(src='img/blog/blog-detail-3.jpg' alt='')
+                        p
+                            | Sum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                            | et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                            | nisi ut aliquip ex ea commodo consequat. Duis aute irure Lorem ipsum dolor sit amet,
+                            | consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            | aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                            | ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.
+                        .tag-share
+                            .details-tag
+                                ul
+                                    li
+                                        i.fa.fa-tags
+                                    li Travel
+                                    li Beauty
+                                    li Fashion
+                            .blog-share
+                                span Share:
+                                .social-links
+                                    a(href='#')
+                                        i.fa.fa-facebook
+                                    a(href='#')
+                                        i.fa.fa-twitter
+                                    a(href='#')
+                                        i.fa.fa-google-plus
+                                    a(href='#')
+                                        i.fa.fa-instagram
+                                    a(href='#')
+                                        i.fa.fa-youtube-play
+                        .blog-post
+                            .row
+                                .col-lg-5.col-md-6
+                                    a.prev-blog(href='#')
+                                        .pb-pic
+                                            i.ti-arrow-left
+                                            img(src='img/blog/prev-blog.png' alt='')
+                                        .pb-text
+                                            span Previous Post:
+                                            h5 The Personality Trait That Makes People Happier
+                                .col-lg-5.offset-lg-2.col-md-6
+                                    a.next-blog(href='#')
+                                        .nb-pic
+                                            img(src='img/blog/next-blog.png' alt='')
+                                            i.ti-arrow-right
+                                        .nb-text
+                                            span Next Post:
+                                            h5 The Personality Trait That Makes People Happier
+                        .posted-by
+                            .pb-pic
+                                img(src='img/blog/post-by.png' alt='')
+                            .pb-text
+                                a(href='#')
+                                    h5 Shane Lynch
+                                p
+                                    | Aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                    | velit esse cillum bore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    | amodo
+                        .leave-comment
+                            h4 Leave A Comment
+                            form.comment-form(action='#')
+                                .row
+                                    .col-lg-6
+                                        input(type='text' placeholder='Name')
+                                    .col-lg-6
+                                        input(type='text' placeholder='Email')
+                                    .col-lg-12
+                                        textarea(placeholder='Messages')
+                                        button.site-btn(type='submit') Send message
+                        // Blog Details Section End
+    // Partner Logo Section Begin
+    .partner-logo
+        .container
+            .logo-carousel.owl-carousel
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-1.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-2.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-3.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-4.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-5.png' alt='')
+    // Partner Logo Section End

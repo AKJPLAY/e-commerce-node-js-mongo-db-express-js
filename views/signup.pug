@@ -1,0 +1,58 @@
+extends base.pug
+
+block content   
+    // Breadcrumb Section Begin
+    .breacrumb-section
+        .container
+            .row
+                .col-lg-12
+                    .breadcrumb-text
+                        a(href='#')
+                            i.fa.fa-home
+                            |  Home
+                        span Register
+    // Breadcrumb Form Section Begin
+    // Register Section Begin
+    .register-login-section.spad
+        .container
+            .row
+                .col-lg-6.offset-lg-3
+                    .register-form
+                        h2 Register
+                        form.signup-form
+                            .group-input
+                                label(for='username') Name *
+                                input#username(type='text' name='name')
+                            .group-input
+                                label(for='email') Email address *
+                                input#email(type='text' name='email')
+                            .group-input
+                                label(for='password') Password *
+                                input#password(type='text' name='password')
+                            .group-input
+                                label(for='con-password') Confirm Password *
+                                input#con-password(type='text' name='passwordConfirm')
+                            button#signUpBtn.site-btn.register-btn(type='submit') REGISTER
+                        .switch-login
+                            a.or-login(href='./login') Or Login
+    // Register Form Section End
+    // Partner Logo Section Begin
+    .partner-logo
+    .container
+        .logo-carousel.owl-carousel
+        .logo-item
+            .tablecell-inner
+            img(src='img/logo-carousel/logo-1.png' alt='')
+        .logo-item
+            .tablecell-inner
+            img(src='img/logo-carousel/logo-2.png' alt='')
+        .logo-item
+            .tablecell-inner
+            img(src='img/logo-carousel/logo-3.png' alt='')
+        .logo-item
+            .tablecell-inner
+            img(src='img/logo-carousel/logo-4.png' alt='')
+        .logo-item
+            .tablecell-inner
+            img(src='img/logo-carousel/logo-5.png' alt='')
+    // Partner Logo Section End

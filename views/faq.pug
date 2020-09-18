@@ -1,0 +1,75 @@
+extends base.pug
+
+block content   
+    // Breadcrumb Section Begin
+    .breacrumb-section
+        .container
+            .row
+                .col-lg-12
+                    .breadcrumb-text
+                        a(href='#')
+                            i.fa.fa-home
+                            |  Home
+                        span FAQs
+    // Breadcrumb Section Begin
+    // Faq Section Begin
+    .faq-section.spad
+        .container
+            .row
+                .col-lg-12
+                    .faq-accordin
+                        #accordionExample.accordion
+                            .card
+                                .card-heading.active
+                                    a.active(data-toggle='collapse' data-target='#collapseOne')
+                                        | Is There Anything I Should Bring?
+                                #collapseOne.collapse.show(data-parent='#accordionExample')
+                                    .card-body
+                                        p
+                                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                            | tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                            | quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                            | consequat.
+                            .card
+                                .card-heading
+                                    a(data-toggle='collapse' data-target='#collapseTwo')
+                                        | Where Can I Find Market Research Reports?
+                                #collapseTwo.collapse(data-parent='#accordionExample')
+                                    .card-body
+                                        p
+                                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                            | tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                            | quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                            | consequat.
+                            .card
+                                .card-heading
+                                    a(data-toggle='collapse' data-target='#collapseThree')
+                                        | Where Can I Find The Wall Street Journal?
+                                #collapseThree.collapse(data-parent='#accordionExample')
+                                    .card-body
+                                        p
+                                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                            | tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                            | quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                            | consequat.
+    // Faq Section End
+    // Partner Logo Section Begin
+    .partner-logo
+        .container
+            .logo-carousel.owl-carousel
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-1.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-2.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-3.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-4.png' alt='')
+                .logo-item
+                    .tablecell-inner
+                        img(src='img/logo-carousel/logo-5.png' alt='')
+    // Partner Logo Section End

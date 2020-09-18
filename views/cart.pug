@@ -1,0 +1,121 @@
+extends base.pug
+
+block content   
+    if products && totalPrice !== 0
+        // Breadcrumb Section Begin
+        .breacrumb-section
+            .container
+                .row
+                    .col-lg-12
+                        .breadcrumb-text.product-more
+                            a(href='./home.html')
+                                i.fa.fa-home
+                                |  Home
+                            a(href='./shop.html') Shop
+                            span Shopping Cart
+        // Breadcrumb Section Begin
+        // Shopping Cart Section Begin
+        section.shopping-cart.spad
+            .container
+                .row
+                    .col-lg-12
+                        .cart-table
+                            table
+                                thead(id="tableHead")
+                                    tr
+                                        th Image
+                                        th.p-name Product Name
+                                        th Price
+                                        th Quantity
+                                        th Total
+                                        th
+                                            i.ti-close
+                                tbody
+                                    for product in products
+                                        tr(id=`prodContainer${product.id}`)
+                                            td.cart-pic.first-row
+                                                img(src=`img/products/${product.imageCover}` alt='' style="max-width: 30%;")
+                                            td.cart-title.first-row
+                                                h5=product.name
+                                            td.p-price.first-row=`$${parseFloat(product.price).toFixed(2)}`
+                                            td.qua-col.first-row
+                                                .quantity
+                                                    .pro-qty(id=`qty${product.id}`)
+                                                        input(id=`input${product.id}` prodID=`${product.id}` type='text' value=`${product.qty}`)
+                                            td.total-price.first-row(id=`totalPrice${product.id}`)=`$${parseFloat(product.totalPrice).toFixed(2)}`
+                                            td( prodID=`${product.id}`).close-td.first-row
+                                                i(id=`closeProd${product.id}`).ti-close
+                                        
+                        .row
+                            .col-lg-4.offset-lg-4
+                                .proceed-checkout
+                                    ul
+                                        li.cart-total
+                                            | Total 
+                                            span(id=`GrandTotal`)=`$${totalPrice ? parseFloat(totalPrice).toFixed(2) : '00'}`
+                                    a.proceed-btn(href='/checkout') PROCEED TO CHECK OUT
+        // Shopping Cart Section End
+        // Partner Logo Section Begin
+        .partner-logo
+            .container
+                .logo-carousel.owl-carousel
+                    .logo-item
+                        .tablecell-inner
+                            img(src='img/logo-carousel/logo-1.png' alt='')
+                    .logo-item
+                        .tablecell-inner
+                            img(src='img/logo-carousel/logo-2.png' alt='')
+                    .logo-item
+                        .tablecell-inner
+                            img(src='img/logo-carousel/logo-3.png' alt='')
+                    .logo-item
+                        .tablecell-inner
+                            img(src='img/logo-carousel/logo-4.png' alt='')
+                    .logo-item
+                        .tablecell-inner
+                            img(src='img/logo-carousel/logo-5.png' alt='')
+        // Partner Logo Section End
+    else
+        // Breadcrumb Section Begin
+        .breacrumb-section
+            .container
+                .row
+                    .col-lg-12
+                        .breadcrumb-text.product-more
+                            a(href='./home.html')
+                                i.fa.fa-home
+                                |  Home
+                            a(href='./shop.html') Shop
+                            span Shopping Cart
+        // Breadcrumb Section Begin
+        // Shopping Cart Section Begin
+        section.shopping-cart.spad
+            .container
+                .row
+                    .col-lg-12
+                        .cart-table
+                            table
+                                thead
+                                    h2
+                                    | Your Cart is Empety
+        // Shopping Cart Section End
+        // Partner Logo Section Begin
+        .partner-logo
+            .container
+                .logo-carousel.owl-carousel
+                    .logo-item
+                        .tablecell-inner
+                            img(src='img/logo-carousel/logo-1.png' alt='')
+                    .logo-item
+                        .tablecell-inner
+                            img(src='img/logo-carousel/logo-2.png' alt='')
+                    .logo-item
+                        .tablecell-inner
+                            img(src='img/logo-carousel/logo-3.png' alt='')
+                    .logo-item
+                        .tablecell-inner
+                            img(src='img/logo-carousel/logo-4.png' alt='')
+                    .logo-item
+                        .tablecell-inner
+                            img(src='img/logo-carousel/logo-5.png' alt='')
+        // Partner Logo Section End

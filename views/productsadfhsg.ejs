@@ -1,0 +1,71 @@
+<%- include('./adminpanelparts/header'); -%>
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+
+
+        <%- include('./productParts/productList'); -%>
+        <%- include('./productParts/addProduct'); -%>
+
+        <div class="modal fade" id="modal-sm">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Upload Image</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="catForm"role="form">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <!-- <label for="customFile">Custom File</label> -->
+        
+                        <div class="custom-file">
+                          <input type="file" accept="image/*" id="imageName" name="imageName" class="custom-file-input" id="customFile">
+                          <label class="custom-file-label" for="customFile">Choose Image</label>
+                        </div>
+                      </div>
+        
+                    </div>
+                    
+                  </div>
+              </div>
+              <div class="modal-footer justify-content-between">
+                <button id="updateImage" type="button" class="btn btn-primary">Save changes</button>
+                </form>
+                <button type="button" class="btn btn-default dismiss-model" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+        
+      </div><!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+  <style>
+    .my-btn-default {
+     background-color: none !important; 
+     border-color: none !important; 
+    
+}
+  </style>
+  
+
+  <%- include('./adminpanelparts/footer'); -%>
+  <script src="../js/admin/product.js"></script>
+
+  

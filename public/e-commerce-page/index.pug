@@ -1,0 +1,653 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='description' content='Fashi Template')
+  meta(name='keywords' content='Fashi, unica, creative, html')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  title Fashi | Template
+  // Google Font
+  link(href='https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap' rel='stylesheet')
+  // Css Styles
+  link(rel='stylesheet' href='./css/bootstrap.min.css' type='text/css')
+  link(rel='stylesheet' href='./css/font-awesome.min.css' type='text/css')
+  link(rel='stylesheet' href='./css/themify-icons.css' type='text/css')
+  link(rel='stylesheet' href='./css/elegant-icons.css' type='text/css')
+  link(rel='stylesheet' href='./css/owl.carousel.min.css' type='text/css')
+  link(rel='stylesheet' href='./css/nice-select.css' type='text/css')
+  link(rel='stylesheet' href='./css/jquery-ui.min.css' type='text/css')
+  link(rel='stylesheet' href='./css/slicknav.min.css' type='text/css')
+  link(rel='stylesheet' href='./css/style.css' type='text/css')
+// Page Preloder
+#preloder
+  .loader
+// Header Section Begin
+header.header-section
+  .header-top
+    .container
+      .ht-left
+        .mail-service
+          i.fa.fa-envelope
+          |                         yourshop@gmail.com
+        .phone-service
+          i.fa.fa-phone
+          |                         +65 11.188.888
+      .ht-right
+        a.login-panel(href='#')
+          i.fa.fa-user
+          | Login
+        .lan-selector
+          select#countries.language_drop(name='countries' style='width:300px;')
+            option(value='yt' data-image='img/flag-1.jpg' data-imagecss='flag yt' data-title='English') English
+            option(value='yu' data-image='img/flag-2.jpg' data-imagecss='flag yu' data-title='Bangladesh') German 
+        .top-social
+          a(href='#')
+            i.ti-facebook
+          a(href='#')
+            i.ti-twitter-alt
+          a(href='#')
+            i.ti-linkedin
+          a(href='#')
+            i.ti-pinterest
+  .container
+    .inner-header
+      .row
+        .col-lg-2.col-md-2
+          .logo
+            a(href='./index.html')
+              img(src='img/logo.png' alt='')
+        .col-lg-7.col-md-7
+          .advanced-search
+            button.category-btn(type='button') All Categories
+            .input-group
+              input(type='text' placeholder='What do you need?')
+              button(type='button')
+                i.ti-search
+        .col-lg-3.text-right.col-md-3
+          ul.nav-right
+            li.heart-icon
+              a(href='#')
+                i.icon_heart_alt
+                span 1
+            li.cart-icon
+              a(href='#')
+                i.icon_bag_alt
+                span 3
+              .cart-hover
+                .select-items
+                  table
+                    tbody
+                      tr
+                        td.si-pic
+                          img(src='img/select-product-1.jpg' alt='')
+                        td.si-text
+                          .product-selected
+                            p $60.00 x 1
+                            h6 Kabino Bedside Table
+                        td.si-close
+                          i.ti-close
+                      tr
+                        td.si-pic
+                          img(src='img/select-product-2.jpg' alt='')
+                        td.si-text
+                          .product-selected
+                            p $60.00 x 1
+                            h6 Kabino Bedside Table
+                        td.si-close
+                          i.ti-close
+                .select-total
+                  span total:
+                  h5 $120.00
+                .select-button
+                  a.primary-btn.view-card(href='#') VIEW CARD
+                  a.primary-btn.checkout-btn(href='#') CHECK OUT
+            li.cart-price $150.00
+  .nav-item
+    .container
+      .nav-depart
+        .depart-btn
+          i.ti-menu
+          span All departments
+          ul.depart-hover
+            li.active
+              a(href='#') Women&rsquo;s Clothing
+            li
+              a(href='#') Men&rsquo;s Clothing
+            li
+              a(href='#') Underwear
+            li
+              a(href='#') Kid&apos;s Clothing
+            li
+              a(href='#') Brand Fashion
+            li
+              a(href='#') Accessories/Shoes
+            li
+              a(href='#') Luxury Brands
+            li
+              a(href='#') Brand Outdoor Apparel
+      nav.nav-menu.mobile-menu
+        ul
+          li.active
+            a(href='./index.html') Home
+          li
+            a(href='./shop.html') Shop
+          li
+            a(href='#') Collection
+            ul.dropdown
+              li
+                a(href='#') Men&apos;s
+              li
+                a(href='#') Women&apos;s
+              li
+                a(href='#') Kid&apos;s
+          li
+            a(href='./blog.html') Blog
+          li
+            a(href='./contact.html') Contact
+          li
+            a(href='#') Pages
+            ul.dropdown
+              li
+                a(href='./blog-details.html') Blog Details
+              li
+                a(href='./shopping-cart.html') Shopping Cart
+              li
+                a(href='./check-out.html') Checkout
+              li
+                a(href='./faq.html') Faq
+              li
+                a(href='./register.html') Register
+              li
+                a(href='./login.html') Login
+      #mobile-menu-wrap
+// Header End
+// Hero Section Begin
+section.hero-section
+  .hero-items.owl-carousel
+    .single-hero-items.set-bg(data-setbg='img/hero-1.jpg')
+      .container
+        .row
+          .col-lg-5
+            span Bag,kids
+            h1 Black friday
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+              | incididunt ut labore et dolore
+            a.primary-btn(href='#') Shop Now
+        .off-card
+          h2
+            | Sale 
+            span 50%
+    .single-hero-items.set-bg(data-setbg='img/hero-2.jpg')
+      .container
+        .row
+          .col-lg-5
+            span Bag,kids
+            h1 Black friday
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+              | incididunt ut labore et dolore
+            a.primary-btn(href='#') Shop Now
+        .off-card
+          h2
+            | Sale 
+            span 50%
+// Hero Section End
+// Banner Section Begin
+.banner-section.spad
+  .container-fluid
+    .row
+      .col-lg-4
+        .single-banner
+          img(src='img/banner-1.jpg' alt='')
+          .inner-text
+            h4 Men&rsquo;s
+      .col-lg-4
+        .single-banner
+          img(src='img/banner-2.jpg' alt='')
+          .inner-text
+            h4 Women&rsquo;s
+      .col-lg-4
+        .single-banner
+          img(src='img/banner-3.jpg' alt='')
+          .inner-text
+            h4 Kid&rsquo;s
+// Banner Section End
+// Women Banner Section Begin
+section.women-banner.spad
+  .container-fluid
+    .row
+      .col-lg-3
+        .product-large.set-bg(data-setbg='img/products/women-large.jpg')
+          h2 Women&rsquo;s
+          a(href='#') Discover More
+      .col-lg-8.offset-lg-1
+        .filter-control
+          ul
+            li.active Clothings
+            li HandBag
+            li Shoes
+            li Accessories
+        .product-slider.owl-carousel
+          .product-item
+            .pi-pic
+              img(src='img/products/women-1.jpg' alt='')
+              .sale Sale
+              .icon
+                i.icon_heart_alt
+              ul
+                li.w-icon.active
+                  a(href='#')
+                    i.icon_bag_alt
+                li.quick-view
+                  a(href='#') + Quick View
+                li.w-icon
+                  a(href='#')
+                    i.fa.fa-random
+            .pi-text
+              .catagory-name Coat
+              a(href='#')
+                h5 Pure Pineapple
+              .product-price
+                | $14.00
+                span $35.00
+          .product-item
+            .pi-pic
+              img(src='img/products/women-2.jpg' alt='')
+              .icon
+                i.icon_heart_alt
+              ul
+                li.w-icon.active
+                  a(href='#')
+                    i.icon_bag_alt
+                li.quick-view
+                  a(href='#') + Quick View
+                li.w-icon
+                  a(href='#')
+                    i.fa.fa-random
+            .pi-text
+              .catagory-name Shoes
+              a(href='#')
+                h5 Guangzhou sweater
+              .product-price
+                | $13.00
+          .product-item
+            .pi-pic
+              img(src='img/products/women-3.jpg' alt='')
+              .icon
+                i.icon_heart_alt
+              ul
+                li.w-icon.active
+                  a(href='#')
+                    i.icon_bag_alt
+                li.quick-view
+                  a(href='#') + Quick View
+                li.w-icon
+                  a(href='#')
+                    i.fa.fa-random
+            .pi-text
+              .catagory-name Towel
+              a(href='#')
+                h5 Pure Pineapple
+              .product-price
+                | $34.00
+          .product-item
+            .pi-pic
+              img(src='img/products/women-4.jpg' alt='')
+              .icon
+                i.icon_heart_alt
+              ul
+                li.w-icon.active
+                  a(href='#')
+                    i.icon_bag_alt
+                li.quick-view
+                  a(href='#') + Quick View
+                li.w-icon
+                  a(href='#')
+                    i.fa.fa-random
+            .pi-text
+              .catagory-name Towel
+              a(href='#')
+                h5 Converse Shoes
+              .product-price
+                | $34.00
+// Women Banner Section End
+// Deal Of The Week Section Begin
+section.deal-of-week.set-bg.spad(data-setbg='img/time-bg.jpg')
+  .container
+    .col-lg-6.text-center
+      .section-title
+        h2 Deal Of The Week
+        p
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+          br
+          |  do ipsum dolor sit amet,
+          |                         consectetur adipisicing elit
+        .product-price
+          | $35.00
+          span / HanBag
+      #countdown.countdown-timer
+        .cd-item
+          span 56
+          p Days
+        .cd-item
+          span 12
+          p Hrs
+        .cd-item
+          span 40
+          p Mins
+        .cd-item
+          span 52
+          p Secs
+      a.primary-btn(href='#') Shop Now
+// Deal Of The Week Section End
+// Man Banner Section Begin
+section.man-banner.spad
+  .container-fluid
+    .row
+      .col-lg-8
+        .filter-control
+          ul
+            li.active Clothings
+            li HandBag
+            li Shoes
+            li Accessories
+        .product-slider.owl-carousel
+          .product-item
+            .pi-pic
+              img(src='img/products/man-1.jpg' alt='')
+              .sale Sale
+              .icon
+                i.icon_heart_alt
+              ul
+                li.w-icon.active
+                  a(href='#')
+                    i.icon_bag_alt
+                li.quick-view
+                  a(href='#') + Quick View
+                li.w-icon
+                  a(href='#')
+                    i.fa.fa-random
+            .pi-text
+              .catagory-name Coat
+              a(href='#')
+                h5 Pure Pineapple
+              .product-price
+                | $14.00
+                span $35.00
+          .product-item
+            .pi-pic
+              img(src='img/products/man-2.jpg' alt='')
+              .icon
+                i.icon_heart_alt
+              ul
+                li.w-icon.active
+                  a(href='#')
+                    i.icon_bag_alt
+                li.quick-view
+                  a(href='#') + Quick View
+                li.w-icon
+                  a(href='#')
+                    i.fa.fa-random
+            .pi-text
+              .catagory-name Shoes
+              a(href='#')
+                h5 Guangzhou sweater
+              .product-price
+                | $13.00
+          .product-item
+            .pi-pic
+              img(src='img/products/man-3.jpg' alt='')
+              .icon
+                i.icon_heart_alt
+              ul
+                li.w-icon.active
+                  a(href='#')
+                    i.icon_bag_alt
+                li.quick-view
+                  a(href='#') + Quick View
+                li.w-icon
+                  a(href='#')
+                    i.fa.fa-random
+            .pi-text
+              .catagory-name Towel
+              a(href='#')
+                h5 Pure Pineapple
+              .product-price
+                | $34.00
+          .product-item
+            .pi-pic
+              img(src='img/products/man-4.jpg' alt='')
+              .icon
+                i.icon_heart_alt
+              ul
+                li.w-icon.active
+                  a(href='#')
+                    i.icon_bag_alt
+                li.quick-view
+                  a(href='#') + Quick View
+                li.w-icon
+                  a(href='#')
+                    i.fa.fa-random
+            .pi-text
+              .catagory-name Towel
+              a(href='#')
+                h5 Converse Shoes
+              .product-price
+                | $34.00
+      .col-lg-3.offset-lg-1
+        .product-large.set-bg.m-large(data-setbg='img/products/man-large.jpg')
+          h2 Men&rsquo;s
+          a(href='#') Discover More
+// Man Banner Section End
+// Instagram Section Begin
+.instagram-photo
+  .insta-item.set-bg(data-setbg='img/insta-1.jpg')
+    .inside-text
+      i.ti-instagram
+      h5
+        a(href='#') colorlib_Collection
+  .insta-item.set-bg(data-setbg='img/insta-2.jpg')
+    .inside-text
+      i.ti-instagram
+      h5
+        a(href='#') colorlib_Collection
+  .insta-item.set-bg(data-setbg='img/insta-3.jpg')
+    .inside-text
+      i.ti-instagram
+      h5
+        a(href='#') colorlib_Collection
+  .insta-item.set-bg(data-setbg='img/insta-4.jpg')
+    .inside-text
+      i.ti-instagram
+      h5
+        a(href='#') colorlib_Collection
+  .insta-item.set-bg(data-setbg='img/insta-5.jpg')
+    .inside-text
+      i.ti-instagram
+      h5
+        a(href='#') colorlib_Collection
+  .insta-item.set-bg(data-setbg='img/insta-6.jpg')
+    .inside-text
+      i.ti-instagram
+      h5
+        a(href='#') colorlib_Collection
+// Instagram Section End
+// Latest Blog Section Begin
+section.latest-blog.spad
+  .container
+    .row
+      .col-lg-12
+        .section-title
+          h2 From The Blog
+    .row
+      .col-lg-4.col-md-6
+        .single-latest-blog
+          img(src='img/latest-1.jpg' alt='')
+          .latest-text
+            .tag-list
+              .tag-item
+                i.fa.fa-calendar-o
+                |                                     May 4,2019
+              .tag-item
+                i.fa.fa-comment-o
+                |                                     5
+            a(href='#')
+              h4 The Best Street Style From London Fashion Week
+            p
+              | Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat
+      .col-lg-4.col-md-6
+        .single-latest-blog
+          img(src='img/latest-2.jpg' alt='')
+          .latest-text
+            .tag-list
+              .tag-item
+                i.fa.fa-calendar-o
+                |                                     May 4,2019
+              .tag-item
+                i.fa.fa-comment-o
+                |                                     5
+            a(href='#')
+              h4 Vogue&apos;s Ultimate Guide To Autumn/Winter 2019 Shoes
+            p
+              | Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat
+      .col-lg-4.col-md-6
+        .single-latest-blog
+          img(src='img/latest-3.jpg' alt='')
+          .latest-text
+            .tag-list
+              .tag-item
+                i.fa.fa-calendar-o
+                |                                     May 4,2019
+              .tag-item
+                i.fa.fa-comment-o
+                |                                     5
+            a(href='#')
+              h4 How To Brighten Your Wardrobe With A Dash Of Lime
+            p
+              | Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat
+    .benefit-items
+      .row
+        .col-lg-4
+          .single-benefit
+            .sb-icon
+              img(src='img/icon-1.png' alt='')
+            .sb-text
+              h6 Free Shipping
+              p For all order over 99$
+        .col-lg-4
+          .single-benefit
+            .sb-icon
+              img(src='img/icon-2.png' alt='')
+            .sb-text
+              h6 Delivery On Time
+              p If good have prolems
+        .col-lg-4
+          .single-benefit
+            .sb-icon
+              img(src='img/icon-1.png' alt='')
+            .sb-text
+              h6 Secure Payment
+              p 100% secure payment
+// Latest Blog Section End
+// Partner Logo Section Begin
+.partner-logo
+  .container
+    .logo-carousel.owl-carousel
+      .logo-item
+        .tablecell-inner
+          img(src='img/logo-carousel/logo-1.png' alt='')
+      .logo-item
+        .tablecell-inner
+          img(src='img/logo-carousel/logo-2.png' alt='')
+      .logo-item
+        .tablecell-inner
+          img(src='img/logo-carousel/logo-3.png' alt='')
+      .logo-item
+        .tablecell-inner
+          img(src='img/logo-carousel/logo-4.png' alt='')
+      .logo-item
+        .tablecell-inner
+          img(src='img/logo-carousel/logo-5.png' alt='')
+// Partner Logo Section End
+// Footer Section Begin
+footer.footer-section
+  .container
+    .row
+      .col-lg-3
+        .footer-left
+          .footer-logo
+            a(href='#')
+              img(src='img/footer-logo.png' alt='')
+          ul
+            li Address: 60-49 Road 11378 New York
+            li Phone: +65 11.188.888
+            li Email: hello.colorlib@gmail.com
+          .footer-social
+            a(href='#')
+              i.fa.fa-facebook
+            a(href='#')
+              i.fa.fa-instagram
+            a(href='#')
+              i.fa.fa-twitter
+            a(href='#')
+              i.fa.fa-pinterest
+      .col-lg-2.offset-lg-1
+        .footer-widget
+          h5 Information
+          ul
+            li
+              a(href='#') About Us
+            li
+              a(href='#') Checkout
+            li
+              a(href='#') Contact
+            li
+              a(href='#') Serivius
+      .col-lg-2
+        .footer-widget
+          h5 My Account
+          ul
+            li
+              a(href='#') My Account
+            li
+              a(href='#') Contact
+            li
+              a(href='#') Shopping Cart
+            li
+              a(href='#') Shop
+      .col-lg-4
+        .newslatter-item
+          h5 Join Our Newsletter Now
+          p Get E-mail updates about our latest shop and special offers.
+          form.subscribe-form(action='#')
+            input(type='text' placeholder='Enter Your Mail')
+            button(type='button') Subscribe
+  .copyright-reserved
+    .container
+      .row
+        .col-lg-12
+          .copyright-text
+            // Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
+            | Copyright &copy;
+            script.
+              document.write(new Date().getFullYear());
+            |  All rights reserved | This template is made with 
+            i.fa.fa-heart-o(aria-hidden='true')
+            |  by 
+            a(href='https://colorlib.com' target='_blank') Colorlib
+            // Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
+          .payment-pic
+            img(src='img/payment-method.png' alt='')
+// Footer Section End
+// Js Plugins
+script(src='js/jquery-3.3.1.min.js')
+script(src='js/bootstrap.min.js')
+script(src='js/jquery-ui.min.js')
+script(src='js/jquery.countdown.min.js')
+script(src='js/jquery.nice-select.min.js')
+script(src='js/jquery.zoom.min.js')
+script(src='js/jquery.dd.min.js')
+script(src='js/jquery.slicknav.js')
+script(src='js/owl.carousel.min.js')
+script(src='js/main.js')
