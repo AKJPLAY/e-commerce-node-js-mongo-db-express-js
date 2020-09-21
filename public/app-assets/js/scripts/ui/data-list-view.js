@@ -147,25 +147,11 @@ $(document).ready(function() {
             console.log(category);
           })
 
-          //Changes Effect
-          $('.add-data-btn').click(function(){
-            $(`#proDetails${id} .product-name`).text($('#data-name').val());
-            $(`#proDetails${id} .product-price`).text($('#data-price').val());
-            
-            if(category) {
-              $(`#proDetails${id} .product-category`).text(category);
-            }
-            
-            $(".add-new-data").removeClass("show");
-            $(".overlay-bg").removeClass("show");
-            $('.add-data-btn').unbind();
-            $('#data-category').unbind();
-          });
+
         }
       }
     }
 
-    
     
     //Amit Code end
     
@@ -215,6 +201,7 @@ jQuery('#product_List_Container').bind('DOMSubtreeModified',function(event) {
     $(".overlay-bg").addClass("show");*/
     //Amit Code
     const id = $(this).closest('td').attr('prodID');
+    $('.add-data-btn').attr('prodID', id);
     if(window.Products){
       for(let i = 0; i < window.Products.length; i++){
         if(window.Products[i].id === id){
@@ -225,10 +212,10 @@ jQuery('#product_List_Container').bind('DOMSubtreeModified',function(event) {
           if(window.Products[i].onsale) {
             $('#chip-onsale').addClass('chip-success');
             $('#chip-onsale').attr('onsale','true');
-            $('#chip-onsale').removeClass('chip-danger');
+            $('#chip-onsale').removeClass('chip-warning');
             $('#chip-onsale .chip-text').text('Active');
           }else {
-            $('#chip-onsale').addClass('chip-danger');
+            $('#chip-onsale').addClass('chip-warning');
             $('#chip-onsale').attr('onsale','false');
             $('#chip-onsale').removeClass('chip-success');
             $('#chip-onsale .chip-text').text('Deactive');
@@ -236,10 +223,10 @@ jQuery('#product_List_Container').bind('DOMSubtreeModified',function(event) {
           if(window.Products[i].status) {
             $('#chip-status').addClass('chip-success');
             $('#chip-status').attr('status','true');
-            $('#chip-status').removeClass('chip-danger');
+            $('#chip-status').removeClass('chip-warning');
             $('#chip-status .chip-text').text('Active');
           }else {
-            $('#chip-status').addClass('chip-danger');
+            $('#chip-status').addClass('chip-warning');
             $('#chip-status').attr('status','false');
             $('#chip-status').removeClass('chip-success');
             $('#chip-status .chip-text').text('Deactive');
@@ -251,35 +238,6 @@ jQuery('#product_List_Container').bind('DOMSubtreeModified',function(event) {
             category = $('#data-category').val();
             console.log(category);
           })
-          //Changes Effect
-          $('.add-data-btn').click(function(){
-            $(`#proDetails${id} .product-name`).text($('#data-name').val());
-            $(`#proDetails${id} .product-price`).text($('#data-price').val());
-            const status = $('#chip-status').attr('status');
-            const onsale = $('#chip-onsale').attr('onsale');
-            console.log(status,onsale);
-            if(onsale){
-              $(`#onsale${id}`).attr('onsale', `${onsale === 'true'? 'true' : 'false'}`);
-              $(`#onsale${id}`).html(`<div class="chip ${onsale === 'true' ? 'chip-success' : 'chip-warning'}"><div class="chip-body"><div class="chip-text">${onsale === 'true' ? 'Active' : 'Deactive'}</div></div></div>`);
-            }
-              
-            if(status){
-              $(`#status${id}`).attr('status', `${status === 'true' ? 'true' : 'false'}`);
-              $(`#status${id}`).html(`<div class="chip ${status === 'true' ? 'chip-success' : 'chip-warning'}"><div class="chip-body"><div class="chip-text">${status === 'true' ? 'Active' : 'Deactive'}</div></div></div>`);
-            }
-
-            
-            if(category) {
-              $(`#proDetails${id} .product-category`).text(category);
-            }
-            
-            $(".add-new-data").removeClass("show");
-            $(".overlay-bg").removeClass("show");
-            $('.add-data-btn').unbind();
-            $('#data-category').unbind();
-            jQuery('#product_List_Container').unbind();
-
-          });
         }
       }
     }
@@ -305,14 +263,14 @@ $(document).ready(function(){
   $(`#chip-onsale`).click(function(){
     const onsale = $(`#chip-onsale`).attr('onsale');
     if(onsale === 'true'){
-      $('#chip-onsale').addClass('chip-danger');
+      $('#chip-onsale').addClass('chip-warning');
       $('#chip-onsale').attr('onsale','false');
       $('#chip-onsale').removeClass('chip-success');
       $('#chip-onsale .chip-text').text('Deactive');
     }else {
       $('#chip-onsale').addClass('chip-success');
       $('#chip-onsale').attr('onsale','true');
-      $('#chip-onsale').removeClass('chip-danger');
+      $('#chip-onsale').removeClass('chip-warning');
       $('#chip-onsale .chip-text').text('Active');
     }
     
@@ -321,16 +279,59 @@ $(document).ready(function(){
   $(`#chip-status`).click(function(){
     const status = $(`#chip-status`).attr('status');
     if(status === 'true'){
-      $('#chip-status').addClass('chip-danger');
+      $('#chip-status').addClass('chip-warning');
       $('#chip-status').attr('status','false');
       $('#chip-status').removeClass('chip-success');
       $('#chip-status .chip-text').text('Deactive');
     }else {
       $('#chip-status').addClass('chip-success');
       $('#chip-status').attr('status','true');
-      $('#chip-status').removeClass('chip-danger');
+      $('#chip-status').removeClass('chip-warning');
       $('#chip-status .chip-text').text('Active');
       }
   })
   
 })
+
+
+//Changes Effect
+$('.add-data-btn').click(function(){
+    const id = $('.add-data-btn').attr('prodID');
+    $(`#proDetails${id} .product-name`).text($('#data-name').val());
+    $(`#proDetails${id} .product-price`).text($('#data-price').val());
+    const status = $('#chip-status').attr('status');
+    const onsale = $('#chip-onsale').attr('onsale');
+    console.log(status,onsale);
+    if(onsale && status){
+      $(`#status${id}`).attr('status', `${status === 'true'? 'true' : 'false'}`);
+      $(`#status${id}`).html(`<div class="chip ${status === 'true' ? 'chip-success' : 'chip-warning'}"><div class="chip-body"><div class="chip-text">${status === 'true' ? 'Active' : 'Deactive'}</div></div></div>`);
+      $(`#onsale${id}`).attr('onsale', `${onsale === 'true'? 'true' : 'false'}`);
+      $(`#onsale${id}`).html(`<div class="chip ${onsale === 'true' ? 'chip-success' : 'chip-warning'}"><div class="chip-body"><div class="chip-text">${onsale === 'true' ? 'Active' : 'Deactive'}</div></div></div>`);
+      console.log($(`#onsale${id}`),$(`#status${id}`))
+      if($(`#onsale${id}`) && $(`#status${id}`)){
+        //Convert price into interger
+        let price = $('#data-price').val().replace(/\$/g,'');
+        price = parseFloat(price).toFixed(2);
+        //Update the Products
+        const data = {
+          name: $('#data-name').val(),
+          status: status,
+          onsale: onsale,
+          price: price,
+        }
+        const response = $.parseJSON($.ajax({
+          type: 'post',
+          url:  `/api/v1/products/${id}`,
+          dataType: "json", 
+          data: data,
+          async: false
+        }).responseText);  
+      }
+      
+    }
+    
+    $(".add-new-data").removeClass("show");
+    $(".overlay-bg").removeClass("show");
+    jQuery('#product_List_Container').unbind();
+    
+  });
