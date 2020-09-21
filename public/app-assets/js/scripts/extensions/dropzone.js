@@ -23,7 +23,7 @@ Dropzone.options.dpzSingleFile = {
 ********************************************/
 Dropzone.options.dpzMultipleFiles = {
   paramName: "file", // The name that will be used to transfer the file
-  maxFilesize: 0.5, // MB
+  maxFilesize: 15, // MB
   clickable: true
 }
 
@@ -43,7 +43,7 @@ new Dropzone(document.body, { // Make the whole body a dropzone
 ****************************************************************/
 Dropzone.options.dpzFileLimits = {
   paramName: "file", // The name that will be used to transfer the file
-  maxFilesize: 0.5, // MB
+  maxFilesize: 15, // MB
   maxFiles: 5,
   maxThumbnailFilesize: 1, // MB
 }
@@ -54,7 +54,7 @@ Dropzone.options.dpzFileLimits = {
 ********************************************/
 Dropzone.options.dpAcceptFiles = {
   paramName: "file", // The name that will be used to transfer the file
-  maxFilesize: 1, // MB
+  maxFilesize: 15, // MB
   acceptedFiles: 'image/*'
 }
 
@@ -64,7 +64,7 @@ Dropzone.options.dpAcceptFiles = {
 ************************************************/
 Dropzone.options.dpzRemoveThumb = {
   paramName: "file", // The name that will be used to transfer the file
-  maxFilesize: 1, // MB
+  maxFilesize: 15, // MB
   addRemoveLinks: true,
   dictRemoveFile: " Trash"
 }
@@ -74,7 +74,7 @@ Dropzone.options.dpzRemoveThumb = {
 *****************************************************/
 Dropzone.options.dpzRemoveAllThumb = {
   paramName: "file", // The name that will be used to transfer the file
-  maxFilesize: 1, // MB
+  maxFilesize: 15, // MB
   init: function () {
 
     // Using a closure.

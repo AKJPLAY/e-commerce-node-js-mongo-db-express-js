@@ -41,6 +41,12 @@ $(document).ready(function() {
           $(".overlay-bg").addClass("show")
           $("#data-name, #data-price").val("")
           $("#data-category, #data-status").prop("selectedIndex", 0)
+          //Amit's Code
+          //Add Product
+          console.log('hiii');
+          $('.add-new-data div div h4').text('Add New Product');
+          $('.add-data-btn button').text('Add');
+          //Amit's Code ends
         },
         className: "btn-outline-primary"
       }
@@ -126,10 +132,9 @@ $(document).ready(function() {
   //On Edit
   $('.action-edit').on("click",function(e){
     e.stopPropagation();
-    /*$('#data-name').val('Altec Lansing - Bluetooth Speaker');
-    $('#data-price').val('$99');
-    $(".add-new-data").addClass("show");
-    $(".overlay-bg").addClass("show");*/
+    $('.add-new-data div div h4').text('Update Product');
+    $('.add-data-btn button').text('Update');
+    
     //Amit Code
     const id = $(this).closest('td').attr('prodID');
     if(window.Products){
@@ -142,12 +147,19 @@ $(document).ready(function() {
           $(".add-new-data").addClass("show");
           $(".overlay-bg").addClass("show");
           let category = '';
+          let html = '';
+          for(let j = 0; j < window.Categories.length; j++) {
+            if(window.Categories[j].id === window.Products[i].category_id){
+              html += `<option id="${window.Categories[j].id}" selected="selected">${window.Categories[j].name}</option>`
+            }else {
+              html += `<option id="${window.Categories[j].id}">${window.Categories[j].name}</option>`
+            }
+          }
+          $('#data-category').html(html);
           $('#data-category').change(function(){
             category = $('#data-category').val();
             console.log(category);
           })
-
-
         }
       }
     }
@@ -194,6 +206,8 @@ $(document).ready(function() {
 jQuery('#product_List_Container').bind('DOMSubtreeModified',function(event) { 
 	//On Edit
   $('.action-edit').on("click",function(e){
+    $('.add-new-data div div h4').text('Update Product');
+    $('.add-data-btn button').text('Update');
     e.stopPropagation();
     /*$('#data-name').val('Altec Lansing - Bluetooth Speaker');
     $('#data-price').val('$99');
@@ -233,11 +247,18 @@ jQuery('#product_List_Container').bind('DOMSubtreeModified',function(event) {
           }
           $(".add-new-data").addClass("show");
           $(".overlay-bg").addClass("show");
+          $(".add-new-data").addClass("show");
+          $(".overlay-bg").addClass("show");
           let category = '';
-          $('#data-category').change(function(){
-            category = $('#data-category').val();
-            console.log(category);
-          })
+          let html = '';
+          for(let j = 0; j < window.Categories.length; j++) {
+            if(window.Categories[j].id === window.Products[i].category_id){
+              html += `<option id="${window.Categories[j].id}" selected="selected">${window.Categories[j].name}</option>`
+            }else {
+              html += `<option id="${window.Categories[j].id}">${window.Categories[j].name}</option>`
+            }
+          }
+          $('#data-category').html(html);
         }
       }
     }
@@ -299,6 +320,7 @@ $('.add-data-btn').click(function(){
     const id = $('.add-data-btn').attr('prodID');
     $(`#proDetails${id} .product-name`).text($('#data-name').val());
     $(`#proDetails${id} .product-price`).text($('#data-price').val());
+    $(`#proDetails${id} .product-category`).text($(`#data-category`).val());
     const status = $('#chip-status').attr('status');
     const onsale = $('#chip-onsale').attr('onsale');
     console.log(status,onsale);
@@ -312,20 +334,32 @@ $('.add-data-btn').click(function(){
         //Convert price into interger
         let price = $('#data-price').val().replace(/\$/g,'');
         price = parseFloat(price).toFixed(2);
+        //Get Category ID
+        const categoryname = $(`#data-category`).val();
+        let category_id = '';
+        if(window.Categories){
+          for(let i = 0; i < window.Categories.length; i++){
+            if(window.Categories[i].name === categoryname){
+              category_id = window.Categories[i].id;
+            }
+          }
+        }
         //Update the Products
         const data = {
           name: $('#data-name').val(),
           status: status,
+          category_id: category_id,
           onsale: onsale,
           price: price,
         }
         const response = $.parseJSON($.ajax({
-          type: 'post',
+          type: 'patch',
           url:  `/api/v1/products/${id}`,
           dataType: "json", 
           data: data,
           async: false
         }).responseText);  
+        console.log(response);
       }
       
     }
