@@ -87,16 +87,24 @@ block content
                                         .col-sm-12.data-field-col
                                             label(for='data-price') Price
                                             input#data-price.form-control(type='text')
+                                        .col-sm-12.data-field-col
+                                            label(for='data-mrp') Mrp
+                                            input#data-mrp.form-control(type='text')
+                                        .col-sm-12.data-field-col
+                                            label(for='data-description') Description
+                                            textarea(name="description")#data-description.form-control(type='text')
                                         .col-sm-12.data-field-col.data-list-upload
                                             form#dataListUpload.dropzone.dropzone-area(action='#')
                                                 .dz-message Upload Image
                                     .row 
                                         .col-sm-6.data-field-col
-                                            .chip.chip-success
+                                            | OnSale 
+                                            .chip.chip-success#chip-status
                                                 .chip-body
                                                     .chip-text Active
                                         .col-sm-6.data-field-col
-                                            .chip.chip-success
+                                            | Status 
+                                            .chip.chip-success#chip-onsale
                                                 .chip-body
                                                     .chip-text Active
                             .add-data-footer.d-flex.justify-content-around.px-3.mt-2

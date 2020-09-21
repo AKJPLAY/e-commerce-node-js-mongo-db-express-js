@@ -37,10 +37,10 @@ if(ProductList){
             <td></td>
             <td class="product-name">${window.Products[i].name}</td>
             <td class="product-category">${window.Products[i].category_name}</td>
-            <td id="status${window.Products[i].id}" status="${window.Products[i].status ? '1' : '0'}">
+            <td id="status${window.Products[i].id}" status="${window.Products[i].status ? 'true' : 'false'}">
                 <div class="chip ${window.Products[i].status ? 'chip-success' : 'chip-warning'}"><div class="chip-body"><div class="chip-text">${window.Products[i].status ? 'Active' : 'Deactive'}</div></div></div>
             </td>
-            <td id=onsale${window.Products[i].id}" onsale="${window.Products[i].onsale ? '1' : '0'}">
+            <td id=onsale${window.Products[i].id}" onsale="${window.Products[i].onsale ? 'true' : 'false'}">
                 <div class="chip ${window.Products[i].onsale ? 'chip-success' : 'chip-warning'}"><div class="chip-body"><div class="chip-text">${window.Products[i].onsale ? 'Active' : 'Deactive'}</div></div></div>
             </td>
             <td class="product-price">$${parseFloat(window.Products[i].price).toFixed(2)}</td>
