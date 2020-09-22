@@ -44,7 +44,14 @@ $(document).ready(function() {
           //Amit's Code
           //Add Product
           console.log('hiii');
+          $('#data-name').attr('placeholder','Enter Name');
+          $('#data-price').attr('placeholder','Enter Price');
+          $('#data-mrp').attr('placeholder','Enter Mrp');
+          $('#data-description').attr('placeholder','Enter Description');
+          $('#data-mrp').val('');
+          $('#data-description').val('');
           $('.add-new-data div div h4').text('Add New Product');
+          $('#productImg').attr('src', ``);
           $('.add-data-btn button').text('Add');
           //Amit's Code ends
         },
@@ -141,6 +148,7 @@ $(document).ready(function() {
       for(let i = 0; i < window.Products.length; i++){
         if(window.Products[i].id === id){
           $('#data-name').val($(`#proDetails${id} .product-name`).text());
+          $('#productImg').attr('src', `../../../img/products/${window.Products[i].imageCover}`);
           $('#data-price').val($(`#proDetails${id} .product-price`).text());
           $('#data-mrp').val(`$${parseFloat(window.Products[i].mrp).toFixed(2)}`);
           $('#data-description').val(`${window.Products[i].description}`);
@@ -177,23 +185,6 @@ $(document).ready(function() {
     $(this).closest('td').parent('tr').fadeOut();
   });
 
-  // dropzone init
-  Dropzone.options.dataListUpload = {
-    complete: function(files) {
-      var _this = this
-      // checks files in class dropzone and remove that files
-      $(".hide-data-sidebar, .cancel-data-btn, .actions .dt-buttons").on(
-        "click",
-        function() {
-          $(".dropzone")[0].dropzone.files.forEach(function(file) {
-            file.previewElement.remove()
-          })
-          $(".dropzone").removeClass("dz-started")
-        }
-      )
-    }
-  }
-  Dropzone.options.dataListUpload.complete()
 
   // mac chrome checkbox fix
   if (navigator.userAgent.indexOf("Mac OS X") != -1) {

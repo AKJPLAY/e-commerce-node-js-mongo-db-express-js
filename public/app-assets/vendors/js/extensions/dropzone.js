@@ -147,7 +147,7 @@
                                 "maxfilesreached",
                             ]),
                             (b.prototype.defaultOptions = {
-                                url: null,
+                                url: `/api/v1/products/${$('.add-data-btn').attr('prodid')}`,
                                 method: "post",
                                 withCredentials: !1,
                                 parallelUploads: 2,
@@ -158,7 +158,7 @@
                                 maxThumbnailFilesize: 10,
                                 thumbnailWidth: 100,
                                 thumbnailHeight: 100,
-                                maxFiles: null,
+                                maxFiles: 3,
                                 params: {},
                                 clickable: !0,
                                 ignoreHiddenFiles: !0,

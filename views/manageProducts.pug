@@ -94,8 +94,13 @@ block content
                                             label(for='data-description') Description
                                             textarea(name="description")#data-description.form-control(type='text')
                                         .col-sm-12.data-field-col.data-list-upload
-                                            form#dataListUpload.dropzone.dropzone-area(action='#')
-                                                .dz-message Upload Image
+                                            h3
+                                            | Cover Image
+                                            img#productImg(src=``, alt="")
+                                            input#fileToUpload(type='file', name='imageCover')
+                                        .col-sm-12.data-field-col.data-list-upload
+                                            <label for="files">Select files:</label>
+                                            <input type="file" id="files" name="files" multiple><br><br>
                                     .row 
                                         .col-sm-6.data-field-col
                                             | OnSale 
