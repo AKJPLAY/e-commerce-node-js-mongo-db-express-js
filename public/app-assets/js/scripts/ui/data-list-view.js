@@ -53,6 +53,26 @@ $(document).ready(function() {
           $('.add-new-data div div h4').text('Add New Product');
           $('#productImg').attr('src', ``);
           $('.add-data-btn button').text('Add');
+
+          $('.add-data-btn').click(function(){
+            const form = new FormData();
+            form.append('name', $('#data-name').val());
+            form.append('price', $('#data-price').val());
+            form.append('mrp', $('#data-mrp').val());
+            form.append('description', $('#data-description').val());
+            form.append('imageCover', document.getElementById('fileToUpload').files[0]);
+
+            const response = $.parseJSON($.ajax({
+              type: 'post',
+              url:  `/api/v1/products/${id}`,
+              dataType: "json", 
+              data,
+              async: false
+            }).responseText);  
+            console.log(response);
+            $('.add-data.btn').unbind();
+          });
+          
           //Amit's Code ends
         },
         className: "btn-outline-primary"
