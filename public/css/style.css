@@ -4380,3 +4380,10 @@ ol {
 .deactive_heart:hover {
 	color: red;
 }
+
+@media screen and (max-width: 767px){
+	.hero-items .single-hero-items {
+		background-size: cover !important;
+		background-position: 703px 0px !important;
+	}
+}

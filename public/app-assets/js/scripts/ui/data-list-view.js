@@ -350,6 +350,7 @@ $(document).ready(function(){
 
 //Changes Effect
 $('.add-data-btn').click(function(){
+    let data = new FormData();
     const id = $('.add-data-btn').attr('prodID');
     $(`#proDetails${id} .product-name`).text($('#data-name').val());
     $(`#proDetails${id} .product-price`).text($('#data-price').val());
@@ -367,6 +368,8 @@ $('.add-data-btn').click(function(){
         //Convert price into interger
         let price = $('#data-price').val().replace(/\$/g,'');
         price = parseFloat(price).toFixed(2);
+        let mrp = $('#data-mrp').val().replace(/\$/g,'');
+        mrp = parseFloat(mrp).toFixed(2);
         //Get Category ID
         const categoryname = $(`#data-category`).val();
         let category_id = '';
@@ -378,21 +381,30 @@ $('.add-data-btn').click(function(){
           }
         }
         //Update the Products
+        /*
         const data = {
           name: $('#data-name').val(),
           status: status,
           category_id: category_id,
           onsale: onsale,
           price: price,
+        }*/
+        data.append('name', name);
+        data.append('status',status);
+        data.append('category_id', category_id);
+        data.append('mrp', mrp);
+        data.append('onsale', onsale);
+        data.append('imageCover', document.getElementById('fileToUpload').files[0]);
+
+        async function updateProductData(){
+          const res = await axios({
+            method: 'PATCH',
+            url:  `/api/v1/products/${id}`,
+            data
+          });
+          return res;
         }
-        const response = $.parseJSON($.ajax({
-          type: 'patch',
-          url:  `/api/v1/products/${id}`,
-          dataType: "json", 
-          data: data,
-          async: false
-        }).responseText);  
-        console.log(response);
+        console.log(updateProductData());
       }
       
     }
