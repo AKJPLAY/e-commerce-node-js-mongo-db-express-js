@@ -33,15 +33,14 @@ exports.resizeProductImages = catchAsync(async (req, res, next) => {
     return next();
   }
   // 1) Cover image
-  if(req.body.imageCover){
-    req.body.imageCover = `product-${req.params.id}-${Date.now()}-cover.jpeg`;
+  
+    req.body.imageCover = `product-${Date.now()}-cover.jpeg`;
     await sharp(req.files.imageCover[0].buffer)
       .resize(440, 520)
       .toFormat('jpeg')
       .jpeg({ quality: 90 })
-      .toFile(`public/img/tours/${req.body.imageCover}`);
+      .toFile(`public/img/products/${req.body.imageCover}`);
 
-  }
 
   if(req.body.images){
     // 2) Images
@@ -55,7 +54,7 @@ exports.resizeProductImages = catchAsync(async (req, res, next) => {
           .resize(440, 520)
           .toFormat('jpeg')
           .jpeg({ quality: 90 })
-          .toFile(`public/img/tours/${filename}`);
+          .toFile(`public/img/products/${filename}`);
 
         req.body.images.push(filename);
       })

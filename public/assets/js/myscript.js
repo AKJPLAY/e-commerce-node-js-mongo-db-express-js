@@ -46,7 +46,7 @@ if(ProductList){
             <td class="product-price">$${parseFloat(window.Products[i].price).toFixed(2)}</td>
             <td class="product-action" prodID="${window.Products[i].id}">
                 <span class="action-edit"><i class="feather icon-edit"></i></span>
-                <span class="action-delete"><i class="feather icon-trash"></i></span>
+                <span class="action-delete" id="del${window.Products[i].id}"><i class="feather icon-trash"></i></span>
             </td>
          </tr>
         `;

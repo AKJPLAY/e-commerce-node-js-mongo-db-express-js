@@ -24,11 +24,6 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: [true, 'A tour must have a price']
     },
-    summary: {
-      type: String,
-      trim: true,
-      required: [true, 'A tour must have a description']
-    },
     description: {
       type: String,
       trim: true

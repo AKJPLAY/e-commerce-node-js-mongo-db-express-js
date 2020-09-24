@@ -6,6 +6,13 @@
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
+window.deleteProduct = async function (id){
+  const res = await axios({
+    method: 'DELETE',
+    url:  `/api/v1/products/${id}`,
+  });
+  return res;
+}
 
 $(document).ready(function() {
   "use strict"
@@ -55,21 +62,37 @@ $(document).ready(function() {
           $('.add-data-btn button').text('Add');
 
           $('.add-data-btn').click(function(){
-            const form = new FormData();
-            form.append('name', $('#data-name').val());
-            form.append('price', $('#data-price').val());
-            form.append('mrp', $('#data-mrp').val());
-            form.append('description', $('#data-description').val());
-            form.append('imageCover', document.getElementById('fileToUpload').files[0]);
-
-            const response = $.parseJSON($.ajax({
-              type: 'post',
-              url:  `/api/v1/products/${id}`,
-              dataType: "json", 
-              data,
-              async: false
-            }).responseText);  
-            console.log(response);
+            const data = new FormData();
+            let category_id = '';
+            const name = $('#data-name').val();
+            const price = $('#data-price').val();
+            const mrp = $('#data-mrp').val();
+            const description = $('#data-description').val();
+            for(let i = 0; i < window.Categories.length; i++){
+              if(window.Categories[i].name === $('#data-category').val()){
+                category_id = window.Categories[i].id;
+              }
+            }
+            data.append('name', name);
+            data.append('category_id', category_id);
+            data.append('price', price);
+            data.append('mrp', mrp);
+            data.append('description', description);
+            data.append('imageCover', document.getElementById('fileToUpload').files[0]);
+            console.log(document.getElementById('fileToUpload').files[0]);
+            async function sendData(){
+              const res = await axios({
+                method: 'POST',
+                url:  `/api/v1/products/`,
+                data
+              });
+              return res;
+            }
+            
+            sendData();
+            setTimeout(function(){
+              location.reload();
+            },2000);
             $('.add-data.btn').unbind();
           });
           
@@ -198,14 +221,6 @@ $(document).ready(function() {
   });
 
 
-
-  // On Delete
-  $('.action-delete').on("click", function(e){
-    e.stopPropagation();
-    $(this).closest('td').parent('tr').fadeOut();
-  });
-
-
   // mac chrome checkbox fix
   if (navigator.userAgent.indexOf("Mac OS X") != -1) {
     $(".dt-checkboxes-cell input, .dt-checkboxes").addClass("mac-checkbox")
@@ -275,16 +290,23 @@ jQuery('#product_List_Container').bind('DOMSubtreeModified',function(event) {
     }
 
     
-    
     //Amit Code end
-    
   });
 
-  // On Delete
-  $('.action-delete').on("click", function(e){
-    e.stopPropagation();
-    $(this).closest('td').parent('tr').fadeOut();
-  });
+
+  if(window.Products){
+    for(let i = 0; i < window.Products.length; i++){
+        $(`#del${window.Products[i].id}`).unbind();
+        // On Delete
+        $(`#del${window.Products[i].id}`).on("click", function(e){
+          e.stopPropagation();
+          $(this).closest('td').parent('tr').fadeOut();
+          const id = $(this).closest('td').attr('prodid');
+          window.deleteProduct(id);
+        });
+      
+    }
+}
 
 }); 
 
@@ -380,3 +402,18 @@ $('.add-data-btn').click(function(){
     jQuery('#product_List_Container').unbind();
     
   });
+
+  if(window.Products){
+      for(let i = 0; i < window.Products.length; i++){
+          // On Delete
+          $(`#del${window.Products[i].id}`).unbind();
+          $(`#del${window.Products[i].id}`).on("click", function(e){
+            e.stopPropagation();
+            $(this).closest('td').parent('tr').fadeOut();
+            const id = $(this).closest('td').attr('prodid');
+            window.deleteProduct(id);
+          });
+        
+      }
+  }
+
