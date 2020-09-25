@@ -180,45 +180,123 @@ $(document).ready(function() {
   })
 
   //On Edit
-  $('.action-edit').on("click",function(e){
-    e.stopPropagation();
-    $('.add-new-data div div h4').text('Update Product');
-    $('.add-data-btn button').text('Update');
-    
-    //Amit Code
-    const id = $(this).closest('td').attr('prodID');
-    if(window.Products){
-      for(let i = 0; i < window.Products.length; i++){
-        if(window.Products[i].id === id){
-          $('#data-name').val($(`#proDetails${id} .product-name`).text());
-          $('#productImg').attr('src', `../../../img/products/${window.Products[i].imageCover}`);
-          $('#data-price').val($(`#proDetails${id} .product-price`).text());
-          $('#data-mrp').val(`$${parseFloat(window.Products[i].mrp).toFixed(2)}`);
-          $('#data-description').val(`${window.Products[i].description}`);
-          $(".add-new-data").addClass("show");
-          $(".overlay-bg").addClass("show");
-          let category = '';
-          let html = '';
-          for(let j = 0; j < window.Categories.length; j++) {
-            if(window.Categories[j].id === window.Products[i].category_id){
-              html += `<option id="${window.Categories[j].id}" selected="selected">${window.Categories[j].name}</option>`
-            }else {
-              html += `<option id="${window.Categories[j].id}">${window.Categories[j].name}</option>`
+  if(window.Products){
+    for(let i = 0; i < window.Products.length; i++){
+      $(`#edit${window.Products[i].id}`).on("click",function(e){
+        $('.add-new-data div div h4').text('Update Product');
+        $('.add-data-btn button').text('Update');
+        e.stopPropagation();
+        /*$('#data-name').val('Altec Lansing - Bluetooth Speaker');
+        $('#data-price').val('$99');
+        $(".add-new-data").addClass("show");
+        $(".overlay-bg").addClass("show");*/
+        //Amit Code
+        const id = $(this).closest('td').attr('prodID');
+        $('.add-data-btn').attr('prodID', id);
+        /*if(window.Products){
+          for(let i = 0; i < window.Products.length; i++){
+            if(window.Products[i].id === id){
+              $('#data-name').val($(`#proDetails${id} .product-name`).text());
+              $('#data-price').val($(`#proDetails${id} .product-price`).text());
+              $('#data-mrp').val(`$${parseFloat(window.Products[i].mrp).toFixed(2)}`);
+              $('#data-description').val(`${window.Products[i].description}`);
+              console.log(window.Products[i].imageCover);
+              $('#productImg').attr('src', `../../../img/products/${window.Products[i].imageCover}`);
+              if(window.Products[i].onsale) {
+                $('#chip-onsale').addClass('chip-success');
+                $('#chip-onsale').attr('onsale','true');
+                $('#chip-onsale').removeClass('chip-warning');
+                $('#chip-onsale .chip-text').text('Active');
+              }else {
+                $('#chip-onsale').addClass('chip-warning');
+                $('#chip-onsale').attr('onsale','false');
+                $('#chip-onsale').removeClass('chip-success');
+                $('#chip-onsale .chip-text').text('Deactive');
+              }
+              if(window.Products[i].status) {
+                $('#chip-status').addClass('chip-success');
+                $('#chip-status').attr('status','true');
+                $('#chip-status').removeClass('chip-warning');
+                $('#chip-status .chip-text').text('Active');
+              }else {
+                $('#chip-status').addClass('chip-warning');
+                $('#chip-status').attr('status','false');
+                $('#chip-status').removeClass('chip-success');
+                $('#chip-status .chip-text').text('Deactive');
+              }
+              $(".add-new-data").addClass("show");
+              $(".overlay-bg").addClass("show");
+              $(".add-new-data").addClass("show");
+              $(".overlay-bg").addClass("show");
+              let category = '';
+              let html = '';
+              for(let j = 0; j < window.Categories.length; j++) {
+                if(window.Categories[j].id === window.Products[i].category_id){
+                  html += `<option id="${window.Categories[j].id}" selected="selected">${window.Categories[j].name}</option>`
+                }else {
+                  html += `<option id="${window.Categories[j].id}">${window.Categories[j].name}</option>`
+                }
+              }
+              $('#data-category').html(html);
             }
           }
-          $('#data-category').html(html);
-          $('#data-category').change(function(){
-            category = $('#data-category').val();
-            console.log(category);
-          })
-        }
-      }
-    }
+        }*/
 
+        //if(window.Products){
+          //for(let i = 0; i < window.Products.length; i++){
+            //if(window.Products[i].id === id){
+              $('#data-name').val(window.Products[i].name);
+              $('#data-price').val(window.Products[i].price);
+              $('#data-mrp').val(`$${parseFloat(window.Products[i].mrp).toFixed(2)}`);
+              $('#data-description').val(`${window.Products[i].description}`);
+              console.log(window.Products[i].imageCover);
+              $('#productImg').attr('src', `../../../img/products/${window.Products[i].imageCover}`);
+              if(window.Products[i].onsale) {
+                $('#chip-onsale').addClass('chip-success');
+                $('#chip-onsale').attr('onsale','true');
+                $('#chip-onsale').removeClass('chip-warning');
+                $('#chip-onsale .chip-text').text('Active');
+              }else {
+                $('#chip-onsale').addClass('chip-warning');
+                $('#chip-onsale').attr('onsale','false');
+                $('#chip-onsale').removeClass('chip-success');
+                $('#chip-onsale .chip-text').text('Deactive');
+              }
+              if(window.Products[i].status) {
+                $('#chip-status').addClass('chip-success');
+                $('#chip-status').attr('status','true');
+                $('#chip-status').removeClass('chip-warning');
+                $('#chip-status .chip-text').text('Active');
+              }else {
+                $('#chip-status').addClass('chip-warning');
+                $('#chip-status').attr('status','false');
+                $('#chip-status').removeClass('chip-success');
+                $('#chip-status .chip-text').text('Deactive');
+              }
+              $(".add-new-data").addClass("show");
+              $(".overlay-bg").addClass("show");
+              $(".add-new-data").addClass("show");
+              $(".overlay-bg").addClass("show");
+              let category = '';
+              let html = '';
+              for(let j = 0; j < window.Categories.length; j++) {
+                if(window.Categories[j].id === window.Products[i].category_id){
+                  html += `<option id="${window.Categories[j].id}" selected="selected">${window.Categories[j].name}</option>`
+                }else {
+                  html += `<option id="${window.Categories[j].id}">${window.Categories[j].name}</option>`
+                }
+              }
+              $('#data-category').html(html);
+            //}
+          //}
+        //}
     
-    //Amit Code end
+        
+        //Amit Code end
+      });
     
-  });
+    }
+  }
 
 
   // mac chrome checkbox fix
@@ -230,69 +308,126 @@ $(document).ready(function() {
 
 
 jQuery('#product_List_Container').bind('DOMSubtreeModified',function(event) { 
-	//On Edit
-  $('.action-edit').on("click",function(e){
-    $('.add-new-data div div h4').text('Update Product');
-    $('.add-data-btn button').text('Update');
-    e.stopPropagation();
-    /*$('#data-name').val('Altec Lansing - Bluetooth Speaker');
-    $('#data-price').val('$99');
-    $(".add-new-data").addClass("show");
-    $(".overlay-bg").addClass("show");*/
-    //Amit Code
-    const id = $(this).closest('td').attr('prodID');
-    $('.add-data-btn').attr('prodID', id);
-    if(window.Products){
-      for(let i = 0; i < window.Products.length; i++){
-        if(window.Products[i].id === id){
-          $('#data-name').val($(`#proDetails${id} .product-name`).text());
-          $('#data-price').val($(`#proDetails${id} .product-price`).text());
-          $('#data-mrp').val(`$${parseFloat(window.Products[i].mrp).toFixed(2)}`);
-          $('#data-description').val(`${window.Products[i].description}`);
-          if(window.Products[i].onsale) {
-            $('#chip-onsale').addClass('chip-success');
-            $('#chip-onsale').attr('onsale','true');
-            $('#chip-onsale').removeClass('chip-warning');
-            $('#chip-onsale .chip-text').text('Active');
-          }else {
-            $('#chip-onsale').addClass('chip-warning');
-            $('#chip-onsale').attr('onsale','false');
-            $('#chip-onsale').removeClass('chip-success');
-            $('#chip-onsale .chip-text').text('Deactive');
-          }
-          if(window.Products[i].status) {
-            $('#chip-status').addClass('chip-success');
-            $('#chip-status').attr('status','true');
-            $('#chip-status').removeClass('chip-warning');
-            $('#chip-status .chip-text').text('Active');
-          }else {
-            $('#chip-status').addClass('chip-warning');
-            $('#chip-status').attr('status','false');
-            $('#chip-status').removeClass('chip-success');
-            $('#chip-status .chip-text').text('Deactive');
-          }
-          $(".add-new-data").addClass("show");
-          $(".overlay-bg").addClass("show");
-          $(".add-new-data").addClass("show");
-          $(".overlay-bg").addClass("show");
-          let category = '';
-          let html = '';
-          for(let j = 0; j < window.Categories.length; j++) {
-            if(window.Categories[j].id === window.Products[i].category_id){
-              html += `<option id="${window.Categories[j].id}" selected="selected">${window.Categories[j].name}</option>`
-            }else {
-              html += `<option id="${window.Categories[j].id}">${window.Categories[j].name}</option>`
+  //On Edit
+  if(window.Products){
+    for(let i = 0; i < window.Products.length; i++){
+      $(`#edit${window.Products[i].id}`).on("click",function(e){
+        $('.add-new-data div div h4').text('Update Product');
+        $('.add-data-btn button').text('Update');
+        e.stopPropagation();
+        /*$('#data-name').val('Altec Lansing - Bluetooth Speaker');
+        $('#data-price').val('$99');
+        $(".add-new-data").addClass("show");
+        $(".overlay-bg").addClass("show");*/
+        //Amit Code
+        const id = $(this).closest('td').attr('prodID');
+        $('.add-data-btn').attr('prodID', id);
+        /*if(window.Products){
+          for(let i = 0; i < window.Products.length; i++){
+            if(window.Products[i].id === id){
+              $('#data-name').val($(`#proDetails${id} .product-name`).text());
+              $('#data-price').val($(`#proDetails${id} .product-price`).text());
+              $('#data-mrp').val(`$${parseFloat(window.Products[i].mrp).toFixed(2)}`);
+              $('#data-description').val(`${window.Products[i].description}`);
+              console.log(window.Products[i].imageCover);
+              $('#productImg').attr('src', `../../../img/products/${window.Products[i].imageCover}`);
+              if(window.Products[i].onsale) {
+                $('#chip-onsale').addClass('chip-success');
+                $('#chip-onsale').attr('onsale','true');
+                $('#chip-onsale').removeClass('chip-warning');
+                $('#chip-onsale .chip-text').text('Active');
+              }else {
+                $('#chip-onsale').addClass('chip-warning');
+                $('#chip-onsale').attr('onsale','false');
+                $('#chip-onsale').removeClass('chip-success');
+                $('#chip-onsale .chip-text').text('Deactive');
+              }
+              if(window.Products[i].status) {
+                $('#chip-status').addClass('chip-success');
+                $('#chip-status').attr('status','true');
+                $('#chip-status').removeClass('chip-warning');
+                $('#chip-status .chip-text').text('Active');
+              }else {
+                $('#chip-status').addClass('chip-warning');
+                $('#chip-status').attr('status','false');
+                $('#chip-status').removeClass('chip-success');
+                $('#chip-status .chip-text').text('Deactive');
+              }
+              $(".add-new-data").addClass("show");
+              $(".overlay-bg").addClass("show");
+              $(".add-new-data").addClass("show");
+              $(".overlay-bg").addClass("show");
+              let category = '';
+              let html = '';
+              for(let j = 0; j < window.Categories.length; j++) {
+                if(window.Categories[j].id === window.Products[i].category_id){
+                  html += `<option id="${window.Categories[j].id}" selected="selected">${window.Categories[j].name}</option>`
+                }else {
+                  html += `<option id="${window.Categories[j].id}">${window.Categories[j].name}</option>`
+                }
+              }
+              $('#data-category').html(html);
             }
           }
-          $('#data-category').html(html);
-        }
-      }
-    }
+        }*/
 
+        //if(window.Products){
+          //for(let i = 0; i < window.Products.length; i++){
+            //if(window.Products[i].id === id){
+              $('#data-name').val(window.Products[i].name);
+              $('#data-price').val(window.Products[i].price);
+              $('#data-mrp').val(`$${parseFloat(window.Products[i].mrp).toFixed(2)}`);
+              $('#data-description').val(`${window.Products[i].description}`);
+              console.log(window.Products[i].imageCover);
+              $('#productImg').attr('src', `../../../img/products/${window.Products[i].imageCover}`);
+              if(window.Products[i].onsale) {
+                $('#chip-onsale').addClass('chip-success');
+                $('#chip-onsale').attr('onsale','true');
+                $('#chip-onsale').removeClass('chip-warning');
+                $('#chip-onsale .chip-text').text('Active');
+              }else {
+                $('#chip-onsale').addClass('chip-warning');
+                $('#chip-onsale').attr('onsale','false');
+                $('#chip-onsale').removeClass('chip-success');
+                $('#chip-onsale .chip-text').text('Deactive');
+              }
+              if(window.Products[i].status) {
+                $('#chip-status').addClass('chip-success');
+                $('#chip-status').attr('status','true');
+                $('#chip-status').removeClass('chip-warning');
+                $('#chip-status .chip-text').text('Active');
+              }else {
+                $('#chip-status').addClass('chip-warning');
+                $('#chip-status').attr('status','false');
+                $('#chip-status').removeClass('chip-success');
+                $('#chip-status .chip-text').text('Deactive');
+              }
+              $(".add-new-data").addClass("show");
+              $(".overlay-bg").addClass("show");
+              $(".add-new-data").addClass("show");
+              $(".overlay-bg").addClass("show");
+              let category = '';
+              let html = '';
+              for(let j = 0; j < window.Categories.length; j++) {
+                if(window.Categories[j].id === window.Products[i].category_id){
+                  html += `<option id="${window.Categories[j].id}" selected="selected">${window.Categories[j].name}</option>`
+                }else {
+                  html += `<option id="${window.Categories[j].id}">${window.Categories[j].name}</option>`
+                }
+              }
+              $('#data-category').html(html);
+            //}
+          //}
+        //}
     
-    //Amit Code end
-  });
+        
+        //Amit Code end
+      });
+    
+    }
+  }
 
+  
 
   if(window.Products){
     for(let i = 0; i < window.Products.length; i++){
