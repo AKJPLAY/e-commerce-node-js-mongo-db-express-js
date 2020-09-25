@@ -14,6 +14,26 @@ window.deleteProduct = async function (id){
   return res;
 }
 
+
+window.updateProduct = async function (id, data){
+  const res = await axios({
+    method: 'PATCH',
+    url:  `/api/v1/products/${id}`,
+    data
+  });
+  return res;
+}
+
+
+window.addProduct = async function (data){
+  const res = await axios({
+    method: 'POST',
+    url:  `/api/v1/products`,
+    data
+  });
+  return res;
+}
+
 $(document).ready(function() {
   "use strict"
   // init list view datatable
@@ -80,16 +100,8 @@ $(document).ready(function() {
             data.append('description', description);
             data.append('imageCover', document.getElementById('fileToUpload').files[0]);
             console.log(document.getElementById('fileToUpload').files[0]);
-            async function sendData(){
-              const res = await axios({
-                method: 'POST',
-                url:  `/api/v1/products/`,
-                data
-              });
-              return res;
-            }
+            window.addProduct(data);
             
-            sendData();
             setTimeout(function(){
               location.reload();
             },2000);
@@ -180,9 +192,8 @@ $(document).ready(function() {
   })
 
   //On Edit
-  if(window.Products){
-    for(let i = 0; i < window.Products.length; i++){
-      $(`#edit${window.Products[i].id}`).on("click",function(e){
+      $(`.action-edit`).unbind();
+      $(`.action-edit`).on("click",function(e){
         $('.add-new-data div div h4').text('Update Product');
         $('.add-data-btn button').text('Update');
         e.stopPropagation();
@@ -193,7 +204,7 @@ $(document).ready(function() {
         //Amit Code
         const id = $(this).closest('td').attr('prodID');
         $('.add-data-btn').attr('prodID', id);
-        /*if(window.Products){
+        if(window.Products){
           for(let i = 0; i < window.Products.length; i++){
             if(window.Products[i].id === id){
               $('#data-name').val($(`#proDetails${id} .product-name`).text());
@@ -240,64 +251,12 @@ $(document).ready(function() {
               $('#data-category').html(html);
             }
           }
-        }*/
+        }
 
-        //if(window.Products){
-          //for(let i = 0; i < window.Products.length; i++){
-            //if(window.Products[i].id === id){
-              $('#data-name').val(window.Products[i].name);
-              $('#data-price').val(window.Products[i].price);
-              $('#data-mrp').val(`$${parseFloat(window.Products[i].mrp).toFixed(2)}`);
-              $('#data-description').val(`${window.Products[i].description}`);
-              console.log(window.Products[i].imageCover);
-              $('#productImg').attr('src', `../../../img/products/${window.Products[i].imageCover}`);
-              if(window.Products[i].onsale) {
-                $('#chip-onsale').addClass('chip-success');
-                $('#chip-onsale').attr('onsale','true');
-                $('#chip-onsale').removeClass('chip-warning');
-                $('#chip-onsale .chip-text').text('Active');
-              }else {
-                $('#chip-onsale').addClass('chip-warning');
-                $('#chip-onsale').attr('onsale','false');
-                $('#chip-onsale').removeClass('chip-success');
-                $('#chip-onsale .chip-text').text('Deactive');
-              }
-              if(window.Products[i].status) {
-                $('#chip-status').addClass('chip-success');
-                $('#chip-status').attr('status','true');
-                $('#chip-status').removeClass('chip-warning');
-                $('#chip-status .chip-text').text('Active');
-              }else {
-                $('#chip-status').addClass('chip-warning');
-                $('#chip-status').attr('status','false');
-                $('#chip-status').removeClass('chip-success');
-                $('#chip-status .chip-text').text('Deactive');
-              }
-              $(".add-new-data").addClass("show");
-              $(".overlay-bg").addClass("show");
-              $(".add-new-data").addClass("show");
-              $(".overlay-bg").addClass("show");
-              let category = '';
-              let html = '';
-              for(let j = 0; j < window.Categories.length; j++) {
-                if(window.Categories[j].id === window.Products[i].category_id){
-                  html += `<option id="${window.Categories[j].id}" selected="selected">${window.Categories[j].name}</option>`
-                }else {
-                  html += `<option id="${window.Categories[j].id}">${window.Categories[j].name}</option>`
-                }
-              }
-              $('#data-category').html(html);
-            //}
-          //}
-        //}
-    
         
         //Amit Code end
       });
     
-    }
-  }
-
 
   // mac chrome checkbox fix
   if (navigator.userAgent.indexOf("Mac OS X") != -1) {
@@ -309,125 +268,71 @@ $(document).ready(function() {
 
 jQuery('#product_List_Container').bind('DOMSubtreeModified',function(event) { 
   //On Edit
-  if(window.Products){
-    for(let i = 0; i < window.Products.length; i++){
-      $(`#edit${window.Products[i].id}`).on("click",function(e){
-        $('.add-new-data div div h4').text('Update Product');
-        $('.add-data-btn button').text('Update');
-        e.stopPropagation();
-        /*$('#data-name').val('Altec Lansing - Bluetooth Speaker');
-        $('#data-price').val('$99');
-        $(".add-new-data").addClass("show");
-        $(".overlay-bg").addClass("show");*/
-        //Amit Code
-        const id = $(this).closest('td').attr('prodID');
-        $('.add-data-btn').attr('prodID', id);
-        /*if(window.Products){
-          for(let i = 0; i < window.Products.length; i++){
-            if(window.Products[i].id === id){
-              $('#data-name').val($(`#proDetails${id} .product-name`).text());
-              $('#data-price').val($(`#proDetails${id} .product-price`).text());
-              $('#data-mrp').val(`$${parseFloat(window.Products[i].mrp).toFixed(2)}`);
-              $('#data-description').val(`${window.Products[i].description}`);
-              console.log(window.Products[i].imageCover);
-              $('#productImg').attr('src', `../../../img/products/${window.Products[i].imageCover}`);
-              if(window.Products[i].onsale) {
-                $('#chip-onsale').addClass('chip-success');
-                $('#chip-onsale').attr('onsale','true');
-                $('#chip-onsale').removeClass('chip-warning');
-                $('#chip-onsale .chip-text').text('Active');
-              }else {
-                $('#chip-onsale').addClass('chip-warning');
-                $('#chip-onsale').attr('onsale','false');
-                $('#chip-onsale').removeClass('chip-success');
-                $('#chip-onsale .chip-text').text('Deactive');
-              }
-              if(window.Products[i].status) {
-                $('#chip-status').addClass('chip-success');
-                $('#chip-status').attr('status','true');
-                $('#chip-status').removeClass('chip-warning');
-                $('#chip-status .chip-text').text('Active');
-              }else {
-                $('#chip-status').addClass('chip-warning');
-                $('#chip-status').attr('status','false');
-                $('#chip-status').removeClass('chip-success');
-                $('#chip-status .chip-text').text('Deactive');
-              }
-              $(".add-new-data").addClass("show");
-              $(".overlay-bg").addClass("show");
-              $(".add-new-data").addClass("show");
-              $(".overlay-bg").addClass("show");
-              let category = '';
-              let html = '';
-              for(let j = 0; j < window.Categories.length; j++) {
-                if(window.Categories[j].id === window.Products[i].category_id){
-                  html += `<option id="${window.Categories[j].id}" selected="selected">${window.Categories[j].name}</option>`
-                }else {
-                  html += `<option id="${window.Categories[j].id}">${window.Categories[j].name}</option>`
-                }
-              }
-              $('#data-category').html(html);
+  $(`.action-edit`).unbind();
+  $(`.action-edit`).on("click",function(e){
+    $('.add-new-data div div h4').text('Update Product');
+    $('.add-data-btn button').text('Update');
+    e.stopPropagation();
+    /*$('#data-name').val('Altec Lansing - Bluetooth Speaker');
+    $('#data-price').val('$99');
+    $(".add-new-data").addClass("show");
+    $(".overlay-bg").addClass("show");*/
+    //Amit Code
+    const id = $(this).closest('td').attr('prodID');
+    $('.add-data-btn').attr('prodID', id);
+    if(window.Products){
+      for(let i = 0; i < window.Products.length; i++){
+        if(window.Products[i].id === id){
+          $('#data-name').val($(`#proDetails${id} .product-name`).text());
+          $('#data-price').val($(`#proDetails${id} .product-price`).text());
+          $('#data-mrp').val(`$${parseFloat(window.Products[i].mrp).toFixed(2)}`);
+          $('#data-description').val(`${window.Products[i].description}`);
+          console.log(window.Products[i].imageCover);
+          $('#productImg').attr('src', `../../../img/products/${window.Products[i].imageCover}`);
+          if(window.Products[i].onsale) {
+            $('#chip-onsale').addClass('chip-success');
+            $('#chip-onsale').attr('onsale','true');
+            $('#chip-onsale').removeClass('chip-warning');
+            $('#chip-onsale .chip-text').text('Active');
+          }else {
+            $('#chip-onsale').addClass('chip-warning');
+            $('#chip-onsale').attr('onsale','false');
+            $('#chip-onsale').removeClass('chip-success');
+            $('#chip-onsale .chip-text').text('Deactive');
+          }
+          if(window.Products[i].status) {
+            $('#chip-status').addClass('chip-success');
+            $('#chip-status').attr('status','true');
+            $('#chip-status').removeClass('chip-warning');
+            $('#chip-status .chip-text').text('Active');
+          }else {
+            $('#chip-status').addClass('chip-warning');
+            $('#chip-status').attr('status','false');
+            $('#chip-status').removeClass('chip-success');
+            $('#chip-status .chip-text').text('Deactive');
+          }
+          $(".add-new-data").addClass("show");
+          $(".overlay-bg").addClass("show");
+          $(".add-new-data").addClass("show");
+          $(".overlay-bg").addClass("show");
+          let category = '';
+          let html = '';
+          for(let j = 0; j < window.Categories.length; j++) {
+            if(window.Categories[j].id === window.Products[i].category_id){
+              html += `<option id="${window.Categories[j].id}" selected="selected">${window.Categories[j].name}</option>`
+            }else {
+              html += `<option id="${window.Categories[j].id}">${window.Categories[j].name}</option>`
             }
           }
-        }*/
-
-        //if(window.Products){
-          //for(let i = 0; i < window.Products.length; i++){
-            //if(window.Products[i].id === id){
-              $('#data-name').val(window.Products[i].name);
-              $('#data-price').val(window.Products[i].price);
-              $('#data-mrp').val(`$${parseFloat(window.Products[i].mrp).toFixed(2)}`);
-              $('#data-description').val(`${window.Products[i].description}`);
-              console.log(window.Products[i].imageCover);
-              $('#productImg').attr('src', `../../../img/products/${window.Products[i].imageCover}`);
-              if(window.Products[i].onsale) {
-                $('#chip-onsale').addClass('chip-success');
-                $('#chip-onsale').attr('onsale','true');
-                $('#chip-onsale').removeClass('chip-warning');
-                $('#chip-onsale .chip-text').text('Active');
-              }else {
-                $('#chip-onsale').addClass('chip-warning');
-                $('#chip-onsale').attr('onsale','false');
-                $('#chip-onsale').removeClass('chip-success');
-                $('#chip-onsale .chip-text').text('Deactive');
-              }
-              if(window.Products[i].status) {
-                $('#chip-status').addClass('chip-success');
-                $('#chip-status').attr('status','true');
-                $('#chip-status').removeClass('chip-warning');
-                $('#chip-status .chip-text').text('Active');
-              }else {
-                $('#chip-status').addClass('chip-warning');
-                $('#chip-status').attr('status','false');
-                $('#chip-status').removeClass('chip-success');
-                $('#chip-status .chip-text').text('Deactive');
-              }
-              $(".add-new-data").addClass("show");
-              $(".overlay-bg").addClass("show");
-              $(".add-new-data").addClass("show");
-              $(".overlay-bg").addClass("show");
-              let category = '';
-              let html = '';
-              for(let j = 0; j < window.Categories.length; j++) {
-                if(window.Categories[j].id === window.Products[i].category_id){
-                  html += `<option id="${window.Categories[j].id}" selected="selected">${window.Categories[j].name}</option>`
-                }else {
-                  html += `<option id="${window.Categories[j].id}">${window.Categories[j].name}</option>`
-                }
-              }
-              $('#data-category').html(html);
-            //}
-          //}
-        //}
-    
-        
-        //Amit Code end
-      });
-    
+          $('#data-category').html(html);
+        }
+      }
     }
-  }
 
-  
+    
+    //Amit Code end
+  });
+
 
   if(window.Products){
     for(let i = 0; i < window.Products.length; i++){
@@ -487,6 +392,7 @@ $(document).ready(function(){
 $('.add-data-btn').click(function(){
     let data = new FormData();
     const id = $('.add-data-btn').attr('prodID');
+    const name = $('#data-name').val();
     $(`#proDetails${id} .product-name`).text($('#data-name').val());
     $(`#proDetails${id} .product-price`).text($('#data-price').val());
     $(`#proDetails${id} .product-category`).text($(`#data-category`).val());
@@ -524,22 +430,29 @@ $('.add-data-btn').click(function(){
           onsale: onsale,
           price: price,
         }*/
-        data.append('name', name);
-        data.append('status',status);
-        data.append('category_id', category_id);
-        data.append('mrp', mrp);
-        data.append('onsale', onsale);
-        data.append('imageCover', document.getElementById('fileToUpload').files[0]);
-
-        async function updateProductData(){
-          const res = await axios({
-            method: 'PATCH',
-            url:  `/api/v1/products/${id}`,
-            data
-          });
-          return res;
+        if(name){
+          data.append('name', name);
         }
-        console.log(updateProductData());
+        if(status){
+          data.append('status',status);
+        }
+        if(category_id){
+          data.append('category_id', category_id);
+        }
+        if(mrp){
+          data.append('mrp', mrp);
+        }
+        if(onsale){
+          data.append('onsale', onsale);
+        }
+        if(document.getElementById('fileToUpload').files[0]){
+          data.append('imageCover', document.getElementById('fileToUpload').files[0]);
+        }
+        
+        console.log(name,price,mrp,status,onsale,document.getElementById('fileToUpload').files[0]);
+
+        window.updateProduct(id, data);
+        
       }
       
     }
