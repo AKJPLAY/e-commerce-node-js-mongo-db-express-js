@@ -15,11 +15,6 @@ const categorySchema = new mongoose.Schema(
       // validate: [validator.isAlpha, 'Tour name must only contain characters']
     },
     slug: String,
-    summary: {
-      type: String,
-      trim: true,
-      required: [true, 'A tour must have a description']
-    },
     imageCover: {
       type: String,
       required: [true, 'A tour must have a cover image']

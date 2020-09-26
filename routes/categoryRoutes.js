@@ -10,6 +10,8 @@ router
   .post(
     authController.protect,
     authController.restrictTo('admin', 'lead-guide'),
+    categoryController.uploadCategoryImages,
+    categoryController.resizeCategoryImages,
     categoryController.createCategory
   );
 

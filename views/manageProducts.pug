@@ -14,9 +14,9 @@ block content
                             .breadcrumb-wrapper.col-12
                                 ol.breadcrumb
                                     li.breadcrumb-item
-                                        a(href='index.html') Home
+                                        a(href='/admin') Home
                                     li.breadcrumb-item.active
-                                        a(href='#') Products
+                                        a(href='/products') Products
                                     li.breadcrumb-item.active
                                         | Product View
                 .content-header-right.text-md-right.col-md-3.col-12.d-md-block.d-none
@@ -53,7 +53,7 @@ block content
                     .table-responsive
                         table.table.data-list-view
                             thead
-                                tr
+                                tr(id="tableHeading")
                                     th
                                     th NAME
                                     th CATEGORY
@@ -74,7 +74,7 @@ block content
                                     i.feather.icon-x
                             .data-items.pb-3
                                 .data-fields.px-2.mt-3
-                                    .row
+                                    .row(id="add-panel")
                                         .col-sm-12.data-field-col
                                             label(for='data-name') Name
                                             input#data-name.form-control(type='text')
@@ -102,9 +102,14 @@ block content
                                             <label for="files">Select files:</label>
                                             <input type="file" id="files" name="files" multiple><br><br>
                                     .row 
-                                        .col-sm-6.data-field-col
+                                        .col-sm-6.data-field-col(id="onSalechip")
                                             | OnSale 
                                             .chip.chip-success#chip-onsale
+                                                .chip-body
+                                                    .chip-text Active
+                                        .col-sm-6.data-field-col(id="onHomechip")
+                                            | OnHome 
+                                            .chip.chip-success#chip-onhome
                                                 .chip-body
                                                     .chip-text Active
                                         .col-sm-6.data-field-col

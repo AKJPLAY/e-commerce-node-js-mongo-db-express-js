@@ -6,12 +6,11 @@
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
-let url = window.location.href;
-url = url.split('/');
-url = url[(url.length - 1)];
-window.Url = url;
-console.log(url);
-
+if(window.Url === 'products'){
+  $('#onHomechip').hide();
+}if(window.Url === 'categories'){
+  $('#onSalechip').hide();
+}
 
 if(window.Url){
   if(window.Url === 'products'){
@@ -69,11 +68,232 @@ if(window.Url){
       });
       return res;
     }
+
+    //add-Panel 
+    $('#add-panel').html(`
+    <div class="col-sm-12 data-field-col">
+      <label for="data-name">Name</label>
+      <input class="form-control" id="data-name" type="text">
+    </div>
+    <div class="col-sm-12 data-field-col data-list-upload">
+      Cover Image<img id="productImg" src="" alt="">
+      <input id="fileToUpload" type="file" name="imageCover">
+    </div>
+    `);
   }
   
   
 }
 
+
+function editTableData(){
+  //On Edit
+  $(`.action-edit`).unbind();
+  $(`.action-edit`).on("click",function(e){
+    e.stopPropagation();
+    //Amit Code
+    $('.add-data-btn button').text('Update');
+    if(window.Url){
+        const id = $(this).closest('td').attr('prodID');
+        $('.add-data-btn').attr('prodID', id);
+          if(window.Url === 'products'){
+            $('.add-new-data div div h4').text('Update Product');
+            if(window.Products){
+              for(let i = 0; i < window.Products.length; i++){
+                if(window.Products[i].id === id){
+                  $('#data-name').val($(`#proDetails${id} .product-name`).text());
+                  $('#data-price').val($(`#proDetails${id} .product-price`).text());
+                  $('#data-mrp').val(`$${parseFloat(window.Products[i].mrp).toFixed(2)}`);
+                  $('#data-description').val(`${window.Products[i].description}`);
+                  console.log(window.Products[i].imageCover);
+                  $('#productImg').attr('src', `../../../img/products/${window.Products[i].imageCover}`);
+                  if(window.Products[i].onsale) {
+                    $('#chip-onsale').addClass('chip-success');
+                    $('#chip-onsale').attr('onsale','true');
+                    $('#chip-onsale').removeClass('chip-warning');
+                    $('#chip-onsale .chip-text').text('Active');
+                  }else {
+                    $('#chip-onsale').addClass('chip-warning');
+                    $('#chip-onsale').attr('onsale','false');
+                    $('#chip-onsale').removeClass('chip-success');
+                    $('#chip-onsale .chip-text').text('Deactive');
+                  }
+                  if(window.Products[i].status) {
+                    $('#chip-status').addClass('chip-success');
+                    $('#chip-status').attr('status','true');
+                    $('#chip-status').removeClass('chip-warning');
+                    $('#chip-status .chip-text').text('Active');
+                  }else {
+                    $('#chip-status').addClass('chip-warning');
+                    $('#chip-status').attr('status','false');
+                    $('#chip-status').removeClass('chip-success');
+                    $('#chip-status .chip-text').text('Deactive');
+                  }
+                  $(".add-new-data").addClass("show");
+                  $(".overlay-bg").addClass("show");
+                  $(".add-new-data").addClass("show");
+                  $(".overlay-bg").addClass("show");
+            }
+          }
+        }
+      }
+
+        // Category
+          if(window.Url === 'categories'){
+            $('.add-new-data div div h4').text('Update Category');
+            if(window.Categories){
+              for(let i = 0; i < window.Categories.length; i++){
+                if(window.Categories[i].id === id){
+                  $('#data-name').val($(`#proDetails${id} .product-name`).text());
+                  console.log(window.Categories[i].imageCover);
+                  $('#productImg').attr('src', `../../../img/categories/${window.Categories[i].imageCover}`);
+                  if(window.Categories[i].onhome) {
+                    $('#chip-onhome').addClass('chip-success');
+                    $('#chip-onhome').attr('onhome','true');
+                    $('#chip-onhome').removeClass('chip-warning');
+                    $('#chip-onhome .chip-text').text('Active');
+                  }else {
+                    $('#chip-onhome').addClass('chip-warning');
+                    $('#chip-onhome').attr('onhome','false');
+                    $('#chip-onhome').removeClass('chip-success');
+                    $('#chip-onhome .chip-text').text('Deactive');
+                  }
+                  if(window.Categories[i].status) {
+                    $('#chip-status').addClass('chip-success');
+                    $('#chip-status').attr('status','true');
+                    $('#chip-status').removeClass('chip-warning');
+                    $('#chip-status .chip-text').text('Active');
+                  }else {
+                    $('#chip-status').addClass('chip-warning');
+                    $('#chip-status').attr('status','false');
+                    $('#chip-status').removeClass('chip-success');
+                    $('#chip-status .chip-text').text('Deactive');
+                  }
+                  $(".add-new-data").addClass("show");
+                  $(".overlay-bg").addClass("show");
+                  $(".add-new-data").addClass("show");
+                  $(".overlay-bg").addClass("show");
+            }
+          }
+        }
+      }
+    }
+    
+
+    
+    //Amit Code end
+  });  
+}
+
+
+function addBtnData(){
+  $('.add-data-btn').unbind();
+  $('.add-data-btn').click(function(){
+    let data = new FormData();
+    const id = $('.add-data-btn').attr('prodID');
+    const name = $('#data-name').val();
+    $(`#proDetails${id} .product-name`).text($('#data-name').val());
+    const status = $('#chip-status').attr('status');
+    const onsale = $('#chip-onsale').attr('onsale');
+    const onhome = $('#chip-onhome').attr('onhome');
+    if(window.Url){
+      if(window.Url === 'products'){
+        $(`#proDetails${id} .product-price`).text($('#data-price').val());
+        $(`#proDetails${id} .product-category`).text($(`#data-category`).val());
+
+
+
+        if(onsale && status){
+          $(`#status${id}`).attr('status', `${status === 'true'? 'true' : 'false'}`);
+          $(`#status${id}`).html(`<div class="chip ${status === 'true' ? 'chip-success' : 'chip-warning'}"><div class="chip-body"><div class="chip-text">${status === 'true' ? 'Active' : 'Deactive'}</div></div></div>`);
+          $(`#onsale${id}`).attr('onsale', `${onsale === 'true'? 'true' : 'false'}`);
+          $(`#onsale${id}`).html(`<div class="chip ${onsale === 'true' ? 'chip-success' : 'chip-warning'}"><div class="chip-body"><div class="chip-text">${onsale === 'true' ? 'Active' : 'Deactive'}</div></div></div>`);
+          console.log($(`#onsale${id}`),$(`#status${id}`))
+          if($(`#onsale${id}`) && $(`#status${id}`)){
+            //Convert price into interger
+            let price = $('#data-price').val().replace(/\$/g,'');
+            price = parseFloat(price).toFixed(2);
+            let mrp = $('#data-mrp').val().replace(/\$/g,'');
+            mrp = parseFloat(mrp).toFixed(2);
+            //Get Category ID
+            const categoryname = $(`#data-category`).val();
+            let category_id = '';
+            if(window.Categories){
+              for(let i = 0; i < window.Categories.length; i++){
+                if(window.Categories[i].name === categoryname){
+                  category_id = window.Categories[i].id;
+                }
+              }
+            }
+            if(name){
+              data.append('name', name);
+            }
+            if(status){
+              data.append('status',status);
+            }
+            if(category_id){
+              data.append('category_id', category_id);
+            }
+            if(mrp){
+              data.append('mrp', mrp);
+            }
+            if(onsale){
+              data.append('onsale', onsale);
+            }
+            if(document.getElementById('fileToUpload').files[0]){
+              data.append('imageCover', document.getElementById('fileToUpload').files[0]);
+            }
+            
+            console.log(name,price,mrp,status,onsale,document.getElementById('fileToUpload').files[0]);
+    
+            window.updateProduct(id, data);
+            
+          }
+      }
+    }
+
+    if(window.Url === 'categories'){
+      $(`#proDetails${id} .product-price`).text($('#data-price').val());
+        $(`#proDetails${id} .product-category`).text($(`#data-category`).val());
+
+
+        if(onhome && status){
+          $(`#status${id}`).attr('status', `${status === 'true'? 'true' : 'false'}`);
+          $(`#status${id}`).html(`<div class="chip ${status === 'true' ? 'chip-success' : 'chip-warning'}"><div class="chip-body"><div class="chip-text">${status === 'true' ? 'Active' : 'Deactive'}</div></div></div>`);
+          $(`#onhome${id}`).attr('onhome', `${onhome === 'true'? 'true' : 'false'}`);
+          $(`#onhome${id}`).html(`<div class="chip ${onhome === 'true' ? 'chip-success' : 'chip-warning'}"><div class="chip-body"><div class="chip-text">${onhome === 'true' ? 'Active' : 'Deactive'}</div></div></div>`);
+          console.log($(`#onhome${id}`),$(`#status${id}`))
+          if($(`#onhome${id}`) && $(`#status${id}`)){
+            if(name){
+              data.append('name', name);
+            }
+            if(status){
+              data.append('status',status);
+            }
+            if(onhome){
+              data.append('onhome', onhome);
+            }
+            if(document.getElementById('fileToUpload').files[0]){
+              data.append('imageCover', document.getElementById('fileToUpload').files[0]);
+            }
+            
+            console.log(name,status,onsale,document.getElementById('fileToUpload').files[0]);
+    
+            window.updateCategory(id, data);
+            
+          }
+      }
+    }
+    console.log(status,onhome);
+      
+    }
+    
+    $(".add-new-data").removeClass("show");
+    $(".overlay-bg").removeClass("show");
+    jQuery('#product_List_Container').unbind();
+    
+  });
+}
 
 $(document).ready(function() {
   "use strict"
@@ -169,7 +389,6 @@ $(document).ready(function() {
                 const name = $('#data-name').val();
                 const description = $('#data-description').val();
                 data.append('name', name);
-                data.append('description', description);
                 data.append('imageCover', document.getElementById('fileToUpload').files[0]);
                 console.log(document.getElementById('fileToUpload').files[0]);
                 window.addCategory(data);
@@ -263,74 +482,12 @@ $(document).ready(function() {
     $(".overlay-bg").removeClass("show")
     $("#data-name, #data-price").val("")
     $("#data-category, #data-status").prop("selectedIndex", 0)
+    //Reassigne add Btn Funcation
+    addBtnData();
   })
 
   //On Edit
-      $(`.action-edit`).unbind();
-      $(`.action-edit`).on("click",function(e){
-        $('.add-new-data div div h4').text('Update Product');
-        $('.add-data-btn button').text('Update');
-        e.stopPropagation();
-        /*$('#data-name').val('Altec Lansing - Bluetooth Speaker');
-        $('#data-price').val('$99');
-        $(".add-new-data").addClass("show");
-        $(".overlay-bg").addClass("show");*/
-        //Amit Code
-        const id = $(this).closest('td').attr('prodID');
-        $('.add-data-btn').attr('prodID', id);
-        if(window.Products){
-          for(let i = 0; i < window.Products.length; i++){
-            if(window.Products[i].id === id){
-              $('#data-name').val($(`#proDetails${id} .product-name`).text());
-              $('#data-price').val($(`#proDetails${id} .product-price`).text());
-              $('#data-mrp').val(`$${parseFloat(window.Products[i].mrp).toFixed(2)}`);
-              $('#data-description').val(`${window.Products[i].description}`);
-              console.log(window.Products[i].imageCover);
-              $('#productImg').attr('src', `../../../img/products/${window.Products[i].imageCover}`);
-              if(window.Products[i].onsale) {
-                $('#chip-onsale').addClass('chip-success');
-                $('#chip-onsale').attr('onsale','true');
-                $('#chip-onsale').removeClass('chip-warning');
-                $('#chip-onsale .chip-text').text('Active');
-              }else {
-                $('#chip-onsale').addClass('chip-warning');
-                $('#chip-onsale').attr('onsale','false');
-                $('#chip-onsale').removeClass('chip-success');
-                $('#chip-onsale .chip-text').text('Deactive');
-              }
-              if(window.Products[i].status) {
-                $('#chip-status').addClass('chip-success');
-                $('#chip-status').attr('status','true');
-                $('#chip-status').removeClass('chip-warning');
-                $('#chip-status .chip-text').text('Active');
-              }else {
-                $('#chip-status').addClass('chip-warning');
-                $('#chip-status').attr('status','false');
-                $('#chip-status').removeClass('chip-success');
-                $('#chip-status .chip-text').text('Deactive');
-              }
-              $(".add-new-data").addClass("show");
-              $(".overlay-bg").addClass("show");
-              $(".add-new-data").addClass("show");
-              $(".overlay-bg").addClass("show");
-              let category = '';
-              let html = '';
-              for(let j = 0; j < window.Categories.length; j++) {
-                if(window.Categories[j].id === window.Products[i].category_id){
-                  html += `<option id="${window.Categories[j].id}" selected="selected">${window.Categories[j].name}</option>`
-                }else {
-                  html += `<option id="${window.Categories[j].id}">${window.Categories[j].name}</option>`
-                }
-              }
-              $('#data-category').html(html);
-            }
-          }
-        }
-
-        
-        //Amit Code end
-      });
-    
+     editTableData();
 
   // mac chrome checkbox fix
   if (navigator.userAgent.indexOf("Mac OS X") != -1) {
@@ -342,86 +499,42 @@ $(document).ready(function() {
 
 jQuery('#product_List_Container').bind('DOMSubtreeModified',function(event) { 
   //On Edit
-  $(`.action-edit`).unbind();
-  $(`.action-edit`).on("click",function(e){
-    $('.add-new-data div div h4').text('Update Product');
-    $('.add-data-btn button').text('Update');
-    e.stopPropagation();
-    /*$('#data-name').val('Altec Lansing - Bluetooth Speaker');
-    $('#data-price').val('$99');
-    $(".add-new-data").addClass("show");
-    $(".overlay-bg").addClass("show");*/
-    //Amit Code
-    const id = $(this).closest('td').attr('prodID');
-    $('.add-data-btn').attr('prodID', id);
-    if(window.Products){
-      for(let i = 0; i < window.Products.length; i++){
-        if(window.Products[i].id === id){
-          $('#data-name').val($(`#proDetails${id} .product-name`).text());
-          $('#data-price').val($(`#proDetails${id} .product-price`).text());
-          $('#data-mrp').val(`$${parseFloat(window.Products[i].mrp).toFixed(2)}`);
-          $('#data-description').val(`${window.Products[i].description}`);
-          console.log(window.Products[i].imageCover);
-          $('#productImg').attr('src', `../../../img/products/${window.Products[i].imageCover}`);
-          if(window.Products[i].onsale) {
-            $('#chip-onsale').addClass('chip-success');
-            $('#chip-onsale').attr('onsale','true');
-            $('#chip-onsale').removeClass('chip-warning');
-            $('#chip-onsale .chip-text').text('Active');
-          }else {
-            $('#chip-onsale').addClass('chip-warning');
-            $('#chip-onsale').attr('onsale','false');
-            $('#chip-onsale').removeClass('chip-success');
-            $('#chip-onsale .chip-text').text('Deactive');
-          }
-          if(window.Products[i].status) {
-            $('#chip-status').addClass('chip-success');
-            $('#chip-status').attr('status','true');
-            $('#chip-status').removeClass('chip-warning');
-            $('#chip-status .chip-text').text('Active');
-          }else {
-            $('#chip-status').addClass('chip-warning');
-            $('#chip-status').attr('status','false');
-            $('#chip-status').removeClass('chip-success');
-            $('#chip-status .chip-text').text('Deactive');
-          }
-          $(".add-new-data").addClass("show");
-          $(".overlay-bg").addClass("show");
-          $(".add-new-data").addClass("show");
-          $(".overlay-bg").addClass("show");
-          let category = '';
-          let html = '';
-          for(let j = 0; j < window.Categories.length; j++) {
-            if(window.Categories[j].id === window.Products[i].category_id){
-              html += `<option id="${window.Categories[j].id}" selected="selected">${window.Categories[j].name}</option>`
-            }else {
-              html += `<option id="${window.Categories[j].id}">${window.Categories[j].name}</option>`
-            }
-          }
-          $('#data-category').html(html);
+  editTableData();
+  if(window.Url){
+    if(window.Url === 'products'){
+      if(window.Products){
+        for(let i = 0; i < window.Products.length; i++){
+            $(`#del${window.Products[i].id}`).unbind();
+            // On Delete
+            $(`#del${window.Products[i].id}`).on("click", function(e){
+              e.stopPropagation();
+              $(this).closest('td').parent('tr').fadeOut();
+              const id = $(this).closest('td').attr('prodid');
+              window.deleteProduct(id);
+              location.reload();
+            });
+          
         }
       }
     }
-
-    
-    //Amit Code end
-  });
-
-
-  if(window.Products){
-    for(let i = 0; i < window.Products.length; i++){
-        $(`#del${window.Products[i].id}`).unbind();
-        // On Delete
-        $(`#del${window.Products[i].id}`).on("click", function(e){
-          e.stopPropagation();
-          $(this).closest('td').parent('tr').fadeOut();
-          const id = $(this).closest('td').attr('prodid');
-          window.deleteProduct(id);
-          location.reload();
-        });
-      
+    if(window.Url === 'categories'){
+      if(window.Categories){
+        for(let i = 0; i < window.Categories.length; i++){
+            $(`#del${window.Categories[i].id}`).unbind();
+            // On Delete
+            $(`#del${window.Categories[i].id}`).on("click", function(e){
+              e.stopPropagation();
+              $(this).closest('td').parent('tr').fadeOut();
+              const id = $(this).closest('td').attr('prodid');
+              window.deleteCategory(id);
+              location.reload();
+            });
+          
+        }
+      }
     }
-}
+  }
+  
 
 }); 
 
@@ -429,21 +542,43 @@ jQuery('#product_List_Container').bind('DOMSubtreeModified',function(event) {
 
 //status and onsale 
 $(document).ready(function(){
-  $(`#chip-onsale`).click(function(){
-    const onsale = $(`#chip-onsale`).attr('onsale');
-    if(onsale === 'true'){
-      $('#chip-onsale').addClass('chip-warning');
-      $('#chip-onsale').attr('onsale','false');
-      $('#chip-onsale').removeClass('chip-success');
-      $('#chip-onsale .chip-text').text('Deactive');
-    }else {
-      $('#chip-onsale').addClass('chip-success');
-      $('#chip-onsale').attr('onsale','true');
-      $('#chip-onsale').removeClass('chip-warning');
-      $('#chip-onsale .chip-text').text('Active');
+  if(window.Url){
+    if(window.Url === 'products'){
+      $(`#chip-onsale`).click(function(){
+
+        const onsale = $(`#chip-onsale`).attr('onsale');
+        if(onsale === 'true'){
+          $('#chip-onsale').addClass('chip-warning');
+          $('#chip-onsale').attr('onsale','false');
+          $('#chip-onsale').removeClass('chip-success');
+          $('#chip-onsale .chip-text').text('Deactive');
+        }else {
+          $('#chip-onsale').addClass('chip-success');
+          $('#chip-onsale').attr('onsale','true');
+          $('#chip-onsale').removeClass('chip-warning');
+          $('#chip-onsale .chip-text').text('Active');
+        }
+        
+      })
     }
-    
-  })
+    if(window.Url === 'categories'){
+      $(`#chip-onhome`).click(function(){
+        const onhome = $(`#chip-onhome`).attr('onhome');
+        if(onhome === 'true'){
+          $('#chip-onhome').addClass('chip-warning');
+          $('#chip-onhome').attr('onhome','false');
+          $('#chip-onhome').removeClass('chip-success');
+          $('#chip-onhome .chip-text').text('Deactive');
+        }else {
+          $('#chip-onhome').addClass('chip-success');
+          $('#chip-onhome').attr('onhome','true');
+          $('#chip-onhome').removeClass('chip-warning');
+          $('#chip-onhome .chip-text').text('Active');
+        }
+        
+      })
+    }
+  }
   
   $(`#chip-status`).click(function(){
     const status = $(`#chip-status`).attr('status');
@@ -464,92 +599,41 @@ $(document).ready(function(){
 
 
 //Changes Effect of Row of Data
-$('.add-data-btn').click(function(){
-    let data = new FormData();
-    const id = $('.add-data-btn').attr('prodID');
-    const name = $('#data-name').val();
-    $(`#proDetails${id} .product-name`).text($('#data-name').val());
-    $(`#proDetails${id} .product-price`).text($('#data-price').val());
-    $(`#proDetails${id} .product-category`).text($(`#data-category`).val());
-    const status = $('#chip-status').attr('status');
-    const onsale = $('#chip-onsale').attr('onsale');
-    console.log(status,onsale);
-    if(onsale && status){
-      $(`#status${id}`).attr('status', `${status === 'true'? 'true' : 'false'}`);
-      $(`#status${id}`).html(`<div class="chip ${status === 'true' ? 'chip-success' : 'chip-warning'}"><div class="chip-body"><div class="chip-text">${status === 'true' ? 'Active' : 'Deactive'}</div></div></div>`);
-      $(`#onsale${id}`).attr('onsale', `${onsale === 'true'? 'true' : 'false'}`);
-      $(`#onsale${id}`).html(`<div class="chip ${onsale === 'true' ? 'chip-success' : 'chip-warning'}"><div class="chip-body"><div class="chip-text">${onsale === 'true' ? 'Active' : 'Deactive'}</div></div></div>`);
-      console.log($(`#onsale${id}`),$(`#status${id}`))
-      if($(`#onsale${id}`) && $(`#status${id}`)){
-        //Convert price into interger
-        let price = $('#data-price').val().replace(/\$/g,'');
-        price = parseFloat(price).toFixed(2);
-        let mrp = $('#data-mrp').val().replace(/\$/g,'');
-        mrp = parseFloat(mrp).toFixed(2);
-        //Get Category ID
-        const categoryname = $(`#data-category`).val();
-        let category_id = '';
-        if(window.Categories){
-          for(let i = 0; i < window.Categories.length; i++){
-            if(window.Categories[i].name === categoryname){
-              category_id = window.Categories[i].id;
-            }
-          }
-        }
-        //Update the Products
-        /*
-        const data = {
-          name: $('#data-name').val(),
-          status: status,
-          category_id: category_id,
-          onsale: onsale,
-          price: price,
-        }*/
-        if(name){
-          data.append('name', name);
-        }
-        if(status){
-          data.append('status',status);
-        }
-        if(category_id){
-          data.append('category_id', category_id);
-        }
-        if(mrp){
-          data.append('mrp', mrp);
-        }
-        if(onsale){
-          data.append('onsale', onsale);
-        }
-        if(document.getElementById('fileToUpload').files[0]){
-          data.append('imageCover', document.getElementById('fileToUpload').files[0]);
-        }
-        
-        console.log(name,price,mrp,status,onsale,document.getElementById('fileToUpload').files[0]);
+addBtnData();
 
-        window.updateProduct(id, data);
-        
+  // Deleting Functionl
+  if(window.Url){
+    if(window.Url === 'products'){
+      if(window.Products){
+        for(let i = 0; i < window.Products.length; i++){
+            $(`#del${window.Products[i].id}`).unbind();
+            // On Delete
+            $(`#del${window.Products[i].id}`).on("click", function(e){
+              e.stopPropagation();
+              $(this).closest('td').parent('tr').fadeOut();
+              const id = $(this).closest('td').attr('prodid');
+              window.deleteProduct(id);
+              location.reload();
+            });
+          
+        }
       }
-      
     }
-    
-    $(".add-new-data").removeClass("show");
-    $(".overlay-bg").removeClass("show");
-    jQuery('#product_List_Container').unbind();
-    
-  });
-  // Deleting Products
-  if(window.Products){
-      for(let i = 0; i < window.Products.length; i++){
-          // On Delete
-          $(`#del${window.Products[i].id}`).unbind();
-          $(`#del${window.Products[i].id}`).on("click", function(e){
-            e.stopPropagation();
-            $(this).closest('td').parent('tr').fadeOut();
-            const id = $(this).closest('td').attr('prodid');
-            window.deleteProduct(id);
-            location.reload();
-          });
-        
+    if(window.Url === 'categories'){
+      if(window.Categories){
+        for(let i = 0; i < window.Categories.length; i++){
+            $(`#del${window.Categories[i].id}`).unbind();
+            // On Delete
+            $(`#del${window.Categories[i].id}`).on("click", function(e){
+              e.stopPropagation();
+              $(this).closest('td').parent('tr').fadeOut();
+              const id = $(this).closest('td').attr('prodid');
+              window.deleteCategory(id);
+              location.reload();
+            });
+        }
       }
+    }
   }
 
+  
