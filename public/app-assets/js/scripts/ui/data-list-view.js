@@ -6,33 +6,74 @@
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
-window.deleteProduct = async function (id){
-  const res = await axios({
-    method: 'DELETE',
-    url:  `/api/v1/products/${id}`,
-  });
-  return res;
+let url = window.location.href;
+url = url.split('/');
+url = url[(url.length - 1)];
+window.Url = url;
+console.log(url);
+
+
+if(window.Url){
+  if(window.Url === 'products'){
+    window.deleteProduct = async function (id){
+      const res = await axios({
+        method: 'DELETE',
+        url:  `/api/v1/products/${id}`,
+      });
+      return res;
+    }
+    
+    window.updateProduct = async function (id, data){
+      const res = await axios({
+        method: 'PATCH',
+        url:  `/api/v1/products/${id}`,
+        data
+      });
+      return res;
+    }
+    
+    
+    window.addProduct = async function (data){
+      const res = await axios({
+        method: 'POST',
+        url:  `/api/v1/products`,
+        data
+      });
+      return res;
+    }
+  }
+  if(window.Url === 'categories'){
+    window.deleteCategory = async function (id){
+      const res = await axios({
+        method: 'DELETE',
+        url:  `/api/v1/categories/${id}`,
+      });
+      return res;
+    }
+    
+    window.updateCategory = async function (id, data){
+      const res = await axios({
+        method: 'PATCH',
+        url:  `/api/v1/categories/${id}`,
+        data
+      });
+      return res;
+    }
+    
+    
+    window.addCategory = async function (data){
+      const res = await axios({
+        method: 'POST',
+        url:  `/api/v1/categories`,
+        data
+      });
+      return res;
+    }
+  }
+  
+  
 }
 
-
-window.updateProduct = async function (id, data){
-  const res = await axios({
-    method: 'PATCH',
-    url:  `/api/v1/products/${id}`,
-    data
-  });
-  return res;
-}
-
-
-window.addProduct = async function (data){
-  const res = await axios({
-    method: 'POST',
-    url:  `/api/v1/products`,
-    data
-  });
-  return res;
-}
 
 $(document).ready(function() {
   "use strict"
@@ -66,49 +107,82 @@ $(document).ready(function() {
           $(this).removeClass("btn-secondary")
           $(".add-new-data").addClass("show")
           $(".overlay-bg").addClass("show")
-          $("#data-name, #data-price").val("")
-          $("#data-category, #data-status").prop("selectedIndex", 0)
-          //Amit's Code
-          //Add Product
-          console.log('hiii');
-          $('#data-name').attr('placeholder','Enter Name');
-          $('#data-price').attr('placeholder','Enter Price');
-          $('#data-mrp').attr('placeholder','Enter Mrp');
-          $('#data-description').attr('placeholder','Enter Description');
-          $('#data-mrp').val('');
-          $('#data-description').val('');
-          $('.add-new-data div div h4').text('Add New Product');
-          $('#productImg').attr('src', ``);
-          $('.add-data-btn button').text('Add');
-
-          $('.add-data-btn').click(function(){
-            const data = new FormData();
-            let category_id = '';
-            const name = $('#data-name').val();
-            const price = $('#data-price').val();
-            const mrp = $('#data-mrp').val();
-            const description = $('#data-description').val();
-            for(let i = 0; i < window.Categories.length; i++){
-              if(window.Categories[i].name === $('#data-category').val()){
-                category_id = window.Categories[i].id;
-              }
+          if(window.Url){
+            if(window.Url === 'products'){
+              $("#data-name, #data-price").val("")
+              $("#data-category, #data-status").prop("selectedIndex", 0)
+              //Amit's Code
+              //Add Product
+              $('#data-name').attr('placeholder','Enter Name');
+              $('#data-price').attr('placeholder','Enter Price');
+              $('#data-mrp').attr('placeholder','Enter Mrp');
+              $('#data-description').attr('placeholder','Enter Description');
+              $('#data-mrp').val('');
+              $('#data-description').val('');
+              $('.add-new-data div div h4').text('Add New Product');
+              $('#productImg').attr('src', ``);
+              $('.add-data-btn button').text('Add');
+              $('.add-data-btn').unbind();
+              $('.add-data-btn').click(function(){
+                const data = new FormData();
+                let category_id = '';
+                const name = $('#data-name').val();
+                const price = $('#data-price').val();
+                const mrp = $('#data-mrp').val();
+                const description = $('#data-description').val();
+                for(let i = 0; i < window.Categories.length; i++){
+                  if(window.Categories[i].name === $('#data-category').val()){
+                    category_id = window.Categories[i].id;
+                  }
+                }
+                data.append('name', name);
+                data.append('category_id', category_id);
+                data.append('price', price);
+                data.append('mrp', mrp);
+                data.append('description', description);
+                data.append('imageCover', document.getElementById('fileToUpload').files[0]);
+                console.log(document.getElementById('fileToUpload').files[0]);
+                window.addProduct(data);
+                
+                setTimeout(function(){
+                  location.reload();
+                },2000);
+                $('.add-data.btn').unbind();
+              });
+              
+              //Amit's Code ends
             }
-            data.append('name', name);
-            data.append('category_id', category_id);
-            data.append('price', price);
-            data.append('mrp', mrp);
-            data.append('description', description);
-            data.append('imageCover', document.getElementById('fileToUpload').files[0]);
-            console.log(document.getElementById('fileToUpload').files[0]);
-            window.addProduct(data);
-            
-            setTimeout(function(){
-              location.reload();
-            },2000);
-            $('.add-data.btn').unbind();
-          });
-          
-          //Amit's Code ends
+          if(window.Url === 'categories'){
+              $("#data-category, #data-status").prop("selectedIndex", 0)
+              //Amit's Code
+              //Add Product
+              $('#data-name').attr('placeholder','Enter Name');
+              $('#data-description').attr('placeholder','Enter Description');
+              $('#data-description').val('');
+              $('.add-new-data div div h4').text('Add New Category');
+              $('#productImg').attr('src', ``);
+              $('.add-data-btn button').text('Add');
+              $('.add-data-btn').unbind();
+              $('.add-data-btn').click(function(){
+                const data = new FormData();
+                let category_id = '';
+                const name = $('#data-name').val();
+                const description = $('#data-description').val();
+                data.append('name', name);
+                data.append('description', description);
+                data.append('imageCover', document.getElementById('fileToUpload').files[0]);
+                console.log(document.getElementById('fileToUpload').files[0]);
+                window.addCategory(data);
+                
+                setTimeout(function(){
+                  location.reload();
+                },2000);
+                $('.add-data.btn').unbind();
+              });
+              
+              //Amit's Code ends
+            }
+          }
         },
         className: "btn-outline-primary"
       }
@@ -343,6 +417,7 @@ jQuery('#product_List_Container').bind('DOMSubtreeModified',function(event) {
           $(this).closest('td').parent('tr').fadeOut();
           const id = $(this).closest('td').attr('prodid');
           window.deleteProduct(id);
+          location.reload();
         });
       
     }
@@ -388,7 +463,7 @@ $(document).ready(function(){
 })
 
 
-//Changes Effect
+//Changes Effect of Row of Data
 $('.add-data-btn').click(function(){
     let data = new FormData();
     const id = $('.add-data-btn').attr('prodID');
@@ -462,7 +537,7 @@ $('.add-data-btn').click(function(){
     jQuery('#product_List_Container').unbind();
     
   });
-
+  // Deleting Products
   if(window.Products){
       for(let i = 0; i < window.Products.length; i++){
           // On Delete
@@ -472,6 +547,7 @@ $('.add-data-btn').click(function(){
             $(this).closest('td').parent('tr').fadeOut();
             const id = $(this).closest('td').attr('prodid');
             window.deleteProduct(id);
+            location.reload();
           });
         
       }

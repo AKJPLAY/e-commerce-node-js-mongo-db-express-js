@@ -50,6 +50,7 @@ router.post(
 //Admin Area
 router.get('/admin', viewsController.getAdminPage);
 router.get('/products', viewsController.getProductsPage);
+router.get('/categories', viewsController.getCategoriesPage);
 
 
 module.exports = router;
