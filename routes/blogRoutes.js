@@ -11,6 +11,8 @@ router
   .post(
     authController.protect,
     authController.restrictTo('admin', 'lead-guide'),
+    blogController.uploadPostImages,
+    blogController.resizePostImages,
     blogController.createPost
   );
 
