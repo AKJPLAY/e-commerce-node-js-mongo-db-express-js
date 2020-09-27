@@ -219,3 +219,9 @@ exports.getCategoriesPage = catchAsync(async (req, res, next) =>{
     title: 'Categories'
   });
 });
+
+exports.getPostsPage = catchAsync(async (req, res, next) =>{
+  res.status(200).render('manageProducts', {
+  title: 'Posts'
+});
+});

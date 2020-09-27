@@ -51,6 +51,7 @@ router.post(
 router.get('/admin', viewsController.getAdminPage);
 router.get('/products', viewsController.getProductsPage);
 router.get('/categories', viewsController.getCategoriesPage);
+router.get('/posts', viewsController.getPostsPage);
 
 
 module.exports = router;

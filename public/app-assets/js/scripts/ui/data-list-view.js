@@ -81,6 +81,51 @@ if(window.Url){
     </div>
     `);
   }
+
+  if(window.Url === 'posts'){
+    window.deletePost = async function (id){
+      const res = await axios({
+        method: 'DELETE',
+        url:  `/api/v1/posts/${id}`,
+      });
+      return res;
+    }
+    
+    window.updatePost = async function (id, data){
+      const res = await axios({
+        method: 'PATCH',
+        url:  `/api/v1/posts/${id}`,
+        data
+      });
+      return res;
+    }
+    
+    
+    window.addPost = async function (data){
+      const res = await axios({
+        method: 'POST',
+        url:  `/api/v1/posts`,
+        data
+      });
+      return res;
+    }
+
+    //add-Panel 
+    $('#add-panel').html(`
+    <div class="col-sm-12 data-field-col">
+      <label for="data-name">Name</label>
+      <input class="form-control" id="data-name" type="text">
+    </div>
+    <div class="col-sm-12 data-field-col data-list-upload">
+      <label for="data-description">Description</label>
+      <textarea class="form-control" id="data-description" type="text"></textarea>
+    </div>
+    <div class="col-sm-12 data-field-col data-list-upload">
+      Cover Image<img id="productImg" src="" alt="">
+      <input id="fileToUpload" type="file" name="imageCover">
+    </div>
+    `);
+  }
   
   
 }
@@ -177,6 +222,58 @@ function editTableData(){
           }
         }
       }
+
+          // Post
+          if(window.Url === 'posts'){
+            $('.add-new-data div div h4').text('Update Post');
+            if(window.Posts){
+              for(let i = 0; i < window.Posts.length; i++){
+                if(window.Posts[i].id === id){
+                  $('#data-name').val($(`#proDetails${id} .product-name`).text());
+                  $('#data-description').val(`${window.Posts[i].description}`);
+                  console.log(window.Posts[i].imageCover);
+                  $('#productImg').attr('src', `../../../img/blog/${window.Posts[i].imageCover}`);
+                  if(window.Posts[i].onhome) {
+                    $('#chip-onhome').addClass('chip-success');
+                    $('#chip-onhome').attr('onhome','true');
+                    $('#chip-onhome').removeClass('chip-warning');
+                    $('#chip-onhome .chip-text').text('Active');
+                  }else {
+                    $('#chip-onhome').addClass('chip-warning');
+                    $('#chip-onhome').attr('onhome','false');
+                    $('#chip-onhome').removeClass('chip-success');
+                    $('#chip-onhome .chip-text').text('Deactive');
+                  }
+                  if(window.Posts[i].featurePost) {
+                    $('#chip-featured').addClass('chip-success');
+                    $('#chip-featured').attr('featured','true');
+                    $('#chip-featured').removeClass('chip-warning');
+                    $('#chip-featured .chip-text').text('Active');
+                  }else {
+                    $('#chip-featured').addClass('chip-warning');
+                    $('#chip-featured').attr('featured','false');
+                    $('#chip-featured').removeClass('chip-success');
+                    $('#chip-featured .chip-text').text('Deactive');
+                  }
+                  if(window.Posts[i].status) {
+                    $('#chip-status').addClass('chip-success');
+                    $('#chip-status').attr('status','true');
+                    $('#chip-status').removeClass('chip-warning');
+                    $('#chip-status .chip-text').text('Active');
+                  }else {
+                    $('#chip-status').addClass('chip-warning');
+                    $('#chip-status').attr('status','false');
+                    $('#chip-status').removeClass('chip-success');
+                    $('#chip-status .chip-text').text('Deactive');
+                  }
+                  $(".add-new-data").addClass("show");
+                  $(".overlay-bg").addClass("show");
+                  $(".add-new-data").addClass("show");
+                  $(".overlay-bg").addClass("show");
+            }
+          }
+        }
+      }
     }
     
 
@@ -192,10 +289,12 @@ function addBtnData(){
     let data = new FormData();
     const id = $('.add-data-btn').attr('prodID');
     const name = $('#data-name').val();
+    const description = $('#data-description').val();
     $(`#proDetails${id} .product-name`).text($('#data-name').val());
     const status = $('#chip-status').attr('status');
     const onsale = $('#chip-onsale').attr('onsale');
     const onhome = $('#chip-onhome').attr('onhome');
+    const featured = $('#chip-featured').attr('featured');
     if(window.Url){
       if(window.Url === 'products'){
         $(`#proDetails${id} .product-price`).text($('#data-price').val());
@@ -284,8 +383,44 @@ function addBtnData(){
           }
       }
     }
+
+    if(window.Url === 'posts'){
+        if(onhome && status && featured){
+          $(`#status${id}`).attr('status', `${status === 'true'? 'true' : 'false'}`);
+          $(`#status${id}`).html(`<div class="chip ${status === 'true' ? 'chip-success' : 'chip-warning'}"><div class="chip-body"><div class="chip-text">${status === 'true' ? 'Active' : 'Deactive'}</div></div></div>`);
+          $(`#onhome${id}`).attr('onhome', `${onhome === 'true'? 'true' : 'false'}`);
+          $(`#onhome${id}`).html(`<div class="chip ${onhome === 'true' ? 'chip-success' : 'chip-warning'}"><div class="chip-body"><div class="chip-text">${onhome === 'true' ? 'Active' : 'Deactive'}</div></div></div>`);
+          $(`#featured${id}`).attr('featured', `${featured === 'true'? 'true' : 'false'}`);
+          $(`#featured${id}`).html(`<div class="chip ${featured === 'true' ? 'chip-success' : 'chip-warning'}"><div class="chip-body"><div class="chip-text">${featured === 'true' ? 'Active' : 'Deactive'}</div></div></div>`);
+          console.log($(`#onhome${id}`),$(`#status${id}`),$(`#featured${id}`));
+          if($(`#onhome${id}`) && $(`#status${id}`) && $(`#featured${id}`)){
+            if(name){
+              data.append('name', name);
+            }
+            if(description){
+              data.append('description', description);
+            }
+            if(status){
+              data.append('status',status);
+            }
+            if(onhome){
+              data.append('onhome', onhome);
+            }
+            if(featured){
+              data.append('featurePost', featured);
+            }
+            if(document.getElementById('fileToUpload').files[0]){
+              data.append('imageCover', document.getElementById('fileToUpload').files[0]);
+            }
+            
+            console.log(name,status,onsale,document.getElementById('fileToUpload').files[0]);
+    
+            window.updatePost(id, data);
+            
+          }
+      }
+    }
     console.log(status,onhome);
-      
     }
     
     $(".add-new-data").removeClass("show");
@@ -392,6 +527,37 @@ $(document).ready(function() {
                 data.append('imageCover', document.getElementById('fileToUpload').files[0]);
                 console.log(document.getElementById('fileToUpload').files[0]);
                 window.addCategory(data);
+                
+                setTimeout(function(){
+                  location.reload();
+                },2000);
+                $('.add-data.btn').unbind();
+              });
+              
+              //Amit's Code ends
+            }
+
+            if(window.Url === 'posts'){
+              $("#data-category, #data-status").prop("selectedIndex", 0)
+              //Amit's Code
+              //Add Product
+              $('#data-name').attr('placeholder','Enter Name');
+              $('#data-description').attr('placeholder','Enter Description');
+              $('#data-description').val('');
+              $('.add-new-data div div h4').text('Add New Post');
+              $('#productImg').attr('src', ``);
+              $('.add-data-btn button').text('Add');
+              $('.add-data-btn').unbind();
+              $('.add-data-btn').click(function(){
+                const data = new FormData();
+                let category_id = '';
+                const name = $('#data-name').val();
+                const description = $('#data-description').val();
+                data.append('name', name);
+                data.append('description', description);
+                data.append('imageCover', document.getElementById('fileToUpload').files[0]);
+                console.log(document.getElementById('fileToUpload').files[0]);
+                window.addPost(data);
                 
                 setTimeout(function(){
                   location.reload();
@@ -533,6 +699,21 @@ jQuery('#product_List_Container').bind('DOMSubtreeModified',function(event) {
         }
       }
     }
+    if(window.Url === 'posts'){
+      if(window.Posts){
+        for(let i = 0; i < window.Posts.length; i++){
+            $(`#del${window.Posts[i].id}`).unbind();
+            // On Delete
+            $(`#del${window.Posts[i].id}`).on("click", function(e){
+              e.stopPropagation();
+              $(this).closest('td').parent('tr').fadeOut();
+              const id = $(this).closest('td').attr('prodid');
+              window.deletePost(id);
+              location.reload();
+            });
+        }
+      }
+    }
   }
   
 
@@ -576,6 +757,39 @@ $(document).ready(function(){
           $('#chip-onhome .chip-text').text('Active');
         }
         
+      })
+    }
+
+    if(window.Url === 'posts'){
+      $(`#chip-onhome`).click(function(){
+        const onhome = $(`#chip-onhome`).attr('onhome');
+        if(onhome === 'true'){
+          $('#chip-onhome').addClass('chip-warning');
+          $('#chip-onhome').attr('onhome','false');
+          $('#chip-onhome').removeClass('chip-success');
+          $('#chip-onhome .chip-text').text('Deactive');
+        }else {
+          $('#chip-onhome').addClass('chip-success');
+          $('#chip-onhome').attr('onhome','true');
+          $('#chip-onhome').removeClass('chip-warning');
+          $('#chip-onhome .chip-text').text('Active');
+        }
+        
+      })
+
+      $(`#chip-featured`).click(function(){
+        const featured = $(`#chip-featured`).attr('featured');
+        if(featured === 'true'){
+          $('#chip-featured').addClass('chip-warning');
+          $('#chip-featured').attr('featured','false');
+          $('#chip-featured').removeClass('chip-success');
+          $('#chip-featured .chip-text').text('Deactive');
+        }else {
+          $('#chip-featured').addClass('chip-success');
+          $('#chip-featured').attr('featured','true');
+          $('#chip-featured').removeClass('chip-warning');
+          $('#chip-featured .chip-text').text('Active');
+        }
       })
     }
   }
@@ -629,6 +843,22 @@ addBtnData();
               $(this).closest('td').parent('tr').fadeOut();
               const id = $(this).closest('td').attr('prodid');
               window.deleteCategory(id);
+              location.reload();
+            });
+        }
+      }
+    }
+
+    if(window.Url === 'posts'){
+      if(window.Posts){
+        for(let i = 0; i < window.Posts.length; i++){
+            $(`#del${window.Posts[i].id}`).unbind();
+            // On Delete
+            $(`#del${window.Posts[i].id}`).on("click", function(e){
+              e.stopPropagation();
+              $(this).closest('td').parent('tr').fadeOut();
+              const id = $(this).closest('td').attr('prodid');
+              window.deletePost(id);
               location.reload();
             });
         }
