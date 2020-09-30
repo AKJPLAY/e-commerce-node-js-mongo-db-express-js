@@ -525,10 +525,10 @@ ol {
 	position: relative;
 }
 
-.inner-header .nav-right li.cart-icon:hover .cart-hover {
-	opacity: 1;
-	visibility: visible;
-	top: 60px;
+.cartshow {
+	opacity: 1 !important;
+	visibility: visible !important;
+	top: 60px !important;
 }
 
 .inner-header .nav-right li.cart-icon a {
@@ -550,6 +550,10 @@ ol {
 	font-weight: 700;
 	text-align: center;
 	line-height: 15px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
 }
 
 .inner-header .nav-right li.cart-icon .cart-hover {

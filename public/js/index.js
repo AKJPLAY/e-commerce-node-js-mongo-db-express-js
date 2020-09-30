@@ -1,3 +1,12 @@
+//onclick Cart
+$('li.cart-icon').click(function(){
+  $('.cart-hover').toggleClass('cartshow');
+})
+
+$('#closeCart').click(function(){
+  $('.cart-hover').toggleClass('cartshow');
+})
+
 // Get All Categories
 window.Categories = $.parseJSON($.ajax({
   type: 'get',

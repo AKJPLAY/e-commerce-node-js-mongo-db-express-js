@@ -20560,7 +20560,14 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-// Get All Categories
+//onclick Cart
+$('li.cart-icon').click(function () {
+  $('.cart-hover').toggleClass('cartshow');
+});
+$('#closeCart').click(function () {
+  $('.cart-hover').toggleClass('cartshow');
+}); // Get All Categories
+
 window.Categories = $.parseJSON($.ajax({
   type: 'get',
   url: "/api/v1/categories",
