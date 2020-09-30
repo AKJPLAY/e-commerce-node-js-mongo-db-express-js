@@ -19342,9 +19342,11 @@ window.sortingProduct = function () {
       } else {
         console.log('else excuite');
 
-        if (window.Products.data.data[i].category_id === (0, _jquery.default)('.product-list').attr('catId') && window.Products.data.data[i].price >= minAmt && window.Products.data.data[i].price <= maxAmt) {
-          console.log('sub else excuite');
-          Prod.push(window.Products.data.data[i]);
+        if (window.Products.data.data[i].category_id === (0, _jquery.default)('.product-list').attr('catId')) {
+          if (window.Products.data.data[i].price >= minAmt && window.Products.data.data[i].price <= maxAmt) {
+            Prod.push(window.Products.data.data[i]);
+            console.log('sub else excuite');
+          }
         }
       }
     }
@@ -19368,11 +19370,13 @@ window.sortingProduct = function () {
     }
   }
 
+  console.log(Prod);
+
   if (window.Products) {
     if (window.Products.status === 'success') {
       var html = '';
 
-      for (var i = 0; i < window.Products.data.data.length; i++) {
+      for (var i = 0; i < Prod.length; i++) {
         var wishActive = 0;
 
         if (window.WishList) {
@@ -20698,7 +20702,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56737" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57726" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

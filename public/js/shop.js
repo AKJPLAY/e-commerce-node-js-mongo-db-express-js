@@ -49,9 +49,11 @@ window.sortingProduct = function ()  {
                     }
             }else {
                 console.log('else excuite');
-                    if(window.Products.data.data[i].category_id === $('.product-list').attr('catId') && window.Products.data.data[i].price >= minAmt && window.Products.data.data[i].price <= maxAmt) {
-                        console.log('sub else excuite');
-                        Prod.push(window.Products.data.data[i]);
+                    if(window.Products.data.data[i].category_id === $('.product-list').attr('catId')) {
+                        if(window.Products.data.data[i].price >= minAmt && window.Products.data.data[i].price <= maxAmt){
+                            Prod.push(window.Products.data.data[i]);
+                            console.log('sub else excuite');
+                        }
                     }
             }
         }
@@ -71,11 +73,11 @@ window.sortingProduct = function ()  {
         }
         
     }
-
+    console.log(Prod);
         if(window.Products){
             if (window.Products.status === 'success') {
                 let html = '';
-                for(var i = 0; i< window.Products.data.data.length; i++) {
+                for(var i = 0; i< Prod.length; i++) {
                     let wishActive = 0;
                     if(window.WishList){
                         let wishList = window.WishList.items;
