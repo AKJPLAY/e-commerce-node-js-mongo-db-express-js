@@ -105,6 +105,7 @@ if(ProductListContainer){
 $(`.AllFilter`).click(function(){
   $('.product-list').attr('catID', 'All');
   sortingProduct();
+  console.log('hiii');
 });
 
 $(`.filter-btn`).click(function(){

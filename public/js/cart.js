@@ -266,6 +266,7 @@ function addToCartBtn(){
     $(document).ready(function(){
         if(window.Products){
             for(let i = 0; i < window.Products.data.data.length; i++) {
+                $(`#addToCart${window.Products.data.data[i].id}`).unbind();
                 $(`#addToCart${window.Products.data.data[i].id}`).click(function() {
                     //console.log('hii.');
                     addTocart($(`#addToCart${window.Products.data.data[i].id}`).parent('ul').attr('prodID'));
@@ -278,7 +279,9 @@ function addToCartBtn(){
 
 addToCartBtn();
 
-
+jQuery('.product-list').bind('DOMSubtreeModified',function(event) {
+    addToCartBtn();
+});
 
 
 

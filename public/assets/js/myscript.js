@@ -59,6 +59,10 @@ if(window.Url){
             <th>PRICE</th>
             <th>ACTION</th>
             `);
+            $('.content-header-title').text('Products');
+            $('.breadcrumb .breadcrumb-item:nth-child(1)').html('<a href="/admin">Home</a>');
+            $('.breadcrumb .breadcrumb-item:nth-child(2)').html('<a href="/products">Products</a>');
+            $('.breadcrumb .breadcrumb-item:nth-child(3)').text('Products view');
             for(let i = 0; i < window.Products.length; i++) {
                 html += `
                  <tr id="proDetails${window.Products[i].id}">

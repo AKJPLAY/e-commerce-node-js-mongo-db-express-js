@@ -19887,6 +19887,7 @@ function addToCartBtn() {
   $(document).ready(function () {
     if (window.Products) {
       var _loop = function _loop(i) {
+        $("#addToCart".concat(window.Products.data.data[i].id)).unbind();
         $("#addToCart".concat(window.Products.data.data[i].id)).click(function () {
           //console.log('hii.');
           addTocart($("#addToCart".concat(window.Products.data.data[i].id)).parent('ul').attr('prodID'));
@@ -19901,6 +19902,9 @@ function addToCartBtn() {
 }
 
 addToCartBtn();
+jQuery('.product-list').bind('DOMSubtreeModified', function (event) {
+  addToCartBtn();
+});
 
 if (window.Cart) {
   if (window.Cart.items) {
@@ -20655,6 +20659,7 @@ if (ProductListContainer) {
 $(".AllFilter").click(function () {
   $('.product-list').attr('catID', 'All');
   sortingProduct();
+  console.log('hiii');
 });
 $(".filter-btn").click(function () {
   sortingProduct();
@@ -20702,7 +20707,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57726" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49376" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
